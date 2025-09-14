@@ -496,6 +496,11 @@ ninja.data = [{
           description: "another project with an image 🎉",
           section: "Projects",handler: () => {
               window.location.href = "/projects/9_project/";
+            },},{id: "projects-esi-curvature-modeling-of-egg-trajectories",
+          title: 'ESI-Curvature Modeling of Egg Trajectories',
+          description: "A research project on modeling the morphological effects on egg trajectories using high-speed cameras and MATLAB.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/egg_trajectory_modeling/";
             },},{
         id: 'social-email',
         title: 'email',
