@@ -6,158 +6,132 @@ nav: true
 nav_order: 5
 ---
 
-<!-- tiny-slider（无依赖，支持自动播放/拖拽/循环） -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<!-- 1. 加载 Tiny Slider 的 CSS 样式 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
 
+<!-- 2. 自定义轮播图的样式 -->
 <style>
-  /* 轮播容器与图片样式 */
-  #certs .slide {
+  .certs-container {
+    padding: 1rem 0;
+  }
+  .cert-slide {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6px;
+    height: 250px; /* 给一个固定高度，防止图片加载时页面跳动 */
   }
-  #certs .slide img{
+  .cert-slide img {
     display: block;
-    max-height: 220px;         /* 控制高度，避免过大 */
+    max-height: 100%;
     max-width: 100%;
     width: auto;
     height: auto;
     object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.25);
-    background: rgba(255,255,255,.04);
+    box-shadow: 0 4px 15px rgba(0,0,0,.2);
   }
-
-  /* Fallback：如果 tiny-slider 未加载成功，则静态三列栅格展示所有图片 */
-  #certs .my-slider:not(.tns-slider){
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap: 10px;
+  .tns-nav { /* 小圆点导航 */
+    text-align: center;
+    margin-top: 10px;
   }
-
-  /* tiny-slider 控制按钮 */
-  #certs .tns-controls{
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 6px;
-  }
-  #certs .tns-controls button{
-    background: transparent;
+  .tns-nav button {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: #555;
     border: 0;
-    font-size: 26px;
-    line-height: 1;
-    padding: .25rem .5rem;
-    color: var(--bs-body-color, #e5e5e5);
-    opacity: .85;
-    cursor: pointer;
   }
-  #certs .tns-controls button:hover{ opacity: 1; }
-
-  /* 计数器 */
-  #certs .counter{
-    font-size: .9rem;
-    color: #9aa0a6;
+  .tns-nav button.tns-nav-active {
+    background: #ddd;
   }
 </style>
 
 <p class="text-center">A rotating display of my 43 professional certificates and selected honors.</p>
 
-<div id="certs" class="container my-3">
-  <div class="my-slider">
-    <div class="slide"><img src="{{ '/assets/img/certificates/1.jpg'  | relative_url }}" alt="Certificate 1"  loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/2.jpg'  | relative_url }}" alt="Certificate 2"  loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/3.jpg'  | relative_url }}" alt="Certificate 3"  loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/4.jpg'  | relative_url }}" alt="Certificate 4"  loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/5.jpg'  | relative_url }}" alt="Certificate 5"  loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/6.jpg'  | relative_url }}" alt="Certificate 6"  loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/7.jpg'  | relative_url }}" alt="Certificate 7"  loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/8.jpg'  | relative_url }}" alt="Certificate 8"  loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/9.jpg'  | relative_url }}" alt="Certificate 9"  loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/10.jpg' | relative_url }}" alt="Certificate 10" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/11.jpg' | relative_url }}" alt="Certificate 11" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/12.jpg' | relative_url }}" alt="Certificate 12" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/13.jpg' | relative_url }}" alt="Certificate 13" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/14.jpg' | relative_url }}" alt="Certificate 14" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/15.jpg' | relative_url }}" alt="Certificate 15" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/16.jpg' | relative_url }}" alt="Certificate 16" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/17.jpg' | relative_url }}" alt="Certificate 17" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/18.jpg' | relative_url }}" alt="Certificate 18" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/19.jpg' | relative_url }}" alt="Certificate 19" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/20.jpg' | relative_url }}" alt="Certificate 20" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/21.jpg' | relative_url }}" alt="Certificate 21" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/22.jpg' | relative_url }}" alt="Certificate 22" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/23.jpg' | relative_url }}" alt="Certificate 23" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/24.jpg' | relative_url }}" alt="Certificate 24" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/25.jpg' | relative_url }}" alt="Certificate 25" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/26.jpg' | relative_url }}" alt="Certificate 26" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/27.jpg' | relative_url }}" alt="Certificate 27" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/28.jpg' | relative_url }}" alt="Certificate 28" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/29.jpg' | relative_url }}" alt="Certificate 29" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/30.jpg' | relative_url }}" alt="Certificate 30" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/31.jpg' | relative_url }}" alt="Certificate 31" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/32.jpg' | relative_url }}" alt="Certificate 32" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/33.jpg' | relative_url }}" alt="Certificate 33" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/34.jpg' | relative_url }}" alt="Certificate 34" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/35.jpg' | relative_url }}" alt="Certificate 35" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/36.jpg' | relative_url }}" alt="Certificate 36" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/37.jpg' | relative_url }}" alt="Certificate 37" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/38.jpg' | relative_url }}" alt="Certificate 38" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/39.jpg' | relative_url }}" alt="Certificate 39" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/40.jpg' | relative_url }}" alt="Certificate 40" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/41.jpg' | relative_url }}" alt="Certificate 41" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/42.jpg' | relative_url }}" alt="Certificate 42" loading="lazy"></div>
-    <div class="slide"><img src="{{ '/assets/img/certificates/43.jpg' | relative_url }}" alt="Certificate 43" loading="lazy"></div>
-  </div>
-
-  <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
-    <div class="counter" id="cert-count">1 / 43</div>
+<!-- 3. 轮播图的 HTML 结构 -->
+<div class="certs-container">
+  <div class="certs-slider">
+    <div><div class="cert-slide"><img src="/assets/img/certificates/1.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/2.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/3.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/4.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/5.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/6.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/7.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/8.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/9.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/10.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/11.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/12.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/13.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/14.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/15.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/16.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/17.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/18.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/19.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/20.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/21.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/22.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/23.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/24.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/25.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/26.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/27.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/28.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/29.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/30.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/31.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/32.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/33.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/34.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/35.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/36.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/37.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/38.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/39.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/40.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/41.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/42.jpg" loading="lazy"></div></div>
+    <div><div class="cert-slide"><img src="/assets/img/certificates/43.jpg" loading="lazy"></div></div>
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- 4. 加载 Tiny Slider 的 JS 脚本 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
+<!-- 5. 确保页面加载完成后再执行轮播图初始化 -->
 <script>
-(function () {
-  if (window.tns) {
+  document.addEventListener('DOMContentLoaded', function () {
     var slider = tns({
-      container: '#certs .my-slider',
-      items: 3,                // 一次显示3张
-      gutter: 10,              // 图片间距
-      slideBy: 1,              // 每次滑动1张
-      mouseDrag: true,         // 支持拖拽/触摸
-      swipeAngle: 15,
-      autoplay: true,          // 自动播放
-      autoplayTimeout: 2500,   // 自动播放间隔(ms)
-      autoplayHoverPause: true,
+      container: '.certs-slider',
+      items: 1,
+      slideBy: 'page',
+      autoplay: true,
       autoplayButtonOutput: false,
-      speed: 400,
-      loop: true,              // 无限循环
-      controls: true,          // 左右按钮
-      controlsText: ['‹','›'],
-      nav: false,              // 关闭小圆点
+      controls: false, // 隐藏左右箭头
+      nav: true, // 显示小圆点导航
+      mouseDrag: true,
       responsive: {
-        0:   { items: 1 },     // 手机
-        576: { items: 2 },     // 平板
-        992: { items: 3 }      // 桌面
+        768: { // 屏幕宽度大于 768px
+          items: 3,
+          gutter: 15
+        },
+        992: { // 屏幕宽度大于 992px
+          items: 5,
+          gutter: 20
+        }
       }
     });
-
-    // 计数器（当前/总数）
-    var total = slider.getInfo().slideCount;
-    var counter = document.getElementById('cert-count');
-    function updateCounter(){
-      var i = slider.getInfo().displayIndex; // 1-based
-      counter.textContent = i + ' / ' + total;
-    }
-    slider.events.on('indexChanged', updateCounter);
-    updateCounter();
-  } else {
-    // tiny-slider 未加载时，给出总数
-    document.getElementById('cert-count').textContent = '43 / 43';
-  }
-})();
+  });
 </script>
+
+<hr>
+
+### Selected Honors and Awards
+<!-- ... (This part remains the same) ... -->
 
 <hr>
 
