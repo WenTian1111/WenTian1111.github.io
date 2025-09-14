@@ -16,21 +16,21 @@
     },
     "profiles": []
   },
-  "work": [
+ "work": [
     {
-      "name": "武汉震烨",
-      "position": "数据分析师",
+      "name": "Wuhan Zhenye",
+      "position": "Data Analyst",
       "location": "Wuhan, China",
       "startDate": "2025-08-01",
-      "summary": "辅助客户进行必要的数据分析及数据建模工作。"
+      "summary": "Assisted clients with necessary data analysis and data modeling tasks."
     },
     {
-      "name": "北京挑战农业科技有限公司",
-      "position": "研究院科研助理",
+      "name": "Beijing Challenge Agricultural Technology Co., Ltd.",
+      "position": "Research Assistant at the Research Institute",
       "location": "Beijing, China",
       "startDate": "2025-02-24",
       "endDate": "2025-04-24",
-      "summary": "根据公司研究院要求去到江苏盐城参加实验数据的收集与分析，最终汇报给公司研究院。"
+      "summary": "Following the requirements of the company's research institute, I traveled to Yancheng, Jiangsu to participate in the collection and analysis of experimental data, ultimately reporting the results to the institute."
     },
     {
       "name": "Yunding Mathematical Modeling Agency",
@@ -58,7 +58,7 @@
       "location": "Hunan, China",
       "startDate": "2023-04-01",
       "endDate": "2023-04-30",
-      "summary": "As a freshman, authored an article for a publication featured on the official National Competition website, sharing insights on the Postgraduate Entrance Exam Mathematics Competition.",
+      "summary": "As a freshman, authored an article for a publication featured on the official National Competition website, sharing insights on the Postgraduate Mathematics Competition.",
       "highlights": [
         "The article achieved over 14,000 views"
       ]
