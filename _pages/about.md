@@ -11,9 +11,7 @@ profile:
   more_info: >
     <p>+(86) 16623423843</p>
     <p>Southwest University</p>
-    <p>Southwest University, Rongchang Campus
-No. 160, Xueyuan Road, Rongchang District
-Chongqing, China, 402460</p>
+    <p>Southwest University, Rongchang Campus No. 160, Xueyuan Road, Rongchang District Chongqing, China, 402460</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
