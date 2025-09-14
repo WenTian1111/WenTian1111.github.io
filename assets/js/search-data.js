@@ -451,7 +451,17 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "projects-esi-curvature-modeling-of-egg-trajectories",
+          section: "News",},{id: "projects-project-8",
+          title: 'project 8',
+          description: "an other project with a background image and giscus comments",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/8_project/";
+            },},{id: "projects-project-9",
+          title: 'project 9',
+          description: "another project with an image 🎉",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/9_project/";
+            },},{id: "projects-esi-curvature-modeling-of-egg-trajectories",
           title: 'ESI-Curvature Modeling of Egg Trajectories',
           description: "A research project on modeling the morphological effects on egg trajectories using high-speed cameras and MATLAB.",
           section: "Projects",handler: () => {
