@@ -134,7 +134,7 @@ nav_order: 5
 
 This section highlights some of the key honors received for academic excellence and innovation. For a complete list, please see the **Awards** section on my [CV page](/cv/).
 
-* **Chongqing Advanced Individual for Innovation Ability Enhancement (Top 0.09%)**
+* **Chongqing Advanced Individual for Innovation Ability Enhancement (Top 0.09%, One of the fastest students to be awarded the honor)**
   * *Awarded by: Chongqing Municipal Education Commission*
   * *Date: June 2024*
 
