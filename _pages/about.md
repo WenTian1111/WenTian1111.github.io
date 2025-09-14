@@ -10,7 +10,6 @@ profile:
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>+(86) 16623423843</p>
-    <p>Southwest University</p>
     <p>Southwest University, Rongchang Campus No. 160, Xueyuan Road, Rongchang District Chongqing, China, 402460</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
@@ -36,7 +35,6 @@ My technical skills include MATLAB, Python, and LATEX. I am passionate about app
 ### Education
 *   **B.Sc., Animal Science** (Sep. 2022 - June 2026)
     *   Southwest University, Chongqing, China
-    *   GPA: 83.7/100
     *   Core Courses: Advanced Mathematics (92), Quantitative Genetics (95), Mathematical Modeling (96)
 
 ### Research Experience
@@ -45,3 +43,14 @@ My technical skills include MATLAB, Python, and LATEX. I am passionate about app
 
 *   **Machine Vision for Coupled Egg Dynamics & Intelligent Sorting** (Leader)
     *   Conducted extensive literature reviews and laid the groundwork for developing advanced egg grading and recognition systems based on morphological and dynamic behavior.
+
+*   **Research on Multi-Object Localization of Rocket Debris** (Independent Researc)
+    *   Developed a rocket debris recovery strategy using sonic booms by optimizing WGS84-based tri-sphere and quad-sphere intersection
+models. Employed MATLAB, including ‘lsqnonlin’ and a novel traversal algorithm, to implement a weighted least squares correction model.This
+approach, validated by Monte Carlo simulations, significantly enhanced localization accuracy and confirmed the necessity of at least four devices.
+Outputs: Publish the paper titled “Research on Multi-Object Localization of Rocket Debris”.
+
+
+
+
+
