@@ -131,11 +131,6 @@ nav_order: 5
 <hr>
 
 ### Selected Honors and Awards
-<!-- ... (This part remains the same) ... -->
-
-<hr>
-
-### Selected Honors and Awards
 
 This section highlights some of the key honors received for academic excellence and innovation. For a complete list, please see the **Awards** section on my [CV page](/cv/).
 
