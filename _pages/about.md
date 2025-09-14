@@ -6,7 +6,7 @@ subtitle: Chongqing, China · <a href='mailto:yh16623423843@email.swu.edu.cn'>yh
 
 profile:
   align: right
-  image: YANGHan.jpg
+  image: yanghan.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>+(86) 16623423843</p>
