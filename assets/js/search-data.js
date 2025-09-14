@@ -461,6 +461,11 @@ ninja.data = [{
           description: "A research initiative focused on developing advanced egg grading and recognition systems.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/machine_vision_egg_sorting/";
+            },},{id: "projects-multi-object-localization-of-rocket-debris",
+          title: 'Multi-Object Localization of Rocket Debris',
+          description: "Independent research on developing a recovery strategy for rocket debris using sonic booms and advanced modeling.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/rocket_debris_localization/";
             },},{
         id: 'social-email',
         title: 'email',
