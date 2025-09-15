@@ -1,4 +1,4 @@
----
+  ---
 layout: about
 title: about
 permalink: /
@@ -48,7 +48,7 @@ My technical skills include MATLAB, Python, and LATEX. I am passionate about app
     *   Developed a rocket debris recovery strategy using sonic booms by optimizing WGS84-based tri-sphere and quad-sphere intersection
 models. Employed MATLAB, including ‘lsqnonlin’ and a novel traversal algorithm, to implement a weighted least squares correction model.This
 approach, validated by Monte Carlo simulations, significantly enhanced localization accuracy and confirmed the necessity of at least four devices.
-Outputs: Publish the paper titled “Research on Multi-Object Localization of Rocket Debris”.
+    *   Outputs: Publish the paper titled “Research on Multi-Object Localization of Rocket Debris”.
 
 
 
