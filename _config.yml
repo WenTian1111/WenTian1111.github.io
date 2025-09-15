@@ -6,7 +6,7 @@ title: YANG Han's Homepage # the website title (if blank, full name will be used
 first_name: Han
 #middle_name: Han
 last_name: YANG
-contact_note: "Please contact me by email if possible. Thank you."
+contact_note: "Email is the best way to reach me."
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
     An undergraduate student at Southwest University, passionate about mathematical modeling and data science.
 footer_text: >
