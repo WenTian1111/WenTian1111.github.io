@@ -433,15 +433,12 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
+            },},{id: "news-honored-with-chongqing-advanced-individual-award",
+          title: 'Honored with Chongqing Advanced Individual Award',
           description: "",
           section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
-          description: "",
-          section: "News",},{id: "projects-esi-curvature-modeling-of-egg-trajectories",
+              window.location.href = "/news/award_announcement/";
+            },},{id: "projects-esi-curvature-modeling-of-egg-trajectories",
           title: 'ESI-Curvature Modeling of Egg Trajectories',
           description: "A research project on modeling the morphological effects on egg trajectories using high-speed cameras and MATLAB.",
           section: "Projects",handler: () => {
