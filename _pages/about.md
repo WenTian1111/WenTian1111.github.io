@@ -44,7 +44,7 @@ My technical skills include MATLAB, Python, and LATEX. I am passionate about app
 *   **Machine Vision for Coupled Egg Dynamics & Intelligent Sorting** (Leader)
     *   Conducted extensive literature reviews and laid the groundwork for developing advanced egg grading and recognition systems based on morphological and dynamic behavior.
 
-*   **Research on Multi-Object Localization of Rocket Debris** (Independent Researc)
+*   **Research on Multi-Object Localization of Rocket Debris** (Independent Research)
     *   Developed a rocket debris recovery strategy using sonic booms by optimizing WGS84-based tri-sphere and quad-sphere intersection
 models. Employed MATLAB, including ‘lsqnonlin’ and a novel traversal algorithm, to implement a weighted least squares correction model.This
 approach, validated by Monte Carlo simulations, significantly enhanced localization accuracy and confirmed the necessity of at least four devices.
