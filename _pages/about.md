@@ -17,10 +17,10 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
 announcements:
-  enabled: false # Temporarily disabled to ensure stability
+  enabled: true # Temporarily disabled to ensure stability
   
 latest_posts:
-  enabled: false # Disabled as there are no blog posts yet
+  enabled: true # Disabled as there are no blog posts yet
 ---
 
 I am an undergraduate student at **Southwest University** (a 211 & Double First-Class university in China), majoring in Animal Science. My academic and research interests are heavily focused on mathematical modeling, data analysis, and intelligent systems.
