@@ -56,17 +56,6 @@ Beyond the lab, I have a deep interest in the *Yijing*, *Daoism*, and traditiona
     *   Developed rocket debris recovery strategy using sonic booms by optimizing WGS84-based tri-sphere and quad-sphere intersection models. Employed MATLAB with lsqnonlin and novel traversal algorithm for weighted least squares correction, validated by Monte Carlo simulations.
     *   Output: Published paper in *Frontier and Progress of Computational Mathematics and Modeling*, 2024, vol. 7, 01-24.
 
-### Selected Honors
-
-*   **Beijing Challenge Group Annual Scholarship** (Top 0.25%), Nov. 2023
-*   **Southwest University First-Class Scholarship** (Top 3%), Dec. 2023
-*   **Southwest University Academic Science and Technology Award** (Top 2%), Dec. 2023
-*   **Chongqing Advanced Individual for Innovation Ability Enhancement** (Top 0.09%), June 2024
-*   **Southwest University Diligent Endeavor Scholarship** (Top 2%), Dec. 2024
-*   **VTR Bio-Tech Scholarship** (Top 0.08%), Mar. 2025
-*   **National First Prize, Chinese Mathematics Competitions (CMC)**, Mar. 2023
-*   **Provincial First Prize, China Undergraduate Mathematical Contest in Modeling (CUMCM)**, Sep. 2024
-
 ### Skills
 
 *   **Mathematical & Modeling Software:** MATLAB, LaTeX, LINGO, Python

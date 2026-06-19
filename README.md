@@ -1,6 +1,6 @@
 # Han YANG - Personal Academic Website
 
-This is the personal academic website of **Han YANG** (涵哥), built with [al-folio](https://github.com/alshedivat/al-folio) and hosted on GitHub Pages.
+This is the personal academic website of **Han YANG**, built with [al-folio](https://github.com/alshedivat/al-folio) and hosted on GitHub Pages.
 
 ## About
 
