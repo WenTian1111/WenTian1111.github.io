@@ -30,7 +30,7 @@ Beyond the lab, I have a deep interest in the *Yijing*, *Daoism*, and traditiona
 
 ### Education
 
-*   **B.Sc. Animal Science** (Sep. 2022 - June 2026)
+*   **B.Sc. Animal Science and Applied Mathematics** (Sep. 2022 - June 2026)
     *   Southwestern University (SWU)
 
 ### Research Experience
