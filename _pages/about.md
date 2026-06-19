@@ -15,35 +15,11 @@ social: true
 
 announcements:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 10 # leave blank to show all news items
+  scrollable: true
+  limit: 10
 
 latest_posts:
   enabled: false
-
-news:
-  - date: May 2025
-    text: VTR Bio-Tech Scholarship (Top 0.08%). Only one undergraduate and one postgraduate recipient in the Faculty.
-  - date: Sep. 2024
-    text: Provincial First Prize, China Undergraduate Mathematical Contest in Modeling (CUMCM).
-  - date: Dec. 2024
-    text: Southwest University Diligent Endeavor Scholarship (Top 2%).
-  - date: June 2024
-    text: "Chongqing Advanced Individual for Innovation Ability Enhancement (Top 0.09%). Awarded in the shortest time based on freshman year performance."
-  - date: Apr. 2024
-    text: "National First Prize, Certification Cup Mathematical Modeling Network Challenge."
-  - date: Apr. 2023
-    text: Published personal mathematics competition experience on NetEase News. Originally featured on the official National Competition website, achieving 14,000+ views.
-  - date: Dec. 2023
-    text: Southwest University First-Class Scholarship (Top 3%).
-  - date: Dec. 2023
-    text: Southwest University Academic Science and Technology Award (Top 2%).
-  - date: Dec. 2023
-    text: "Advanced Individual for Summer Three Goes to the Countryside Social Practice Activity."
-  - date: Nov. 2023
-    text: Beijing Challenge Group Annual Scholarship (Top 0.25%).
-  - date: Mar. 2023
-    text: National First Prize, Chinese Mathematics Competitions (CMC).
 ---
 
 I am an incoming M.A. student in Religious Studies at **The Chinese University of Hong Kong** (CUHK), and a recent graduate of **Southwest University** where I majored in Animal Science and Applied Mathematics. My academic vision is to bridge ancient Chinese philosophical frameworks with modern scientific inquiry, exploring the fundamental logic underlying the universe.
