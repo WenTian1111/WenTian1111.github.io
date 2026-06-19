@@ -20,18 +20,18 @@ latest_posts:
   enabled: false
 ---
 
-I am an incoming M.A. student in Religious Studies at **The Chinese University of Hong Kong** (CUHK), and a recent graduate of **Southwest University** (211 and Double First-Class) where I majored in Animal Science. My academic journey has been shaped by two seemingly distinct yet deeply interconnected passions: quantitative research and Chinese classical philosophy.
+我毕业于西南大学，主要学习动物科学与应用数学，并即将去香港中文大学学习宗教学。我的学术愿景是将中国古代哲学与现代科学结合起来交叉研究。
 
 During my undergraduate years, I developed strong analytical skills through mathematical modeling competitions and hands-on research — from trajectory analysis and optical sensing to semiconductor thermal modeling. I also completed a provincial-level College Students' Innovation and Entrepreneurship Training Program as a solo researcher, applying machine vision and data-driven methods to agricultural engineering.
 
-Beyond the lab, I have a deep interest in the *Yijing*, *Daoism*, and traditional Chinese cosmology. My long-term research goal is to bridge ancient Chinese philosophical frameworks with modern scientific inquiry, exploring the fundamental logic underlying the universe. The MARS programme at CUHK offers the ideal interdisciplinary environment to pursue this vision.
+Beyond the lab, I have a deep interest in the *Yijing*, *Daoism*, and traditional Chinese cosmology. My long-term research goal is to bridge ancient Chinese philosophical frameworks with modern scientific inquiry, exploring the fundamental logic underlying the universe. 香港中文大学为我实现这一愿景提供了理想的跨学科环境。
 
 ### Education
 
-*   **M.A. in Religious Studies** (Incoming, Sep. 2026)
+*   **M.A. Religious Studies** (Incoming, Sep. 2026)
     *   The Chinese University of Hong Kong (CUHK)
-*   **B.Sc. in Animal Science** (Sep. 2022 - June 2026)
-    *   Southwest University, Chongqing, China
+*   **B.Sc. Applied Mathematics and Animal Science** (Sep. 2022 - June 2026)
+    *   Southwestern University (SWU)
 
 ### Research Experience
 
