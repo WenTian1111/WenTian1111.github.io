@@ -30,11 +30,8 @@ Beyond the lab, I have a deep interest in the *Yijing*, *Daoism*, and traditiona
 
 ### Education
 
-*   **M.A. Religious Studies** (Incoming, Sep. 2026)
-    *   The Chinese University of Hong Kong (CUHK)
 *   **B.Sc. Animal Science** (Sep. 2022 - June 2026)
-    *   Southwestern University (SWU), GPA: 83.7/100
-    *   Core Courses: Advanced Mathematics (92); Quantitative Genetics (95); Mathematical Modeling (96)
+    *   Southwestern University (SWU)
 
 ### Research Experience
 
