@@ -1,221 +1,222 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Han YANG",
+    "label": "B.Sc. in Animal Science | Aspiring Researcher in Computational Religion & Digital Humanities",
     "image": "",
-    "email": "einstein@example.com",
-    "phone": "(912) 123-4567",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "2549675208a@gmail.com",
+    "phone": "+86 166 2342 3843",
+    "summary": "An interdisciplinary researcher bridging animal science, applied mathematics, and computational methods. Incoming M.A. student in Religious Studies (MARS) at The Chinese University of Hong Kong. Passionate about applying computational approaches — NLP, complex systems, and mathematical modeling — to the study of classical Chinese philosophy and traditional knowledge systems.",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "Tiansheng Road No.2, Southwest University",
+      "postalCode": "",
+      "city": "Chongqing",
+      "countryCode": "CN",
+      "region": "Chongqing"
     },
-    "profiles": []
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "wentian1111",
+        "url": "https://github.com/WenTian1111"
+      }
+    ]
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "location": "Princeton University, NJ",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity", "Description 2."]
-    },
-    {
-      "name": "California Institute of Technology",
-      "position": "Visiting Professor",
-      "location": "Pasadena, California, US",
-      "startDate": "1933-01-01",
-      "endDate": "1933-01-01",
-      "summary": "",
-      "highlights": ["Description 1.", "Description 2."]
-    },
-    {
-      "name": "Kaiser Wilhelm Institute for Physics",
-      "position": "Director",
-      "location": "Berlin, Germany",
-      "startDate": "1917-01-01",
-      "endDate": "1933-01-01",
-      "summary": "",
+      "name": "Wuhan Zhenye Information Technology Co., Ltd.",
+      "position": "Data Analyst",
+      "location": "Wuhan, China",
+      "startDate": "2025-08-01",
+      "endDate": "",
+      "summary": "Assisting clients with data analysis and data modeling tasks using Python and MATLAB.",
       "highlights": []
     },
     {
-      "name": "Karl-Ferdinand University",
-      "position": "Professor of Theoretical Physics",
-      "location": "Prague, Czechoslovakia",
-      "startDate": "1911-01-01",
-      "endDate": "1917-01-01",
-      "summary": "",
+      "name": "Beijing Tiaozhan Agricultural Technology Co., Ltd.",
+      "position": "Research Assistant",
+      "location": "Beijing, China",
+      "startDate": "2025-02-01",
+      "endDate": "2025-04-01",
+      "summary": "Graduation internship at the Tiaozhan Group Research Institute. Conducted on-site fieldwork in Yancheng, Jiangsu — collected and analyzed feeding and weaning data from pregnant sows, and reported findings to the institute.",
       "highlights": []
     },
     {
-      "name": "University of Zurich",
-      "position": "Associate Professor of Theoretical Physics",
-      "location": "Zurich, Switzerland",
-      "startDate": "1909-01-01",
-      "endDate": "1911-01-01",
-      "summary": "",
+      "name": "Chongqing Jiawo Biotechnology Co., Ltd.",
+      "position": "Operations Director",
+      "location": "Chongqing, China",
+      "startDate": "2023-07-01",
+      "endDate": "2023-08-01",
+      "summary": "Represented the company at the China Innovation & Entrepreneurship Roadshow semi-finals (Chongqing), presenting a solid fertilizer greening project to investors and experts.",
       "highlights": []
     }
   ],
-  "volunteer": [
-    {
-      "organization": "People's Climate March",
-      "location": "Zurich, Switzerland",
-      "position": "Lead Organizer",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
-    }
-  ],
+  "volunteer": [],
   "education": [
     {
-      "institution": "University of Zurich",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Physics",
-      "studyType": "PhD",
-      "startDate": "1900-01-01",
-      "endDate": "1905-01-01",
-      "score": "",
-      "courses": ["Theory of Relativity"],
-      "highlights": ["Description 1.", "Description 2."]
-    },
-    {
-      "institution": "Eidgenössische Technische Hochschule",
-      "location": "Zurich, Switzerland",
-      "area": "Physics",
-      "studyType": "Federal teaching diploma",
-      "startDate": "1896-01-01",
-      "endDate": "1900-01-01",
+      "institution": "The Chinese University of Hong Kong (CUHK)",
+      "location": "Hong Kong SAR",
+      "url": "https://www.cuhk.edu.hk/",
+      "area": "Religious Studies (MARS)",
+      "studyType": "M.A. (Incoming)",
+      "startDate": "2026-09-01",
+      "endDate": "",
       "score": "",
       "courses": [],
-      "highlights": ["Description 1.", "Description 2."]
+      "highlights": ["Incoming postgraduate student in the Master of Arts in Religious Studies program"]
+    },
+    {
+      "institution": "Southwest University (211 & Double First-Class)",
+      "location": "Chongqing, China",
+      "url": "https://www.swu.edu.cn/",
+      "area": "Animal Science",
+      "studyType": "B.Sc.",
+      "startDate": "2022-09-01",
+      "endDate": "2026-06-01",
+      "score": "GPA: 83.7/100",
+      "courses": ["Advanced Mathematics (92)", "Quantitative Genetics (95)", "Mathematical Modeling (96)"],
+      "highlights": ["Fastest recipient of a Provincial Government Honor in the faculty"]
     }
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "title": "Chongqing Advanced Individual for Innovation Ability Enhancement (Top 0.09%)",
+      "date": "2024-06-01",
+      "awarder": "Chongqing Municipal Education Commission",
+      "url": "",
+      "summary": "Awarded in the shortest time among recipients."
     },
     {
-      "title": "Max Planck Medal",
-      "date": "2029-01-01",
-      "awarder": "German Physical Society",
+      "title": "VTR Bio-Tech Scholarship (Top 0.08%)",
+      "date": "2025-03-01",
+      "awarder": "Guangdong VTR Bio-Tech Co., Ltd.",
+      "summary": "Only one undergraduate and one postgraduate recipient in the entire faculty."
+    },
+    {
+      "title": "Beijing Challenge Group Annual Scholarship (Top 0.25%)",
+      "date": "2023-11-01",
+      "awarder": "Beijing Challenge Group",
+      "summary": ""
+    },
+    {
+      "title": "Southwest University First-Class Scholarship (Top 3%)",
+      "date": "2023-12-01",
+      "awarder": "Southwest University",
+      "summary": ""
+    },
+    {
+      "title": "Southwest University Academic Science and Technology Award (Top 2%)",
+      "date": "2023-12-01",
+      "awarder": "Southwest University",
+      "summary": ""
+    },
+    {
+      "title": "Southwest University Diligent Endeavor Scholarship (Top 2%)",
+      "date": "2024-12-01",
+      "awarder": "Southwest University",
       "summary": ""
     }
   ],
   "certificates": [
     {
-      "name": "Machine Learning",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "icon": "fa-solid fa-location-dot"
-    },
-    {
-      "name": "Quantum Computing",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "icon": "fa-solid fa-tag"
-    },
-    {
-      "name": "Quantum Information",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "icon": "fa-solid fa-envelope"
+      "name": "Patent: Promotional Column (Design Patent Pending)",
+      "date": "2023-11-21",
+      "issuer": "China National Intellectual Property Administration (No. 2023307625850)",
+      "icon": "fa-solid fa-certificate"
     }
   ],
   "publications": [
     {
-      "name": "Zur Elektrodynamik bewegter Körper",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-06-30",
-      "url": "https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies",
-      "summary": "It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source."
-    },
-    {
-      "name": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-03-18",
-      "url": "https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt",
-      "summary": "In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921."
-    },
-    {
-      "name": "Die Grundlage der allgemeinen Relativitätstheorie",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1916-03-20",
-      "url": "https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie",
-      "summary": "The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914)."
+      "name": "Research on Multi-Object Localization of Rocket Debris",
+      "authors": ["Han Yang"],
+      "publisher": "Frontier and Progress of Computational Mathematics and Modeling",
+      "releaseDate": "2024-01-01",
+      "url": "",
+      "summary": "Developed a rocket debris recovery strategy using sonic booms by optimizing WGS84-based tri-sphere and quad-sphere intersection models. Employed MATLAB, including lsqnonlin and a novel traversal algorithm, to implement a weighted least squares correction model validated by Monte Carlo simulations."
     }
   ],
   "skills": [
     {
-      "name": "Physics",
-      "level": "Master",
-      "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
-      ]
+      "name": "Mathematical Modeling & Scientific Computing",
+      "level": "Proficient",
+      "icon": "fa-solid fa-calculator",
+      "keywords": ["MATLAB", "LaTeX", "LINGO", "Python", "Numerical Methods", "Optimization", "Finite Element Analysis"]
+    },
+    {
+      "name": "Data Analysis & Visualization",
+      "level": "Proficient",
+      "icon": "fa-solid fa-chart-line",
+      "keywords": ["Python (Pandas, NumPy, Matplotlib)", "MATLAB", "Statistical Analysis", "PCA"]
+    },
+    {
+      "name": "Programming & Tools",
+      "level": "",
+      "icon": "fa-solid fa-code",
+      "keywords": ["Python", "MATLAB", "LaTeX", "Git", "Mathpix", "AxMath", "AxGlyph"]
     }
   ],
   "languages": [
     {
-      "language": "German",
+      "language": "Chinese",
       "fluency": "Native speaker",
       "icon": ""
     },
     {
       "language": "English",
-      "fluency": "Fluent",
+      "fluency": "Intermediate (IELTS preparation)",
+      "icon": ""
+    },
+    {
+      "language": "Cantonese",
+      "fluency": "Learning",
       "icon": ""
     }
   ],
   "interests": [
     {
-      "name": "Physics",
-      "icon": "fa-solid fa-tag",
-      "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
-      ]
-    }
-  ],
-  "references": [
-    {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-laptop",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit."
+      "name": "Computational Religion & Digital Humanities",
+      "icon": "fa-solid fa-book",
+      "keywords": ["Classical Chinese Philosophy", "I Ching", "Computational Text Analysis", "NLP for Traditional Texts"]
     },
     {
-      "name": "Professor Jane Smith",
-      "icon": "fa-solid fa-thumbtack",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit."
+      "name": "Applied Mathematics & Modeling",
+      "icon": "fa-solid fa-infinity",
+      "keywords": ["Mathematical Modeling", "Numerical Simulation", "Optimization", "Complex Systems"]
+    },
+    {
+      "name": "Traditional Chinese Metaphysics",
+      "icon": "fa-solid fa-yin-yang",
+      "keywords": ["Meihua Yishu", "Da Liu Ren", "Bazi", "Ziwei Doushu"]
     }
   ],
+  "references": [],
   "projects": [
     {
-      "name": "Quantum Computing",
-      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
-      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2018-01-01",
-      "endDate": "2018-01-01"
+      "name": "ESI — Curvature Modeling of Egg Trajectories: Morphological Effects",
+      "summary": "Led a team to invent and design an egg rolling test rig, collecting 90 egg samples. Innovatively converted 3D motion into 2D planar motion. Utilized MATLAB with Kalman filtering to extract dynamic behavioral features from video sequences. Applied polynomial fitting to analyze the impact of egg shape index and eccentricity on trajectory.",
+      "highlights": ["Provincial-level undergraduate innovation project (solo approval)", "One JCR Q1 research paper planned for publication"],
+      "startDate": "2025-04-01",
+      "endDate": "2026-04-01"
+    },
+    {
+      "name": "Machine Vision for Coupled Egg Dynamics & Intelligent Sorting",
+      "summary": "Led literature review on coupling mechanism of egg morphology, contact interface characteristics, dynamic rolling behavior, and intelligent sorting prediction. Systematically summarized 240 recent review articles and drafted an initial review manuscript.",
+      "highlights": ["One JCR Q1 review paper planned for publication"],
+      "startDate": "2025-05-01",
+      "endDate": "2026-05-01"
+    },
+    {
+      "name": "Mathematical Modeling Competitions (Team Leader)",
+      "summary": "Led a team in paper writing, modeling, and programming for multiple mathematical modeling competitions. Notable work includes finite element skull modeling using Ogden constitutive model, and polar angle iteration with Simpson's numerical integration for dragon formation coiling simulation.",
+      "highlights": ["National and provincial first-class awards", "Over 50 competition awards across dozens of contests"],
+      "startDate": "2023-05-01",
+      "endDate": "2025-05-01"
+    },
+    {
+      "name": "Research on Multi-Object Localization of Rocket Debris",
+      "summary": "Developed a rocket debris recovery strategy using sonic booms. Optimized WGS84-based tri-sphere and quad-sphere intersection models. Implemented weighted least squares correction with Monte Carlo validation.",
+      "highlights": ["Published in Frontier and Progress of Computational Mathematics and Modeling"],
+      "startDate": "2024-05-01",
+      "endDate": "2024-08-01"
     }
   ]
 }
