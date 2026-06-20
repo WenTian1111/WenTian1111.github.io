@@ -3,186 +3,193 @@ cv:
   label: B.Sc. in Animal Science | Aspiring Researcher in Computational Religion & Digital Humanities
   email: 2549675208a@gmail.com
   location: Chongqing, China
-  image: ''
-  summary: 'An interdisciplinary researcher bridging animal science, applied mathematics, and computational methods. Incoming M.A. student in Religious Studies (MARS) at The Chinese University of Hong Kong.
+  image: ""
+  summary:
+    "An interdisciplinary researcher bridging animal science, applied mathematics, and computational methods. Incoming M.A. student in Religious Studies (MARS) at The Chinese University of Hong Kong.
     Passionate about applying computational approaches — NLP, complex systems, and mathematical modeling — to the study of classical Chinese philosophy and traditional knowledge systems.
 
-    '
+    "
   social_networks:
-  - network: GitHub
-    username: wentian1111
-  - network: X
-    username: ''
+    - network: GitHub
+      username: wentian1111
+    - network: X
+      username: ""
   address:
     street: Tiansheng Road No.2, Southwest University
     city: Chongqing
     region: Chongqing
-    postalCode: ''
+    postalCode: ""
     countryCode: CN
   sections:
     Education:
-    - institution: The Chinese University of Hong Kong (CUHK)
-      location: Hong Kong SAR
-      url: https://www.cuhk.edu.hk/
-      area: Religious Studies (MARS)
-      studyType: M.A. (Incoming)
-      start_date: Sep. 2026
-      end_date: ''
-      score: ''
-      courses: ''
-      highlights:
-      - Incoming postgraduate student in the Master of Arts in Religious Studies program
-    - institution: Southwest University (211 & Double First-Class)
-      location: Chongqing, China
-      url: https://www.swu.edu.cn/
-      area: Animal Science
-      studyType: B.Sc.
-      start_date: Sep. 2022
-      end_date: June 2026
-      score: 'GPA: 83.7/100'
-      courses: ''
-      highlights:
-      - Fastest recipient of a Provincial Government Honor in the faculty
+      - institution: The Chinese University of Hong Kong (CUHK)
+        location: Hong Kong SAR
+        url: https://www.cuhk.edu.hk/
+        area: Religious Studies (MARS)
+        studyType: M.A. (Incoming)
+        start_date: Sep. 2026
+        end_date: ""
+        score: ""
+        courses: ""
+        highlights:
+          - Incoming postgraduate student in the Master of Arts in Religious Studies program
+      - institution: Southwest University (211 & Double First-Class)
+        location: Chongqing, China
+        url: https://www.swu.edu.cn/
+        area: Animal Science
+        studyType: B.Sc.
+        start_date: Sep. 2022
+        end_date: June 2026
+        score: "GPA: 83.7/100"
+        courses: ""
+        highlights:
+          - Fastest recipient of a Provincial Government Honor in the faculty
     Experience:
-    - company: Wuhan Zhenye Information Technology Co., Ltd.
-      position: Data Analyst
-      location: Wuhan, China
-      start_date: Aug. 2025
-      end_date: Present
-      summary: Assisting clients with data analysis and data modeling tasks using Python and MATLAB.
-      highlights: []
-    - company: Beijing Tiaozhan Agricultural Technology Co., Ltd.
-      position: Research Assistant
-      location: Beijing, China
-      start_date: Feb. 2025
-      end_date: Apr. 2025
-      summary: Graduation internship at the Tiaozhan Group Research Institute. Conducted on-site fieldwork in Yancheng, Jiangsu — collected and analyzed feeding and weaning data from pregnant sows, and
-        reported findings to the institute.
-      highlights: []
-    - company: Chongqing Jiawo Biotechnology Co., Ltd.
-      position: Operations Director
-      location: Chongqing, China
-      start_date: July 2023
-      end_date: Aug. 2023
-      summary: Represented the company at the China Innovation & Entrepreneurship Roadshow semi-finals (Chongqing), presenting a solid fertilizer greening project to investors and experts.
-      highlights: []
+      - company: Wuhan Zhenye Information Technology Co., Ltd.
+        position: Data Analyst
+        location: Wuhan, China
+        start_date: Aug. 2025
+        end_date: Present
+        summary: Assisting clients with data analysis and data modeling tasks using Python and MATLAB.
+        highlights: []
+      - company: Beijing Tiaozhan Agricultural Technology Co., Ltd.
+        position: Research Assistant
+        location: Beijing, China
+        start_date: Feb. 2025
+        end_date: Apr. 2025
+        summary:
+          Graduation internship at the Tiaozhan Group Research Institute. Conducted on-site fieldwork in Yancheng, Jiangsu — collected and analyzed feeding and weaning data from pregnant sows, and
+          reported findings to the institute.
+        highlights: []
+      - company: Chongqing Jiawo Biotechnology Co., Ltd.
+        position: Operations Director
+        location: Chongqing, China
+        start_date: July 2023
+        end_date: Aug. 2023
+        summary: Represented the company at the China Innovation & Entrepreneurship Roadshow semi-finals (Chongqing), presenting a solid fertilizer greening project to investors and experts.
+        highlights: []
     Awards:
-    - title: Chongqing Advanced Individual for Innovation Ability Enhancement (Top 0.09%)
-      authors:
-      - Chongqing Municipal Education Commission (Government)
-      date: 2024-06-01
-      awarder: Chongqing Municipal Education Commission
-      url: ''
-      summary: Awarded in the shortest time among recipients.
-    - title: VTR Bio-Tech Scholarship (Top 0.08%)
-      authors:
-      - Guangdong VTR Bio-Tech Co., Ltd.
-      date: 2025-03-01
-      awarder: Guangdong VTR Bio-Tech Co., Ltd.
-      url: ''
-      summary: Only one undergraduate and one postgraduate recipient in the entire faculty.
-    - title: Beijing Challenge Group Annual Scholarship (Top 0.25%)
-      authors:
-      - Beijing Challenge Group
-      date: 2023-11-01
-      awarder: Beijing Challenge Group
-      url: ''
-      summary: ''
-    - title: Southwest University First-Class Scholarship (Top 3%)
-      authors:
-      - Southwest University
-      date: 2023-12-01
-      awarder: Southwest University
-      url: ''
-      summary: ''
-    - title: Southwest University Academic Science and Technology Award (Top 2%)
-      authors:
-      - Southwest University
-      date: 2023-12-01
-      awarder: Southwest University
-      url: ''
-      summary: ''
-    - title: Southwest University Diligent Endeavor Scholarship (Top 2%)
-      authors:
-      - Southwest University
-      date: 2024-12-01
-      awarder: Southwest University
-      url: ''
-      summary: ''
+      - title: Chongqing Advanced Individual for Innovation Ability Enhancement (Top 0.09%)
+        authors:
+          - Chongqing Municipal Education Commission (Government)
+        date: 2024-06-01
+        awarder: Chongqing Municipal Education Commission
+        url: ""
+        summary: Awarded in the shortest time among recipients.
+      - title: VTR Bio-Tech Scholarship (Top 0.08%)
+        authors:
+          - Guangdong VTR Bio-Tech Co., Ltd.
+        date: 2025-03-01
+        awarder: Guangdong VTR Bio-Tech Co., Ltd.
+        url: ""
+        summary: Only one undergraduate and one postgraduate recipient in the entire faculty.
+      - title: Beijing Challenge Group Annual Scholarship (Top 0.25%)
+        authors:
+          - Beijing Challenge Group
+        date: 2023-11-01
+        awarder: Beijing Challenge Group
+        url: ""
+        summary: ""
+      - title: Southwest University First-Class Scholarship (Top 3%)
+        authors:
+          - Southwest University
+        date: 2023-12-01
+        awarder: Southwest University
+        url: ""
+        summary: ""
+      - title: Southwest University Academic Science and Technology Award (Top 2%)
+        authors:
+          - Southwest University
+        date: 2023-12-01
+        awarder: Southwest University
+        url: ""
+        summary: ""
+      - title: Southwest University Diligent Endeavor Scholarship (Top 2%)
+        authors:
+          - Southwest University
+        date: 2024-12-01
+        awarder: Southwest University
+        url: ""
+        summary: ""
     Publications:
-    - title: Research on Multi-Object Localization of Rocket Debris
-      authors:
-      - Han Yang
-      publisher: Frontier and Progress of Computational Mathematics and Modeling
-      releaseDate: 2024-01-01
-      url: ''
-      summary: Developed a rocket debris recovery strategy using sonic booms by optimizing WGS84-based tri-sphere and quad-sphere intersection models. Employed MATLAB, including lsqnonlin and a novel traversal
-        algorithm, to implement a weighted least squares correction model validated by Monte Carlo simulations.
-    - title: 'Patent: Promotional Column (Design Patent Pending)'
-      authors:
-      - Han Yang
-      publisher: China National Intellectual Property Administration (No. 2023307625850)
-      releaseDate: '2023-11-21'
-      url: ''
-      summary: 'Filing Date: November 21, 2023. (Patent Pending)'
+      - title: Research on Multi-Object Localization of Rocket Debris
+        authors:
+          - Han Yang
+        publisher: Frontier and Progress of Computational Mathematics and Modeling
+        releaseDate: 2024-01-01
+        url: ""
+        summary:
+          Developed a rocket debris recovery strategy using sonic booms by optimizing WGS84-based tri-sphere and quad-sphere intersection models. Employed MATLAB, including lsqnonlin and a novel traversal
+          algorithm, to implement a weighted least squares correction model validated by Monte Carlo simulations.
+      - title: "Patent: Promotional Column (Design Patent Pending)"
+        authors:
+          - Han Yang
+        publisher: China National Intellectual Property Administration (No. 2023307625850)
+        releaseDate: "2023-11-21"
+        url: ""
+        summary: "Filing Date: November 21, 2023. (Patent Pending)"
     Skills:
-    - name: Mathematical Modeling & Scientific Computing
-      level: Proficient
-      icon: fa-solid fa-calculator
-      keywords: MATLAB, LaTeX, LINGO, Python, Numerical Methods, Optimization, Finite Element Analysis
-    - name: Data Analysis & Visualization
-      level: Proficient
-      icon: fa-solid fa-chart-line
-      keywords: Python (Pandas, NumPy, Matplotlib), MATLAB, Statistical Analysis, PCA
-    - name: Programming & Tools
-      level: ''
-      icon: fa-solid fa-code
-      keywords: Python, MATLAB, LaTeX, Git, Mathpix, AxMath, AxGlyph
+      - name: Mathematical Modeling & Scientific Computing
+        level: Proficient
+        icon: fa-solid fa-calculator
+        keywords: MATLAB, LaTeX, LINGO, Python, Numerical Methods, Optimization, Finite Element Analysis
+      - name: Data Analysis & Visualization
+        level: Proficient
+        icon: fa-solid fa-chart-line
+        keywords: Python (Pandas, NumPy, Matplotlib), MATLAB, Statistical Analysis, PCA
+      - name: Programming & Tools
+        level: ""
+        icon: fa-solid fa-code
+        keywords: Python, MATLAB, LaTeX, Git, Mathpix, AxMath, AxGlyph
     Languages:
-    - name: Chinese
-      summary: Native speaker
-    - name: English
-      summary: Intermediate (IELTS preparation)
-    - name: Cantonese
-      summary: Learning
+      - name: Chinese
+        summary: Native speaker
+      - name: English
+        summary: Intermediate (IELTS preparation)
+      - name: Cantonese
+        summary: Learning
     Interests:
-    - name: Computational Religion & Digital Humanities
-      icon: fa-solid fa-book
-      keywords: Classical Chinese Philosophy, I Ching, Yi Jing, Computational Text Analysis, NLP for Traditional Texts
-    - name: Applied Mathematics & Modeling
-      icon: fa-solid fa-infinity
-      keywords: Mathematical Modeling, Numerical Simulation, Optimization, Complex Systems
-    - name: Traditional Chinese Metaphysics
-      icon: fa-solid fa-yin-yang
-      keywords: Meihua Yishu (Plum Blossom Numerology), Da Liu Ren, Bazi, Ziwei Doushu
+      - name: Computational Religion & Digital Humanities
+        icon: fa-solid fa-book
+        keywords: Classical Chinese Philosophy, I Ching, Yi Jing, Computational Text Analysis, NLP for Traditional Texts
+      - name: Applied Mathematics & Modeling
+        icon: fa-solid fa-infinity
+        keywords: Mathematical Modeling, Numerical Simulation, Optimization, Complex Systems
+      - name: Traditional Chinese Metaphysics
+        icon: fa-solid fa-yin-yang
+        keywords: Meihua Yishu (Plum Blossom Numerology), Da Liu Ren, Bazi, Ziwei Doushu
     Certificates: []
     Projects:
-    - name: 'ESI — Curvature Modeling of Egg Trajectories: Morphological Effects'
-      summary: Led a team to invent and design an egg rolling test rig, collecting 90 egg samples. Innovatively converted 3D motion into 2D planar motion. Utilized MATLAB with Kalman filtering to extract
-        dynamic behavioral features from video sequences. Applied polynomial fitting to analyze the impact of egg shape index and eccentricity on trajectory.
-      highlights:
-      - Provincial-level undergraduate innovation project (solo approval)
-      start_date: 2025-04-01
-      end_date: 2026-04-01
-    - name: Machine Vision for Coupled Egg Dynamics & Intelligent Sorting
-      summary: Led literature review on coupling mechanism of egg morphology, contact interface characteristics, dynamic rolling behavior, and intelligent sorting prediction. Systematically summarized 240
-        recent review articles and drafted an initial review manuscript.
-      highlights: []
-      start_date: 2025-05-01
-      end_date: 2026-05-01
-    - name: Mathematical Modeling Competitions (Team Leader)
-      summary: Led a team in paper writing, modeling, and programming for multiple mathematical modeling competitions. Notable work includes finite element skull modeling using Ogden constitutive model,
-        and polar angle iteration with Simpson's numerical integration for dragon formation coiling simulation.
-      highlights:
-      - National and provincial first-class awards
-      - Over 50 competition awards across dozens of contests
-      start_date: 2023-05-01
-      end_date: 2025-05-01
-    - name: Research on Multi-Object Localization of Rocket Debris
-      summary: Developed a rocket debris recovery strategy using sonic booms. Optimized WGS84-based tri-sphere and quad-sphere intersection models. Implemented weighted least squares correction with Monte
-        Carlo validation, confirming the necessity of at least four detection devices.
-      highlights:
-      - Published in Frontier and Progress of Computational Mathematics and Modeling
-      start_date: 2024-05-01
-      end_date: 2024-08-01
+      - name: "ESI — Curvature Modeling of Egg Trajectories: Morphological Effects"
+        summary:
+          Led a team to invent and design an egg rolling test rig, collecting 90 egg samples. Innovatively converted 3D motion into 2D planar motion. Utilized MATLAB with Kalman filtering to extract
+          dynamic behavioral features from video sequences. Applied polynomial fitting to analyze the impact of egg shape index and eccentricity on trajectory.
+        highlights:
+          - Provincial-level undergraduate innovation project (solo approval)
+        start_date: 2025-04-01
+        end_date: 2026-04-01
+      - name: Machine Vision for Coupled Egg Dynamics & Intelligent Sorting
+        summary:
+          Led literature review on coupling mechanism of egg morphology, contact interface characteristics, dynamic rolling behavior, and intelligent sorting prediction. Systematically summarized 240
+          recent review articles and drafted an initial review manuscript.
+        highlights: []
+        start_date: 2025-05-01
+        end_date: 2026-05-01
+      - name: Mathematical Modeling Competitions (Team Leader)
+        summary:
+          Led a team in paper writing, modeling, and programming for multiple mathematical modeling competitions. Notable work includes finite element skull modeling using Ogden constitutive model,
+          and polar angle iteration with Simpson's numerical integration for dragon formation coiling simulation.
+        highlights:
+          - National and provincial first-class awards
+          - Over 50 competition awards across dozens of contests
+        start_date: 2023-05-01
+        end_date: 2025-05-01
+      - name: Research on Multi-Object Localization of Rocket Debris
+        summary:
+          Developed a rocket debris recovery strategy using sonic booms. Optimized WGS84-based tri-sphere and quad-sphere intersection models. Implemented weighted least squares correction with Monte
+          Carlo validation, confirming the necessity of at least four detection devices.
+        highlights:
+          - Published in Frontier and Progress of Computational Mathematics and Modeling
+        start_date: 2024-05-01
+        end_date: 2024-08-01
     References: []
