@@ -14,10 +14,9 @@ Visit: [wentian1111.github.io](https://wentian1111.github.io)
 
 ## Features
 
-- Academic profile and research experience
-- Project showcase
-- Publication list (coming soon)
-- Responsive design with light/dark mode
+- Academic CV with education, honors, and research experience
+- Research project showcase (egg dynamics, mathematical modeling, rocket debris localization)
+- Publications and patents
 
 ## Built With
 
