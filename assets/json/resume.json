@@ -62,7 +62,9 @@
       "endDate": "",
       "score": "",
       "courses": [],
-      "highlights": ["Incoming postgraduate student in the Master of Arts in Religious Studies program"]
+      "highlights": [
+        "Incoming postgraduate student in the Master of Arts in Religious Studies program"
+      ]
     },
     {
       "institution": "Southwest University (211 & Double First-Class)",
@@ -73,8 +75,10 @@
       "startDate": "2022-09-01",
       "endDate": "2026-06-01",
       "score": "GPA: 83.7/100",
-      "courses": ["Advanced Mathematics (92)", "Quantitative Genetics (95)", "Mathematical Modeling (96)"],
-      "highlights": ["Fastest recipient of a Provincial Government Honor in the faculty"]
+      "courses": [],
+      "highlights": [
+        "Fastest recipient of a Provincial Government Honor in the faculty"
+      ]
     }
   ],
   "awards": [
@@ -116,22 +120,27 @@
       "summary": ""
     }
   ],
-  "certificates": [
-    {
-      "name": "Patent: Promotional Column (Design Patent Pending)",
-      "date": "2023-11-21",
-      "issuer": "China National Intellectual Property Administration (No. 2023307625850)",
-      "icon": "fa-solid fa-certificate"
-    }
-  ],
+  "certificates": [],
   "publications": [
     {
       "name": "Research on Multi-Object Localization of Rocket Debris",
-      "authors": ["Han Yang"],
+      "authors": [
+        "Han Yang"
+      ],
       "publisher": "Frontier and Progress of Computational Mathematics and Modeling",
       "releaseDate": "2024-01-01",
       "url": "",
       "summary": "Developed a rocket debris recovery strategy using sonic booms by optimizing WGS84-based tri-sphere and quad-sphere intersection models. Employed MATLAB, including lsqnonlin and a novel traversal algorithm, to implement a weighted least squares correction model validated by Monte Carlo simulations."
+    },
+    {
+      "name": "Patent: Promotional Column (Design Patent Pending)",
+      "authors": [
+        "Han Yang"
+      ],
+      "publisher": "China National Intellectual Property Administration (No. 2023307625850)",
+      "releaseDate": "2023-11-21",
+      "url": "",
+      "summary": "Filing Date: November 21, 2023. (Patent Pending)"
     }
   ],
   "skills": [
@@ -139,19 +148,40 @@
       "name": "Mathematical Modeling & Scientific Computing",
       "level": "Proficient",
       "icon": "fa-solid fa-calculator",
-      "keywords": ["MATLAB", "LaTeX", "LINGO", "Python", "Numerical Methods", "Optimization", "Finite Element Analysis"]
+      "keywords": [
+        "MATLAB",
+        "LaTeX",
+        "LINGO",
+        "Python",
+        "Numerical Methods",
+        "Optimization",
+        "Finite Element Analysis"
+      ]
     },
     {
       "name": "Data Analysis & Visualization",
       "level": "Proficient",
       "icon": "fa-solid fa-chart-line",
-      "keywords": ["Python (Pandas, NumPy, Matplotlib)", "MATLAB", "Statistical Analysis", "PCA"]
+      "keywords": [
+        "Python (Pandas, NumPy, Matplotlib)",
+        "MATLAB",
+        "Statistical Analysis",
+        "PCA"
+      ]
     },
     {
       "name": "Programming & Tools",
       "level": "",
       "icon": "fa-solid fa-code",
-      "keywords": ["Python", "MATLAB", "LaTeX", "Git", "Mathpix", "AxMath", "AxGlyph"]
+      "keywords": [
+        "Python",
+        "MATLAB",
+        "LaTeX",
+        "Git",
+        "Mathpix",
+        "AxMath",
+        "AxGlyph"
+      ]
     }
   ],
   "languages": [
@@ -175,17 +205,32 @@
     {
       "name": "Computational Religion & Digital Humanities",
       "icon": "fa-solid fa-book",
-      "keywords": ["Classical Chinese Philosophy", "I Ching", "Computational Text Analysis", "NLP for Traditional Texts"]
+      "keywords": [
+        "Classical Chinese Philosophy",
+        "I Ching",
+        "Computational Text Analysis",
+        "NLP for Traditional Texts"
+      ]
     },
     {
       "name": "Applied Mathematics & Modeling",
       "icon": "fa-solid fa-infinity",
-      "keywords": ["Mathematical Modeling", "Numerical Simulation", "Optimization", "Complex Systems"]
+      "keywords": [
+        "Mathematical Modeling",
+        "Numerical Simulation",
+        "Optimization",
+        "Complex Systems"
+      ]
     },
     {
       "name": "Traditional Chinese Metaphysics",
       "icon": "fa-solid fa-yin-yang",
-      "keywords": ["Meihua Yishu", "Da Liu Ren", "Bazi", "Ziwei Doushu"]
+      "keywords": [
+        "Meihua Yishu",
+        "Da Liu Ren",
+        "Bazi",
+        "Ziwei Doushu"
+      ]
     }
   ],
   "references": [],
@@ -193,28 +238,35 @@
     {
       "name": "ESI — Curvature Modeling of Egg Trajectories: Morphological Effects",
       "summary": "Led a team to invent and design an egg rolling test rig, collecting 90 egg samples. Innovatively converted 3D motion into 2D planar motion. Utilized MATLAB with Kalman filtering to extract dynamic behavioral features from video sequences. Applied polynomial fitting to analyze the impact of egg shape index and eccentricity on trajectory.",
-      "highlights": ["Provincial-level undergraduate innovation project (solo approval)", "One JCR Q1 research paper planned for publication"],
+      "highlights": [
+        "Provincial-level undergraduate innovation project (solo approval)"
+      ],
       "startDate": "2025-04-01",
       "endDate": "2026-04-01"
     },
     {
       "name": "Machine Vision for Coupled Egg Dynamics & Intelligent Sorting",
       "summary": "Led literature review on coupling mechanism of egg morphology, contact interface characteristics, dynamic rolling behavior, and intelligent sorting prediction. Systematically summarized 240 recent review articles and drafted an initial review manuscript.",
-      "highlights": ["One JCR Q1 review paper planned for publication"],
+      "highlights": [],
       "startDate": "2025-05-01",
       "endDate": "2026-05-01"
     },
     {
       "name": "Mathematical Modeling Competitions (Team Leader)",
       "summary": "Led a team in paper writing, modeling, and programming for multiple mathematical modeling competitions. Notable work includes finite element skull modeling using Ogden constitutive model, and polar angle iteration with Simpson's numerical integration for dragon formation coiling simulation.",
-      "highlights": ["National and provincial first-class awards", "Over 50 competition awards across dozens of contests"],
+      "highlights": [
+        "National and provincial first-class awards",
+        "Over 50 competition awards across dozens of contests"
+      ],
       "startDate": "2023-05-01",
       "endDate": "2025-05-01"
     },
     {
       "name": "Research on Multi-Object Localization of Rocket Debris",
       "summary": "Developed a rocket debris recovery strategy using sonic booms. Optimized WGS84-based tri-sphere and quad-sphere intersection models. Implemented weighted least squares correction with Monte Carlo validation.",
-      "highlights": ["Published in Frontier and Progress of Computational Mathematics and Modeling"],
+      "highlights": [
+        "Published in Frontier and Progress of Computational Mathematics and Modeling"
+      ],
       "startDate": "2024-05-01",
       "endDate": "2024-08-01"
     }
