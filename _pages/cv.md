@@ -6,7 +6,7 @@ nav: true
 nav_order: 5
 cv_pdf: # /assets/pdf/example_pdf.pdf
 cv_format: rendercv
-description: Academic CV of Han YANG — incoming M.A. student in Religious Studies at CUHK, with a background in animal science and applied mathematics.
+description: Academic CV of Han YANG — B.Sc. Animal Science (Minor in Applied Mathematics), Southwest University; admitted to M.A. Religious Studies (MARS) at CUHK (entry deferred to 2027).
 toc:
   sidebar: left
 ---

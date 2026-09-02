@@ -7,7 +7,7 @@ importance: 2
 category: research
 ---
 
-**How do you recover multiple pieces of rocket debris that fell over an unknown area?** After a rocket stage separates, its debris falls at supersonic speed, generating sonic booms that ground monitoring devices can record. This project turns those arrival-time recordings into precise geographic positions — for one debris piece, and for several pieces at once — using spherical-intersection geometry, nonlinear optimization and Monte Carlo simulation. The work was published in *Frontiers of Progress in Computational Mathematics and Modeling* (Vol. 5, No. 1).
+**How do you recover multiple pieces of rocket debris that fell over an unknown area?** After a rocket stage separates, its debris falls at supersonic speed, generating sonic booms that ground monitoring devices can record. This project turns those arrival-time recordings into precise geographic positions — for one debris piece, and for several pieces at once — using spherical-intersection geometry, nonlinear optimization and Monte Carlo simulation. The work was published in *Frontier and Progress of Computational Mathematics and Modeling* (2024, vol. 7).
 
 ### 1 · From sonic boom to position
 
@@ -80,4 +80,4 @@ Real devices record arrival times with error, so the model is refined with **wei
 
 **Stack:** MATLAB (`lsqnonlin`, `geoscatter`) · WGS84 ↔ ECEF conversion · nonlinear least squares · weighted least squares · Monte Carlo simulation
 
-*Published as: YANG Han. "Research on Multi-Object Localization of Rocket Debris." Frontiers of Progress in Computational Mathematics and Modeling, Vol. 5, No. 1.*
+*Published as: YANG Han. "Research on Multi-Object Localization of Rocket Debris." *Frontier and Progress of Computational Mathematics and Modeling*, 2024, vol. 7, pp. 01-24. ISSN: 2313-4194.*
