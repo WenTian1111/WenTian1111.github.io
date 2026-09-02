@@ -9,7 +9,7 @@ category: research
 
 **How do you recover multiple pieces of rocket debris that fell over an unknown area?** After a rocket stage separates, its debris falls at supersonic speed, generating sonic booms that ground monitoring devices can record. This project turns those arrival-time recordings into precise geographic positions — for one debris piece, and for several pieces at once — using spherical-intersection geometry, nonlinear optimization and Monte Carlo simulation.
 
-The work was carried out for **2024 CUMCM Problem A** and published in *Frontiers of Progress in Computational Mathematics and Modeling* (Vol. 5, No. 1).
+The work was published in *Frontiers of Progress in Computational Mathematics and Modeling* (Vol. 5, No. 1).
 
 ---
 
