@@ -1,51 +1,103 @@
 ---
 layout: page
 title: Egg Rolling Analysis & Risk Sorting
-description: Coupled static–dynamic analysis of egg rolling via machine vision — from a 90-egg experiment to an ML-driven rolling-risk index and a live web app.
+description: Machine-vision study of egg rolling dynamics — from a 90-egg experiment to an ML rolling-risk index and live web app.
 img: assets/img/projects/egg/egg_pipeline.png
 importance: 1
 category: research
 ---
 
-An end-to-end machine-vision study of egg rolling dynamics: a standardized experiment on 90 eggs (270 rolling trials) produces static morphology and dynamic rolling features, which are coupled into a Rolling Stability Index (RSI) and used to train classifiers for automated quality sorting. The complete pipeline — from experiment to a deployable web application — was delivered as a **provincial-level Innovation & Entrepreneurship Training Program** (Excellent completion) and formed the basis of my graduation thesis.
+**This project builds an end-to-end machine-vision pipeline for egg rolling dynamics.** A standardized experiment on 90 eggs produces static morphology and rolling-video data; statistical coupling analysis links the two; a data-driven Rolling Stability Index (RSI) quantifies rolling risk; and machine-learning classifiers turn the whole pipeline into automated sorting. The work was carried out as a **provincial-level Innovation & Entrepreneurship Training Program** (Excellent completion) and as my graduation thesis.
 
-## Experiment & feature pipeline
+<div class="row justify-content-center">
+    <div class="col-10 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/projects/egg/roadmap.png" title="Research roadmap" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Overall research roadmap: sample collection → feature extraction → database → PCA-based risk grading → ML prediction → sorting.
+</div>
 
-![Egg rolling pipeline](/assets/img/projects/egg/egg_pipeline.png)
+---
 
-Eggs roll down a 2.87° inclined flexible-contact surface and are recorded by a high-speed camera. Static contour images and rolling videos are processed automatically to extract 11 static morphological features (egg shape index ESI, asymmetry index AI, Hu moments, etc.) and 3 dynamic rolling indicators (lateral deviation, attitude-angle variance, speed coefficient of variation). Vision-based ESI matched manual measurement with only **0.788% mean error**.
+## 1 · Experiment setup
 
-## Static–dynamic coupling
+<div class="row justify-content-center">
+    <div class="col-9 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/projects/egg/experiment_platform.png" title="Experiment platform" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Dual-zone rig: static contour imaging plus high-speed recording of the rolling phase on a 2.87° inclined flexible-contact surface.
+</div>
 
-![Top static-dynamic correlations](/assets/img/projects/egg/correlation_top_pairs.png)
+Each egg is photographed statically and rolled down the incline under a high-speed camera. In total, static contours of **90 eggs** and **270 rolling videos** were collected for analysis.
 
-Pearson correlation analysis over 270 trials revealed that higher-order contour features (e.g., Hu3, asymmetry index) are the dominant drivers of rolling instability, with speed variation showing the strongest associations (r ≈ 0.50, p < 0.001).
+## 2 · Feature extraction
 
-## Rolling Stability Index (RSI)
+<div class="row justify-content-center">
+    <div class="col-11 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/projects/egg/static_pipeline.png" title="Static feature extraction pipeline" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Static processing chain: original image → grayscale → binary mask → contour with centroid and bounding box.
+</div>
 
-![RSI distribution and K-means risk groups](/assets/img/projects/egg/rsi_distribution_groups.png)
+- **11 static morphological features** per egg: egg shape index (ESI), asymmetry index (AI), eccentricity, area, axis lengths, Hu moments…
+- **3 dynamic rolling indicators** per video: lateral deviation ΔY, attitude-angle variance, speed coefficient of variation.
+- Vision-based ESI reached only **0.788% mean error** against manual measurement — accurate enough to replace hand measurement entirely.
 
-The three dynamic indicators are fused via PCA into a fragility index — **RSI on a 0–100 scale** — and K-means clustering separates the trials into three risk groups (low / medium / high). The index gives egg processors a single interpretable number for rolling-risk.
+## 3 · Static–dynamic coupling analysis
 
-## Model comparison
+<div class="row justify-content-center">
+    <div class="col-9 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/projects/egg/correlation_top_pairs.png" title="Top static-dynamic correlations" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Top Pearson correlations between static morphology and dynamic rolling behaviour (N = 270 trials). Significance: * p &lt; 0.05.
+</div>
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+Correlation analysis shows that **higher-order contour features dominate rolling stability** — Hu3 and asymmetry index are the strongest predictors of speed variation during rolling (r ≈ 0.50, p < 0.001), while first-order size features matter far less.
+
+## 4 · Rolling Stability Index (RSI)
+
+<div class="row justify-content-center">
+    <div class="col-9 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/projects/egg/rsi_distribution_groups.png" title="RSI distribution and risk groups" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    RSI histogram (top) and trial-level RSI values coloured by K-means risk group (bottom).
+</div>
+
+The three dynamic indicators are fused by **PCA** into a single fragility index — RSI on a **0–100 scale** — then **K-means** separates trials into low / medium / high risk groups (12 / 127 / 131 of 270 trials). One number now summarizes an egg's rolling risk.
+
+## 5 · Classification & results
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/projects/egg/model_performance.png" title="Classifier performance" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/projects/egg/roc_curves.png" title="Macro-average ROC curves" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+<div class="caption">
+    SVM / RF / GBDT / LR trained on static-plus-dynamic features; SVM achieves the best macro-AUC.
+</div>
 
-SVM/RF/GBDT/LR classifiers were trained on static-plus-dynamic features; **SVM achieved the highest macro-AUC (0.861)**, with 72–74% test accuracy across the top models.
+Four classifiers were trained on the fused feature set. **SVM achieves the highest macro-AUC (0.861)** with 72–74% test accuracy, making automated rolling-risk sorting feasible in practice.
+
+---
 
 ## Try it live 🚀
 
-The trained pipeline is wrapped in an interactive web app — upload a single egg photo and receive a real-time rolling-risk prediction:
+The trained pipeline is wrapped in an interactive web app — upload one egg photo and get an instant rolling-risk prediction:
 
 👉 [**Egg_RSI_App — live demo**](https://egg-rsi-app.streamlit.app)
 
 **Stack:** Python · OpenCV · MATLAB · scikit-learn · PCA · K-means · SVM / RF / GBDT · Streamlit Cloud
 
-*This project was completed as a provincial-level College Students' Innovation and Entrepreneurship Training Program (solo leader, Excellent completion) and as the graduation thesis "Static–Dynamic Coupled Analysis and Sorting of Eggs Based on Machine Vision" (four-member team, led by me).*
+*Carried out as a provincial-level College Students' Innovation and Entrepreneurship Training Program (solo leader, Excellent completion) and as the graduation thesis "Static–Dynamic Coupled Analysis and Sorting of Eggs Based on Machine Vision" (four-member team, led by me).*
