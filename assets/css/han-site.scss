@@ -80,6 +80,7 @@ body {
 .container[role="main"]:has(.hy-home) {
   width: min(1160px, calc(100% - 1.5rem));
   max-width: 1160px;
+  margin-top: 0 !important;
   padding-right: 1.25rem;
   padding-left: 1.25rem;
 }
