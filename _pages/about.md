@@ -51,6 +51,7 @@ latest_posts:
         </div>
       </div>
     </aside>
+
   </section>
 
   <div class="hy-fact-strip" aria-label="Academic snapshot">
@@ -86,6 +87,7 @@ latest_posts:
         <p>Combining machine vision, statistical learning, and experimental design to connect models with observed behavior.</p>
       </article>
     </div>
+
   </section>
 
   <section class="hy-section" id="work" aria-labelledby="work-title">
@@ -120,6 +122,7 @@ latest_posts:
       {% endfor %}
     </div>
     <a class="hy-all-work" href="{{ '/projects/' | relative_url }}">Explore all projects <span aria-hidden="true">→</span></a>
+
   </section>
 
   <section class="hy-section hy-background" aria-labelledby="background-title">
@@ -155,6 +158,7 @@ latest_posts:
         </div>
       </article>
     </div>
+
   </section>
 
   <section class="hy-contact" aria-labelledby="contact-title">
