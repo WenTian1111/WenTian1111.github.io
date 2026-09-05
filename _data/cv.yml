@@ -165,8 +165,8 @@ cv:
           - Published in Frontier and Progress of Computational Mathematics and Modeling (December 2024, no. 6)
         start_date: 2024-05-01
         end_date: 2024-08-01
-      - name: "Various Mathematical Modeling Competitions (Leader; Independent Research)"
-        summary: "Led teams or worked independently on competition papers: the 2024 Certified Cup Challenge (finite-element skull model based on the Ogden constitutive model), the 2024 CUMCM (helical coiling dragon simulation via polar-angle iteration and Simpson's rule), and the 2025 CUMCM (multi-objective UAV smoke-screen jamming simulation optimized by particle swarm with dual-plane projection occlusion modeling)."
+      - name: "Mathematical Modeling Competitions (Independent Research)"
+        summary: "Independently developed seven competition studies across smartphone analytics, renewable-storage dispatch, bench-dragon kinematics, submersible search, computational biomechanics, cutting-path planning, and constrained geometric simulation. Responsible for mathematical modeling, implementation, analysis, and manuscript preparation."
         highlights:
           - First-class awards at both national and provincial levels
         start_date: 2023-03-01

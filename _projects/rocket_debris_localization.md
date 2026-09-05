@@ -2,7 +2,7 @@
 layout: han-project
 title: Multi-Object Localization of Rocket Debris
 description: A numerical study of sonic-boom source localization, joint position–time estimation, multi-signal matching, and sensitivity to recording errors.
-img: assets/img/projects/rocket/rocket_cover.png
+img: assets/img/research/rocket-geometry.svg
 importance: 2
 category: research
 discipline: Geometric modeling
@@ -12,7 +12,7 @@ role: Sole author; mathematical modeling, numerical solution, and analysis
 methods: Geometric constraints, nonlinear least squares, combinatorial matching, Monte Carlo analysis
 outcome: Journal article · December 2024 · issue 6 · pages 1–24
 card_summary: A numerical case study of seven monitoring stations and four sound sources, combining position–time estimation with signal association and error analysis.
-image_alt: Overview of the numerical rocket-debris localization study
+image_alt: Monitoring geometry and sensitivity of the estimated source altitudes
 publication: true
 contents:
   - label: Scope & contribution
@@ -36,13 +36,6 @@ When several pieces of falling rocket debris produce sonic booms, ground station
 I developed the mathematical formulation, MATLAB solution, numerical comparisons, and manuscript for this sole-authored study. The work proceeds from one source to four sources, then examines the effect of recording-time error.
 
 The direct output is the estimated **airborne position at the time of the sonic boom**, not a field-validated ground-impact location. Recovering debris on the ground would require an additional trajectory or landing model.
-
-<div class="row justify-content-center">
-  <div class="col-md-7">
-    {% include figure.liquid loading="lazy" path="assets/img/projects/rocket/devices_global.png" title="Seven monitoring stations in the numerical study" class="img-fluid rounded" %}
-  </div>
-</div>
-<p class="caption">Station locations in the supplied numerical scenario. The study does not report a physical sensor deployment or a flight experiment.</p>
 
 <h2 id="model">Estimating position and emission time together</h2>
 
@@ -77,29 +70,14 @@ The matching procedure has three stages:
 
 The manuscript reports **73 candidates after the initial screening**, followed by correspondence analysis to select four source assignments. The 73 candidates are intermediate possibilities, not 73 identified debris pieces.
 
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    {% include figure.liquid loading="lazy" path="assets/img/projects/rocket/problem3_matching.png" title="Visualization of four inferred sonic-boom sources" class="img-fluid rounded" %}
-  </div>
-</div>
-<p class="caption">Visualization of the four inferred sources after arrival-time association in the numerical example.</p>
-
 <h2 id="results">Numerical case-study results</h2>
 
-The four-source solution reported in the manuscript is summarized below. These coordinates and times are **model estimates for the problem dataset**, not independently measured ground truth.
+The figure combines the monitoring geometry with the four-source estimates and their response to a perturbed timing example. These are **model estimates for the problem dataset**, not independently measured ground truth.
 
-<div class="hy-table-scroll" role="region" aria-label="Four-source localization results" tabindex="0">
-  <table>
-    <caption>Reported four-source solution · manuscript Table 11</caption>
-    <thead><tr><th scope="col">Source</th><th scope="col">Longitude °E</th><th scope="col">Latitude °N</th><th scope="col">Altitude (m)</th><th scope="col">Boom time (s)</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">1</th><td>110.318</td><td>27.640</td><td>25,931.21</td><td>20.159</td></tr>
-      <tr><th scope="row">2</th><td>110.493</td><td>27.331</td><td>21,900.58</td><td>18.374</td></tr>
-      <tr><th scope="row">3</th><td>110.678</td><td>27.672</td><td>12,271.43</td><td>17.567</td></tr>
-      <tr><th scope="row">4</th><td>110.557</td><td>27.893</td><td>11,030.54</td><td>15.300</td></tr>
-    </tbody>
-  </table>
-</div>
+<figure class="hy-research-figure">
+  <div class="hy-figure-canvas"><img src="{{ '/assets/img/research/rocket-geometry.svg' | relative_url }}" alt="Monitoring geometry from the multi-source problem dataset, with estimated source locations and the altitude comparison reported in Tables 11 and 12. The perturbed example is not an uncertainty interval." loading="lazy" width="1000" height="580"></div>
+  <figcaption><span>Figure 1.</span> Monitoring geometry from the multi-source problem dataset, with estimated source locations and the altitude comparison reported in Tables 11 and 12. The perturbed example is not an uncertainty interval.</figcaption>
+</figure>
 
 The value of the exercise is the linked workflow: a nonlinear localization model and a correspondence search must work together. A small fitting residual is not sufficient evidence that the chosen correspondence or geographical estimate is correct.
 
@@ -108,13 +86,6 @@ The value of the exercise is the linked workflow: a nonlinear localization model
 The error study adds recording noise with a **0.5-second standard deviation**, applies a weighted least-squares formulation, and uses Monte Carlo reasoning to examine sensitivity. A standard deviation is not a hard ±0.5-second bound.
 
 The manuscript's example comparison shows noticeable altitude changes: approximately **0.20–2.05 km** across the four estimated sources. This makes uncertainty a central part of the result; it does not support a claim of uniformly high-precision localization.
-
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    {% include figure.liquid loading="lazy" path="assets/img/projects/rocket/problem4_error.png" title="Numerical localization under perturbed recording times" class="img-fluid rounded" %}
-  </div>
-</div>
-<p class="caption">A numerical comparison under perturbed recording times. Reported examples illustrate sensitivity rather than a guaranteed error bound.</p>
 
 The study proposes more stations and a wider, better-conditioned layout as ways to add redundancy when timing precision cannot be improved. These are directions for further evaluation, not guarantees that adding any station will improve the estimate.
 

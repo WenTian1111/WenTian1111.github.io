@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" role="img" aria-labelledby="title desc">
+  <title id="title">Two-stage biomechanics modeling framework</title>
+  <desc id="desc">
+    Stage one considers deformation without a lesion. Stage two extends the constitutive formulation and considers solid and fluid lesion scenarios.
+    This is a conceptual methods figure, not a clinical or anatomical result.
+  </desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7" fill="none" stroke="#0f766e" stroke-width="1.2" />
+    </marker>
+  </defs>
+  <rect width="1000" height="580" fill="#fff" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="45" font-size="17" fill="#5a6677">COMPUTATIONAL BIOMECHANICS</text>
+    <text x="42" y="87" font-size="29" fill="#122034">Extending a mechanical model in two stages</text>
+    <rect x="54" y="148" width="418" height="228" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <rect x="528" y="148" width="418" height="228" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="78" y="190" font-size="24" fill="#122034">01 Baseline deformation</text>
+    <text x="78" y="236" font-size="20" fill="#5a6677">Nonlinear elastic formulation</text>
+    <text x="78" y="275" font-size="20" fill="#5a6677">Known or estimated pressure</text>
+    <text x="78" y="314" font-size="20" fill="#5a6677">Whole-domain displacement</text>
+    <text x="552" y="190" font-size="24" fill="#122034">02 Lesion scenarios</text>
+    <text x="552" y="236" font-size="20" fill="#5a6677">Ogden constitutive model</text>
+    <text x="552" y="275" font-size="20" fill="#5a6677">Solid and fluid assumptions</text>
+    <text x="552" y="314" font-size="20" fill="#5a6677">Local motion within the domain</text>
+    <line x1="474" y1="260" x2="523" y2="260" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="263" y1="380" x2="263" y2="418" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="737" y1="380" x2="737" y2="418" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow)" />
+    <rect x="54" y="428" width="892" height="65" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="500" y="468" font-size="19" fill="#122034" text-anchor="middle">
+      Geometry + material assumptions + boundary conditions → finite-element solution
+    </text>
+    <text x="54" y="546" font-size="18" fill="#5a6677">Idealized competition models · no patient-specific or clinical validation claimed</text>
+  </g>
+</svg>
