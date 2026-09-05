@@ -1,0 +1,54 @@
+---
+layout: default
+---
+<article class="hy-page hy-case-study">
+  <a class="hy-back-link" href="{{ '/projects/' | relative_url }}"><span aria-hidden="true">←</span> All projects</a>
+  <header class="hy-page-header">
+    <p class="hy-label">{{ page.discipline }} · {{ page.period }}</p>
+    <h1>{{ page.title }}</h1>
+    <p class="hy-page-intro">{{ page.question }}</p>
+  </header>
+
+  <dl class="hy-project-facts">
+    <div>
+      <dt>My role</dt>
+      <dd>{{ page.role }}</dd>
+    </div>
+    <div>
+      <dt>Approach</dt>
+      <dd>{{ page.methods }}</dd>
+    </div>
+    <div>
+      <dt>Outcome</dt>
+      <dd>{{ page.outcome }}</dd>
+    </div>
+  </dl>
+
+  {% if page.demo or page.publication %}
+    <nav class="hy-case-links" aria-label="Project resources">
+      {% if page.demo -%}
+        <a class="hy-button hy-button-primary" href="{{ page.demo }}">Open live application <span aria-hidden="true">↗</span></a>
+      {%- endif %}
+      {% if page.publication -%}
+        <a class="hy-button hy-button-secondary" href="{{ '/publications/' | relative_url }}">Publication details</a>
+      {%- endif %}
+      <a class="hy-text-link" href="mailto:{{ site.data.socials.email }}">Discuss this project <span aria-hidden="true">↗</span></a>
+    </nav>
+  {% endif %}
+
+  <div class="hy-prose">{{ content }}</div>
+
+  <nav class="hy-related" aria-label="More research projects">
+    <p class="hy-label">Continue exploring</p>
+    <div class="hy-related-grid">
+      {% assign other_projects = site.projects | sort: 'importance' %}
+      {% for project in other_projects %}
+        {% unless project.url == page.url %}
+          <a href="{{ project.url | relative_url }}"
+            ><span>{{ project.discipline }}</span><strong>{{ project.title }}</strong><span aria-hidden="true">→</span></a
+          >
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </nav>
+</article>

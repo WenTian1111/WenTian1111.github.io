@@ -9,12 +9,12 @@ last_name: YANG
 contact_note: >
   "Email is the best way to reach me."
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Incoming M.A. student in Religious Studies at CUHK. Research interests: mathematical modeling, Chinese classical philosophy, and the intersection of ancient wisdom and modern science.
+  Han YANG — Chinese philosophy, mathematical modeling, and data-driven research. Admitted to the M.A. in Religious Studies at CUHK; enrollment forthcoming.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
   Photos from <a href="https://WenTian1111.github.io" target="_blank">Han YANG</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords: Han Yang, Chinese philosophy, mathematical modeling, machine vision, digital humanities
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 📖 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
@@ -84,7 +84,7 @@ al_folio:
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false
 search_enabled: true
 socials_in_search: true
 posts_in_search: true
@@ -330,8 +330,8 @@ jekyll-archives:
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Yang]
+  first_name: [Han, H.]
 
   style: apa
   locale: en

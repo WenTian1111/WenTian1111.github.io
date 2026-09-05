@@ -1,10 +1,19 @@
 ---
-layout: page
+layout: han-project
 title: Egg Rolling Analysis & Risk Sorting
 description: Machine-vision study of egg rolling dynamics — from a 90-egg experiment to an ML rolling-risk index and live web app.
 img: assets/img/projects/egg/egg_pipeline.png
 importance: 1
 category: research
+discipline: Machine vision
+period: 2025–2026
+question: Can an egg's shape help predict how it rolls?
+role: Independent project lead; led a related four-member thesis team
+methods: Image analysis, controlled experiments, statistical learning
+outcome: Rolling-risk index and live prediction application
+card_summary: A 90-egg experiment connecting static morphology with 270 rolling videos, followed by risk classification and a working application.
+image_alt: Pipeline linking egg morphology, rolling dynamics, and risk classification
+demo: https://egg-rsi-app.streamlit.app
 ---
 
 **This project builds an end-to-end machine-vision pipeline for egg rolling dynamics.** A standardized experiment on 90 eggs produces static morphology and rolling-video data; statistical coupling analysis links the two; a data-driven Rolling Stability Index (RSI) quantifies rolling risk; and machine-learning classifiers turn the whole pipeline into automated sorting. The work was carried out as a **provincial-level Innovation & Entrepreneurship Training Program** (Excellent completion) and as my graduation thesis.
@@ -18,7 +27,7 @@ category: research
     <em>Figure 1.</em> Overall research roadmap: sample collection, feature extraction, database construction, PCA-based risk grading, ML prediction and intelligent sorting.
 </div>
 
-### 1 · Experiment setup
+## 1 · Experiment setup
 
 Each egg is photographed statically and then rolled down a 2.87° inclined flexible-contact surface under a high-speed camera. In total, static contours of **90 eggs** and **270 rolling videos** were collected.
 
@@ -31,9 +40,9 @@ Each egg is photographed statically and then rolled down a 2.87° inclined flexi
     <em>Figure 2.</em> Dual-zone rig: static contour imaging plus high-speed recording of the rolling phase.
 </div>
 
-### 2 · Feature extraction
+## 2 · Feature extraction
 
-From each egg, **11 static morphological features** are extracted — egg shape index (ESI), asymmetry index (AI), eccentricity, area, axis lengths and Hu moments — and from each rolling video **3 dynamic indicators**: lateral deviation ΔY, attitude-angle variance and speed coefficient of variation. Vision-based ESI reaches only **0.788% mean error** against manual measurement, accurate enough to replace hand measurement entirely.
+From each egg, **11 static morphological features** are extracted — egg shape index (ESI), asymmetry index (AI), eccentricity, area, axis lengths and Hu moments — and from each rolling video **3 dynamic indicators**: lateral deviation ΔY, attitude-angle variance and speed coefficient of variation. In this dataset, vision-based ESI reached **0.788% mean error** against manual measurement.
 
 <div class="row justify-content-center">
     <div class="col-md-8 mt-3 mt-md-0">
@@ -44,7 +53,7 @@ From each egg, **11 static morphological features** are extracted — egg shape 
     <em>Figure 3.</em> Static processing chain: original image → grayscale → binary mask → contour with centroid and bounding box.
 </div>
 
-### 3 · Static–dynamic coupling analysis
+## 3 · Static–dynamic coupling analysis
 
 Correlation analysis over 270 trials shows that **higher-order contour features dominate rolling stability** — Hu3 and asymmetry index are the strongest predictors of speed variation during rolling (r ≈ 0.50, p < 0.001), while first-order size features matter far less.
 
@@ -57,7 +66,7 @@ Correlation analysis over 270 trials shows that **higher-order contour features 
     <em>Figure 4.</em> Top Pearson correlations between static morphology and dynamic rolling behaviour (N = 270). Significance: * p &lt; 0.05.
 </div>
 
-### 4 · Rolling Stability Index (RSI)
+## 4 · Rolling Stability Index (RSI)
 
 The three dynamic indicators are fused by **PCA** into a single fragility index — RSI on a **0–100 scale** — then **K-means** separates trials into low / medium / high risk groups (12 / 127 / 131 of 270). One number now summarizes an egg's rolling risk.
 
@@ -70,9 +79,9 @@ The three dynamic indicators are fused by **PCA** into a single fragility index 
     <em>Figure 5.</em> RSI histogram (top) and trial-level RSI coloured by K-means risk group (bottom).
 </div>
 
-### 5 · Classification & results
+## 5 · Classification & results
 
-Four classifiers are trained on the fused feature set; **SVM achieves the highest macro-AUC (0.861)** with 72–74% test accuracy, making automated rolling-risk sorting feasible in practice.
+Four classifiers are trained on the fused feature set; **SVM achieves the highest macro-AUC (0.861)** with 72–74% test accuracy. These results describe performance on the collected dataset; broader use would require validation on additional eggs and acquisition conditions.
 
 <div class="row justify-content-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -88,12 +97,12 @@ Four classifiers are trained on the fused feature set; **SVM achieves the highes
 
 ---
 
-### Try it live 🚀
+## Live application
 
 The trained pipeline is wrapped in an interactive web app — upload one egg photo and get an instant rolling-risk prediction:
 
-👉 [**Egg_RSI_App — live demo**](https://egg-rsi-app.streamlit.app)
+[**Egg_RSI_App — live demo**](https://egg-rsi-app.streamlit.app)
 
 **Stack:** Python · OpenCV · MATLAB · scikit-learn · PCA · K-means · SVM / RF / GBDT · Streamlit Cloud
 
-*Carried out as a provincial-level College Students' Innovation and Entrepreneurship Training Program (solo leader, Excellent completion) and as the graduation thesis "Static–Dynamic Coupled Analysis and Sorting of Eggs Based on Machine Vision" (four-member team, led by me).*
+_Carried out as a provincial-level College Students' Innovation and Entrepreneurship Training Program (solo leader, Excellent completion) and as the graduation thesis "Static–Dynamic Coupled Analysis and Sorting of Eggs Based on Machine Vision" (four-member team, led by me)._

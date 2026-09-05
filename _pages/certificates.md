@@ -1,10 +1,13 @@
 ---
-layout: page
+layout: han-page
 permalink: /certificates/
-title: certificates
+title: Awards
+heading: Awards & certifications
+eyebrow: Academic recognition
+page_class: hy-record-page
 nav: true
-nav_order: 4
-description: Awards and certifications
+nav_order: 5
+description: Scholarships, competition results, and additional training recorded during my undergraduate years.
 ---
 
 ## 2025
@@ -29,7 +32,6 @@ description: Awards and certifications
 - **First Prize, 7th Visionary Cup National Innovation Employment Competition**, 2024
 - **First Prize, 3rd National College Students' Technology Innovation Entrepreneurship Competition**, 2024
 - **Mathematical Contest In Modeling (MCM)**, 2024
-- **Southwest University Diligent Endeavor Scholarship**, Dec. 2024
 
 ## 2023
 

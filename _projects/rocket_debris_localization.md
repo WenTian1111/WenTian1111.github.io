@@ -1,15 +1,24 @@
 ---
-layout: page
+layout: han-project
 title: Multi-Object Localization of Rocket Debris
 description: Sonic-boom triangulation of rocket debris — WGS84 coordinate conversion, a four-sphere intersection model, traversal matching and Monte Carlo error analysis.
 img: assets/img/projects/rocket/rocket_cover.png
 importance: 2
 category: research
+discipline: Geometric modeling
+period: "2024"
+question: How can sonic-boom arrival times locate multiple pieces of rocket debris?
+role: Independent researcher
+methods: Nonlinear least squares, signal matching, Monte Carlo simulation
+outcome: Research publication, 2024
+card_summary: A geometric localization model that matches multiple signals to their sources and examines sensitivity to timing errors.
+image_alt: Overview of sonic-boom monitoring and rocket debris localization
+publication: true
 ---
 
-**How do you recover multiple pieces of rocket debris that fell over an unknown area?** After a rocket stage separates, its debris falls at supersonic speed, generating sonic booms that ground monitoring devices can record. This project turns those arrival-time recordings into precise geographic positions — for one debris piece, and for several pieces at once — using spherical-intersection geometry, nonlinear optimization and Monte Carlo simulation. The work was published in *Frontier and Progress of Computational Mathematics and Modeling* (2024, vol. 7).
+**How do you recover multiple pieces of rocket debris that fell over an unknown area?** After a rocket stage separates, its debris falls at supersonic speed, generating sonic booms that ground monitoring devices can record. This project turns those arrival-time recordings into precise geographic positions — for one debris piece, and for several pieces at once — using spherical-intersection geometry, nonlinear optimization and Monte Carlo simulation. The work was published in _Frontier and Progress of Computational Mathematics and Modeling_ (2024, vol. 7).
 
-### 1 · From sonic boom to position
+## 1 · From sonic boom to position
 
 Each monitoring device records the arrival time of the sonic-boom shock wave. Given the sound speed, the device–debris distance is known, so the debris must lie on a sphere centred at the device. With **geodetic coordinates (WGS84) converted to Earth-centred Cartesian coordinates**, several spheres can be intersected to pin the debris down.
 
@@ -22,9 +31,9 @@ Each monitoring device records the arrival time of the sonic-boom shock wave. Gi
     <em>Figure 1.</em> Seven monitoring devices deployed around the predicted impact area (global view).
 </div>
 
-### 2 · The four-sphere intersection model
+## 2 · The four-sphere intersection model
 
-Two spheres intersect in a circle; three spheres intersect in at most two points; and a fourth sphere resolves the ambiguity — but now the unknown sonic-boom *time* adds a fourth unknown, which is why **four devices are the mathematical minimum**. The system is solved by **nonlinear least squares** (MATLAB `lsqnonlin`), jointly estimating the debris position (longitude, latitude, altitude) and the boom time.
+Two spheres intersect in a circle; three spheres intersect in at most two points; and a fourth sphere resolves the ambiguity — but now the unknown sonic-boom _time_ adds a fourth unknown, which is why **four devices are the mathematical minimum**. The system is solved by **nonlinear least squares** (MATLAB `lsqnonlin`), jointly estimating the debris position (longitude, latitude, altitude) and the boom time.
 
 <div class="row justify-content-center">
     <div class="col-md-6 mt-3 mt-md-0">
@@ -35,7 +44,7 @@ Two spheres intersect in a circle; three spheres intersect in at most two points
     <em>Figure 2.</em> Geometry of sphere intersection used for the positioning model.
 </div>
 
-### 3 · Single-debris localization
+## 3 · Single-debris localization
 
 Among the seven devices, the four **furthest apart** — A, B, E, G — give the smallest positioning error. With exactly four arrival-time readings, the model recovers the debris location and boom time.
 
@@ -48,7 +57,7 @@ Among the seven devices, the four **furthest apart** — A, B, E, G — give the
     <em>Figure 3.</em> Localization result for a single debris piece. At least four devices are required.
 </div>
 
-### 4 · Multi-debris matching
+## 4 · Multi-debris matching
 
 With four debris pieces, each device may hear multiple booms, and the readings must first be **matched** to the right debris. A traversal exclusion algorithm enumerates all plausible assignments — the 4×4 arrival-time table yields **256 combinations**; each is substituted into the positioning model, and infeasible (non-negative constraint violated) solutions are eliminated, leaving **73 valid candidate sets** that identify the correct debris–reading correspondence.
 
@@ -61,7 +70,7 @@ With four debris pieces, each device may hear multiple booms, and the readings m
     <em>Figure 4.</em> Localization of the four debris pieces after traversal matching.
 </div>
 
-### 5 · Error analysis
+## 5 · Error analysis
 
 Real devices record arrival times with error, so the model is refined with **weighted least squares** and stress-tested with **Monte Carlo simulation** — repeatedly re-solving under timing errors (e.g. ±0.5 s) to map the stability of the solution.
 
