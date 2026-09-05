@@ -818,6 +818,70 @@ footer.fixed-bottom {
   vertical-align: top;
 }
 
+.hy-case-nav {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.hy-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: 1.75rem;
+  border: 1px solid var(--hy-line);
+  border-radius: 8px;
+  background: var(--hy-paper);
+}
+
+.hy-table-scroll:focus-visible {
+  outline: 2px solid var(--hy-teal);
+  outline-offset: 3px;
+}
+
+.hy-table-scroll table {
+  min-width: 410px;
+  margin: 0;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.hy-table-scroll caption {
+  caption-side: top;
+  padding: 0.9rem;
+  color: var(--hy-muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.hy-table-scroll thead {
+  background: var(--hy-teal-soft);
+}
+
+.hy-table-scroll tbody th {
+  font-weight: 500;
+}
+
+.hy-table-scroll tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.hy-equation {
+  margin-block: 1.5rem;
+  padding: 1rem;
+  border-left: 3px solid var(--hy-teal);
+  background: var(--hy-paper);
+  font-family: var(--hy-serif);
+  font-size: clamp(1.125rem, 4vw, 1.5rem);
+  text-align: center;
+}
+
+.hy-prose .hy-source-note {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--hy-line);
+  color: var(--hy-muted);
+  font-size: 0.875rem;
+}
+
 .hy-related {
   margin-top: 4rem;
   padding-top: 2rem;

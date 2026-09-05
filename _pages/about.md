@@ -37,8 +37,8 @@ latest_posts:
       <div class="hy-cosmos-band" aria-hidden="true"></div>
       <img
         class="hy-portrait"
-        src="{{ '/assets/img/prof_pic.jpg' | relative_url }}"
-        alt="Portrait of Han Yang"
+        src="{{ '/assets/img/han-yang-avatar.jpg' | relative_url }}"
+        alt="Han Yang's chosen avatar"
         width="132"
         height="132"
       >
