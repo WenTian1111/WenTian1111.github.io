@@ -1,108 +1,147 @@
 ---
 layout: han-project
 title: Egg Rolling Analysis & Risk Sorting
-description: Machine-vision study of egg rolling dynamics — from a 90-egg experiment to an ML rolling-risk index and live web app.
+description: An undergraduate thesis and provincial innovation project connecting egg morphology, rolling experiments, interpretable risk grading, and an interactive prediction application.
 img: assets/img/projects/egg/egg_pipeline.png
 importance: 1
 category: research
 discipline: Machine vision
 period: 2025–2026
-question: Can an egg's shape help predict how it rolls?
-role: Independent project lead; led a related four-member thesis team
-methods: Image analysis, controlled experiments, statistical learning
-outcome: Rolling-risk index and live prediction application
-card_summary: A 90-egg experiment connecting static morphology with 270 rolling videos, followed by risk classification and a working application.
-image_alt: Pipeline linking egg morphology, rolling dynamics, and risk classification
+question: Can a still image of an egg help anticipate its rolling instability?
+role: Thesis author and innovation-project lead
+methods: Controlled experiments, machine vision, statistical analysis, machine learning
+outcome: Undergraduate thesis, risk-grading framework, and companion web application
+card_summary: A study of 90 eggs and 270 repeated rolling trials, linking visual morphology to instability and translating the analysis into an interactive application.
+image_alt: Workflow connecting egg morphology, rolling measurements, and risk classification
 demo: https://egg-rsi-app.streamlit.app
+source_code: https://github.com/WenTian1111/egg-rsi-app
+contents:
+  - label: Question & contribution
+    id: question
+  - label: Experiment
+    id: experiment
+  - label: Measurement
+    id: measurement
+  - label: Risk grading
+    id: risk
+  - label: Results
+    id: results
+  - label: Application
+    id: application
+  - label: Limits & next steps
+    id: limitations
 ---
 
-**This project builds an end-to-end machine-vision pipeline for egg rolling dynamics.** A standardized experiment on 90 eggs produces static morphology and rolling-video data; statistical coupling analysis links the two; a data-driven Rolling Stability Index (RSI) quantifies rolling risk; and machine-learning classifiers turn the whole pipeline into automated sorting. The work was carried out as a **provincial-level Innovation & Entrepreneurship Training Program** (Excellent completion) and as my graduation thesis.
+<h2 id="question">The research question</h2>
+
+Egg sorting usually begins with properties that can be measured in a still image. Transport introduces a different problem: eggs roll, change orientation, and drift away from their intended paths. My research asks whether differences in **static shape** can help explain and anticipate that **dynamic instability**.
+
+I developed this work through my undergraduate thesis, _Coupling Analysis of Static-Dynamic Characteristics and Sorting Research of Eggs Based on Machine Vision_, and a related Chongqing municipal-level innovation training project. They are connected stages of the same experimental research, not two independent datasets.
+
+Under academic supervision, my responsibilities covered building the experimental platform, collecting and processing the image and video data, developing feature-extraction algorithms, comparing prediction models, and implementing the companion application. The innovation project ran from July 2025 to May 2026; the thesis was defended in May 2026.
 
 <div class="row justify-content-center">
-    <div class="col-md-8 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/egg/roadmap.png" title="Research roadmap" class="img-fluid rounded z-depth-1" %}
-    </div>
+  <div class="col-md-8">
+    {% include figure.liquid loading="lazy" path="assets/img/projects/egg/roadmap.png" title="Research workflow from image acquisition to rolling-risk prediction" class="img-fluid rounded" %}
+  </div>
 </div>
-<div class="caption">
-    <em>Figure 1.</em> Overall research roadmap: sample collection, feature extraction, database construction, PCA-based risk grading, ML prediction and intelligent sorting.
-</div>
+<p class="caption">Research workflow: controlled acquisition, feature extraction, static–dynamic analysis, risk grading, and prediction.</p>
 
-## 1 · Experiment setup
+<h2 id="experiment">A paired static–dynamic experiment</h2>
 
-Each egg is photographed statically and then rolled down a 2.87° inclined flexible-contact surface under a high-speed camera. In total, static contours of **90 eggs** and **270 rolling videos** were collected.
+The study used **90 intact eggs from one batch**, with one standardized static image and **three rolling trials per egg**. The resulting 270 videos are repeated observations of 90 physical specimens—not 270 different eggs.
+
+The platform combined a fixed camera and controlled illumination for shape measurement with a rolling surface inclined at **2.87°**. A blue flexible towel provided contrast for image segmentation and a consistent contact interface. The release position, viewing geometry, inclination, and surface were held constant to focus on differences between eggs.
 
 <div class="row justify-content-center">
-    <div class="col-md-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/egg/experiment_platform.png" title="Experiment platform" class="img-fluid rounded z-depth-1" %}
-    </div>
+  <div class="col-md-8">
+    {% include figure.liquid loading="lazy" path="assets/img/projects/egg/experiment_platform.png" title="Controlled static imaging and inclined rolling platform" class="img-fluid rounded" %}
+  </div>
 </div>
-<div class="caption">
-    <em>Figure 2.</em> Dual-zone rig: static contour imaging plus high-speed recording of the rolling phase.
-</div>
+<p class="caption">The static imaging and rolling-acquisition setup. Results apply to this controlled experimental setting.</p>
 
-## 2 · Feature extraction
+The data pipeline linked each egg's static measurements to its repeated videos. Frame-level records were summarized into trial-level outcomes before statistical analysis, preserving the connection between a specimen's shape and its observed motion.
 
-From each egg, **11 static morphological features** are extracted — egg shape index (ESI), asymmetry index (AI), eccentricity, area, axis lengths and Hu moments — and from each rolling video **3 dynamic indicators**: lateral deviation ΔY, attitude-angle variance and speed coefficient of variation. In this dataset, vision-based ESI reached **0.788% mean error** against manual measurement.
+<h2 id="measurement">From images to measurable features</h2>
+
+**Static morphology.** The processing pipeline separates the egg from the contrasting background, cleans the binary mask, extracts the contour, and measures its geometry. Basic descriptors include area, perimeter, axis lengths, egg shape index (ESI), and eccentricity. Asymmetry and Hu moments add information about uneven ends and higher-order contour structure. The companion application implements a 19-feature static descriptor.
+
+**Dynamic behavior.** Video tracking produces centroid trajectories and orientation time series. These are summarized into three outcomes:
+
+- **Lateral displacement:** the change in transverse centroid position between the beginning and end of a trial.
+- **Orientation variance:** variation in the egg's fitted major-axis angle over the rolling sequence.
+- **Speed coefficient of variation:** the standard deviation of speed divided by its mean.
 
 <div class="row justify-content-center">
-    <div class="col-md-8 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/egg/static_pipeline.png" title="Static feature extraction pipeline" class="img-fluid rounded z-depth-1" %}
-    </div>
+  <div class="col-md-8">
+    {% include figure.liquid loading="lazy" path="assets/img/projects/egg/static_pipeline.png" title="Original egg image, grayscale image, binary mask, and extracted contour" class="img-fluid rounded" %}
+  </div>
 </div>
-<div class="caption">
-    <em>Figure 3.</em> Static processing chain: original image → grayscale → binary mask → contour with centroid and bounding box.
-</div>
+<p class="caption">An example of the static image-processing sequence. Contour quality affects the reliability of the extracted features.</p>
 
-## 3 · Static–dynamic coupling analysis
+To check the measurement stage, I compared vision-derived ESI with manual caliper measurements. The study reported a **mean relative error of 0.788%** and a **maximum relative error of 3.108%** across the 90 eggs. These are measurement-agreement results under the study conditions, not a guarantee for arbitrary uploaded images.
 
-Correlation analysis over 270 trials shows that **higher-order contour features dominate rolling stability** — Hu3 and asymmetry index are the strongest predictors of speed variation during rolling (r ≈ 0.50, p < 0.001), while first-order size features matter far less.
+<h2 id="risk">Linking morphology to rolling-risk grades</h2>
 
-<div class="row justify-content-center">
-    <div class="col-md-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/egg/correlation_top_pairs.png" title="Top static-dynamic correlations" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    <em>Figure 4.</em> Top Pearson correlations between static morphology and dynamic rolling behaviour (N = 270). Significance: * p &lt; 0.05.
-</div>
+I used descriptive statistics, Pearson correlations, and one- and two-factor analyses of variance to examine associations between morphology and rolling behavior. Asymmetry and selected Hu moments showed relationships with instability that were not captured by size alone. These associations suggest useful predictors; they do not establish a causal mechanism by themselves.
 
-## 4 · Rolling Stability Index (RSI)
+The three dynamic outcomes were standardized and combined through principal component analysis. The first two components explained **81.751%** of their variance. A weighted composite was scaled to a **0–100 Rolling Stability Index (RSI)**, with higher values representing higher instability within this study. K-means then produced three risk grades.
 
-The three dynamic indicators are fused by **PCA** into a single fragility index — RSI on a **0–100 scale** — then **K-means** separates trials into low / medium / high risk groups (12 / 127 / 131 of 270). One number now summarizes an egg's rolling risk.
-
-<div class="row justify-content-center">
-    <div class="col-md-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/egg/rsi_distribution_groups.png" title="RSI distribution and risk groups" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    <em>Figure 5.</em> RSI histogram (top) and trial-level RSI coloured by K-means risk group (bottom).
+<div class="hy-table-scroll" role="region" aria-label="Rolling-risk group sizes" tabindex="0">
+  <table>
+    <caption>Trial-level risk groups in the experimental dataset</caption>
+    <thead><tr><th scope="col">Risk grade</th><th scope="col">Rolling trials</th><th scope="col">Share</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Low</th><td>12</td><td>4.4%</td></tr>
+      <tr><th scope="row">Medium</th><td>127</td><td>47.0%</td></tr>
+      <tr><th scope="row">High</th><td>131</td><td>48.5%</td></tr>
+    </tbody>
+  </table>
 </div>
 
-## 5 · Classification & results
+RSI is an **experiment-derived instability label**, not a measured probability of shell breakage. The risk groups summarize motion in this dataset; their proportions should not be interpreted as the prevalence of damage in commercial egg handling.
 
-Four classifiers are trained on the fused feature set; **SVM achieves the highest macro-AUC (0.861)** with 72–74% test accuracy. These results describe performance on the collected dataset; broader use would require validation on additional eggs and acquisition conditions.
+<h2 id="results">Predicting risk from static morphology</h2>
 
-<div class="row justify-content-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/egg/model_performance.png" title="Classifier performance" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/egg/roc_curves.png" title="Macro-average ROC curves" class="img-fluid rounded z-depth-1" %}
-    </div>
+The prediction task uses static features as inputs and the dynamic RSI grade as the target. The final thesis reports an **80:20 stratified trial-level split**: 216 training records and 54 test records, with five-fold cross-validation within the training set for model selection.
+
+<div class="hy-table-scroll" role="region" aria-label="Thesis model comparison" tabindex="0">
+  <table>
+    <caption>Reported final-thesis benchmark · Table 2.15 · all values are percentages</caption>
+    <thead><tr><th scope="col">Model</th><th scope="col">Accuracy</th><th scope="col">Macro F1</th><th scope="col">Macro AUC</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Logistic regression</th><td>59.26</td><td>66.57</td><td>79.67</td></tr>
+      <tr><th scope="row">Support vector machine</th><td><strong>74.07</strong></td><td><strong>81.64</strong></td><td>85.85</td></tr>
+      <tr><th scope="row">Random forest</th><td>72.22</td><td>80.36</td><td>86.19</td></tr>
+      <tr><th scope="row">Gradient boosting</th><td>72.22</td><td>80.36</td><td><strong>86.65</strong></td></tr>
+    </tbody>
+  </table>
 </div>
-<div class="caption">
-    <em>Figure 6.</em> (a) Classifier performance on the independent test set. (b) Macro-average ROC curves of LR / SVM / RF / GBDT.
-</div>
 
----
+**SVM led on accuracy and macro F1; gradient boosting led on macro AUC.** These metrics measure different aspects of classification, so a model should not be described as best on every measure. The results above follow the final thesis table; earlier analysis exports and the companion app contain different training results and are not combined with this benchmark.
 
-## Live application
+Random-forest and gradient-boosting feature importance offered a complementary view of the predictors, including asymmetry, axis length, and Hu moments. These tree-model explanations are not explanations of the SVM's internal decisions, and feature importance is not causal attribution.
 
-The trained pipeline is wrapped in an interactive web app — upload one egg photo and get an instant rolling-risk prediction:
+<h2 id="application">From the innovation project to an interactive application</h2>
 
-[**Egg_RSI_App — live demo**](https://egg-rsi-app.streamlit.app)
+The innovation project extended the experimental analysis into **Egg_RSI_App**, a Streamlit application with two complementary uses: exploring the study dataset and trying image-based risk classification.
 
-**Stack:** Python · OpenCV · MATLAB · scikit-learn · PCA · K-means · SVM / RF / GBDT · Streamlit Cloud
+The interface exposes the segmentation and feature-extraction stages, supports selecting example eggs or uploading a photograph, and provides model selection with predicted classes and class probabilities. Its image-processing implementation uses OpenCV, including an optional pretrained segmentation model and fallback segmentation strategies.
 
-_Carried out as a provincial-level College Students' Innovation and Entrepreneurship Training Program (solo leader, Excellent completion) and as the graduation thesis "Static–Dynamic Coupled Analysis and Sorting of Eggs Based on Machine Vision" (four-member team, led by me)._
+The application is a **research demonstration**. It has its own saved models and preprocessing implementation; its outputs should not be treated as a reproduction of the final-thesis benchmark or as production-validated handling instructions. Photographs taken under different lighting, scales, backgrounds, or viewpoints may differ substantially from the training conditions.
+
+[Open the application](https://egg-rsi-app.streamlit.app) · [Explore the public code](https://github.com/WenTian1111/egg-rsi-app)
+
+<h2 id="limitations">What remains to be tested</h2>
+
+The study establishes a workflow for relating observable shape to measured motion, but several boundaries matter:
+
+- **Independent specimens.** Three trials come from each egg. Stronger generalization evidence requires holding out entire eggs and new batches, not only individual trial records.
+- **Class imbalance.** Only 12 trials fall in the low-risk group, so apparently strong performance on that class needs confirmation with more specimens.
+- **External conditions.** The experiment uses one inclination, surface, batch, and acquisition setup. New surfaces, breeds, sizes, and conveyor conditions require further testing.
+- **Outcome validity.** Motion-based risk grades are not direct measurements of breakage or economic loss. Those outcomes would need separate validation.
+- **End-to-end evaluation.** Feature extraction, scaling, risk-label construction, and model selection should all be checked together under a specimen-independent evaluation protocol.
+
+A useful next step is a larger, multi-condition experiment with egg-level holdouts and direct damage measurements. That would test whether the proposed risk grading remains useful outside the original setup.
+
+<p class="hy-source-note">Research record: final undergraduate thesis (May 2026), municipal innovation-training research and completion reports (2026), and the companion application. These materials describe related work using the same experimental series.</p>

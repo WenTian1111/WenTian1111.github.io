@@ -123,7 +123,7 @@
       "publisher": "Frontier and Progress of Computational Mathematics and Modeling",
       "releaseDate": "2024",
       "url": "",
-      "summary": "2024, vol. 7, pp. 01-24. ISSN: 2313-4194. Developed a rocket debris recovery strategy using sonic booms by optimizing WGS84-based tri-sphere and quad-sphere intersection models. Employed MATLAB, including lsqnonlin and a novel traversal algorithm, to implement a weighted least squares correction model validated by Monte Carlo simulations."
+      "summary": "December 2024, no. 6, pp. 1-24. ISSN: 2313-4194. A numerical study of airborne sonic-boom source localization using geometric constraints, nonlinear least squares in MATLAB, combinatorial arrival matching, and timing-noise sensitivity analysis."
     },
     {
       "name": "Patent: Promotional Column (Drama Media)",
@@ -187,22 +187,22 @@
   "projects": [
     {
       "name": "ESI-Curvature Modeling of Egg Trajectories: Morphological Effects (Independent Research)",
-      "summary": "Built a standardized image acquisition platform with a 2.87-degree inclined flexible-contact surface; collected static contours of 90 eggs and 270 rolling videos. Extracted 11 static morphological features (ESI, asymmetry index, Hu moments) and 3 dynamic indicators via machine vision, with vision-based ESI reaching 0.788% mean error vs. manual measurement. Fused dynamic indicators into a fragility index (RSI 0-100) via PCA and K-means, trained SVM/RF/GBDT/LR classifiers with SVM selected as optimal, and deployed the web application Egg_RSI_App (Streamlit Cloud) for rolling-risk prediction.",
+      "summary": "Built a controlled 2.87-degree rolling platform and collected static images of 90 eggs with three trials each (270 videos). Extracted morphology and motion descriptors; vision-based ESI showed 0.788% mean relative error against manual measurement. Constructed a motion-based RSI using PCA and K-means and compared four classifiers. The final thesis reports SVM accuracy of 74.07% and macro F1 of 81.64%, while gradient boosting achieved the highest macro AUC (86.65%). Results use a trial-level split; independent-egg validation remains a next step. Developed the companion Egg_RSI_App research demonstration.",
       "highlights": ["Provincial-level Innovation & Entrepreneurship Training Program — Excellent completion"],
       "startDate": "2025-06-01",
       "endDate": "2026-06-01"
     },
     {
       "name": "Machine Vision for Coupled Egg Dynamics & Intelligent Sorting (Leader)",
-      "summary": "Led and supervised a four-member team in machine-vision-based egg analysis and sorting theses: developed kinematic time-series extraction (centroid, attitude, velocity, acceleration), coupled static morphology with dynamic rolling for risk prediction via a PCA-based rolling stability index, trained four ML classifiers with SVM optimal (74.07% on 90 eggs, 270 videos), clustered trajectories into three stability classes via GMM, and built multi-species egg classifiers from fused HSV and LBP features (8 species, 713 images; KNN 99.30%).",
+      "summary": "Led and supervised a four-member team in machine-vision-based egg analysis and sorting theses: developed kinematic time-series extraction (centroid, attitude, velocity, acceleration), coupled static morphology with dynamic rolling for risk prediction via a PCA-based rolling stability index, trained four ML classifiers with SVM leading on reported accuracy (74.07%, trial-level split of 270 videos from 90 eggs), clustered trajectories into three stability classes via GMM, and built multi-species egg classifiers from fused HSV and LBP features (8 species, 713 images; KNN 99.30%).",
       "highlights": ["Graduation thesis project of a four-member group, completed successfully"],
       "startDate": "2025-05-01",
       "endDate": "2026-05-01"
     },
     {
       "name": "Research on Multi-Object Localization of Rocket Debris (Independent Research)",
-      "summary": "Developed a rocket debris localization and landing-point prediction strategy based on sonic-boom signals: WGS84-to-ECEF conversion, an improved tri-sphere and quad-sphere intersection model solved by nonlinear least squares (MATLAB lsqnonlin), a traversal algorithm over 256 time combinations with feasibility filtering, and weighted least squares with Monte Carlo simulation to analyze localization stability under 0.5 s timing errors.",
-      "highlights": ["Published in Frontier and Progress of Computational Mathematics and Modeling (2024, vol. 7)"],
+      "summary": "Developed a numerical sonic-boom source localization workflow using approximate WGS84-based coordinate preparation, nonlinear least squares (MATLAB lsqnonlin), and a search over 256 arrival-time combinations with feasibility filtering. Studied four-source association and sensitivity to recording noise with a 0.5 s standard deviation; the results estimate airborne boom positions, not validated landing points.",
+      "highlights": ["Published in Frontier and Progress of Computational Mathematics and Modeling (December 2024, no. 6)"],
       "startDate": "2024-05-01",
       "endDate": "2024-08-01"
     },
