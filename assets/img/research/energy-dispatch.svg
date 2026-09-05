@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" role="img" aria-labelledby="title desc">
+  <title id="title">Microgrid supply cost and curtailment comparison</title>
+  <desc id="desc">
+    Grouped bars reproduce Tables 2 and 3 of the 2024 competition manuscript. Cost and curtailed energy decline in all three reported storage
+    scenarios. Both vertical axes start at zero.
+  </desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7" fill="none" stroke="#0f766e" stroke-width="1.2" />
+    </marker>
+  </defs>
+  <rect width="1000" height="580" fill="#fff" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="45" font-size="17" fill="#5a6677">WIND–SOLAR–STORAGE DISPATCH</text>
+    <text x="42" y="87" font-size="29" fill="#122034">A battery changes the daily energy balance</text>
+    <text x="42" y="121" font-size="18" fill="#5a6677">Independent parks · no storage versus 50 kW / 100 kWh storage</text>
+    <text x="60" y="174" font-size="22" fill="#122034">a Average supply cost</text>
+    <text x="544" y="174" font-size="22" fill="#122034">b Curtailed renewable energy</text>
+    <line x1="105" y1="424" x2="435" y2="424" stroke="#dce3ea" stroke-width="1" />
+    <text x="90" y="429" font-size="16" fill="#5a6677" text-anchor="end">0.0</text>
+    <line x1="105" y1="353" x2="435" y2="353" stroke="#dce3ea" stroke-width="1" />
+    <text x="90" y="358" font-size="16" fill="#5a6677" text-anchor="end">0.3</text>
+    <line x1="105" y1="282" x2="435" y2="282" stroke="#dce3ea" stroke-width="1" />
+    <text x="90" y="287" font-size="16" fill="#5a6677" text-anchor="end">0.6</text>
+    <line x1="105" y1="211" x2="435" y2="211" stroke="#dce3ea" stroke-width="1" />
+    <text x="90" y="216" font-size="16" fill="#5a6677" text-anchor="end">0.9</text>
+    <rect x="134" y="230.33566666666667" width="25" height="193.66433333333333" fill="#234563" />
+    <rect x="164" y="232.20533333333336" width="25" height="191.79466666666664" fill="#0f766e" />
+    <text x="160" y="455" font-size="17" fill="#5a6677" text-anchor="middle">Park A</text>
+    <rect x="243" y="254.57033333333334" width="25" height="169.42966666666666" fill="#234563" />
+    <rect x="273" y="258.40433333333334" width="25" height="165.59566666666666" fill="#0f766e" />
+    <text x="269" y="455" font-size="17" fill="#5a6677" text-anchor="middle">Park B</text>
+    <rect x="352" y="257.4576666666667" width="25" height="166.54233333333332" fill="#234563" />
+    <rect x="382" y="261.7886666666667" width="25" height="162.21133333333333" fill="#0f766e" />
+    <text x="378" y="455" font-size="17" fill="#5a6677" text-anchor="middle">Park C</text>
+    <text x="270" y="490" font-size="18" fill="#5a6677" text-anchor="middle">Cost (CNY/kWh)</text>
+    <line x1="590" y1="424" x2="920" y2="424" stroke="#dce3ea" stroke-width="1" />
+    <text x="575" y="429" font-size="16" fill="#5a6677" text-anchor="end">0</text>
+    <line x1="590" y1="353" x2="920" y2="353" stroke="#dce3ea" stroke-width="1" />
+    <text x="575" y="358" font-size="16" fill="#5a6677" text-anchor="end">400</text>
+    <line x1="590" y1="282" x2="920" y2="282" stroke="#dce3ea" stroke-width="1" />
+    <text x="575" y="287" font-size="16" fill="#5a6677" text-anchor="end">800</text>
+    <line x1="590" y1="211" x2="920" y2="211" stroke="#dce3ea" stroke-width="1" />
+    <text x="575" y="216" font-size="16" fill="#5a6677" text-anchor="end">1200</text>
+    <rect x="619" y="255.16199999999998" width="25" height="168.83800000000002" fill="#234563" />
+    <rect x="649" y="269.66735325" width="25" height="154.33264675" fill="#0f766e" />
+    <text x="645" y="455" font-size="17" fill="#5a6677" text-anchor="middle">Park A</text>
+    <rect x="728" y="264.69375" width="25" height="159.30625" fill="#234563" />
+    <rect x="758" y="292.30437200000006" width="25" height="131.69562799999997" fill="#0f766e" />
+    <text x="754" y="455" font-size="17" fill="#5a6677" text-anchor="middle">Park B</text>
+    <rect x="837" y="223.77645" width="25" height="200.22355" fill="#234563" />
+    <rect x="867" y="246.94273825" width="25" height="177.05726175" fill="#0f766e" />
+    <text x="863" y="455" font-size="17" fill="#5a6677" text-anchor="middle">Park C</text>
+    <text x="755" y="490" font-size="18" fill="#5a6677" text-anchor="middle">Energy (kWh/day)</text>
+    <rect x="293" y="527" width="15" height="15" fill="#234563" />
+    <text x="318" y="541" font-size="17" fill="#122034">No storage</text>
+    <rect x="518" y="527" width="15" height="15" fill="#0f766e" />
+    <text x="543" y="541" font-size="17" fill="#122034">With storage</text>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" role="img" aria-labelledby="title desc">
+  <title id="title">Smartphone usage analysis workflow</title>
+  <desc id="desc">
+    A methods schematic connects cleaned app-usage records to segmentation, prediction and collaborative recommendations. It displays no individual
+    user data and is not an empirical cluster plot.
+  </desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7" fill="none" stroke="#0f766e" stroke-width="1.2" />
+    </marker>
+  </defs>
+  <rect width="1000" height="580" fill="#fff" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="45" font-size="17" fill="#5a6677">SMARTPHONE BEHAVIOR ANALYTICS</text>
+    <text x="42" y="87" font-size="29" fill="#122034">Three questions for the same usage records</text>
+    <rect x="58" y="148" width="278" height="322" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="83" y="192" font-size="24" fill="#122034">Usage records</text>
+    <text x="83" y="241" font-size="19" fill="#5a6677">Duration and traffic</text>
+    <text x="83" y="278" font-size="19" fill="#5a6677">Hourly activity</text>
+    <text x="83" y="315" font-size="19" fill="#5a6677">20 app categories</text>
+    <line x1="83" y1="345" x2="309" y2="345" stroke="#dce3ea" stroke-width="1" />
+    <text x="83" y="383" font-size="19" fill="#0f766e">Clean and aggregate</text>
+    <text x="83" y="420" font-size="16" fill="#5a6677">No user records published</text>
+    <line x1="356" y1="310" x2="425" y2="190" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow)" />
+    <rect x="449" y="148" width="484" height="91" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="474" y="173" font-size="14" fill="#0f766e">SEGMENT</text>
+    <text x="474" y="200" font-size="21" fill="#122034">Clustering</text>
+    <text x="474" y="225" font-size="17" fill="#5a6677">Crow search · DPC · DBSCAN</text>
+    <line x1="356" y1="310" x2="425" y2="303" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow)" />
+    <rect x="449" y="261" width="484" height="91" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="474" y="286" font-size="14" fill="#0f766e">PREDICT</text>
+    <text x="474" y="313" font-size="21" fill="#122034">Classification and regression</text>
+    <text x="474" y="338" font-size="17" fill="#5a6677">App class · usage duration</text>
+    <line x1="356" y1="310" x2="425" y2="416" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow)" />
+    <rect x="449" y="374" width="484" height="91" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="474" y="399" font-size="14" fill="#0f766e">RECOMMEND</text>
+    <text x="474" y="426" font-size="21" fill="#122034">Collaborative filtering</text>
+    <text x="474" y="451" font-size="17" fill="#5a6677">User and app similarity</text>
+    <text x="58" y="531" font-size="18" fill="#5a6677">Initial submission and final-round extension · methods overview</text>
+  </g>
+</svg>
