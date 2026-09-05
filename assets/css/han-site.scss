@@ -823,6 +823,33 @@ footer.fixed-bottom {
   margin-inline: auto;
 }
 
+.hy-study-insight {
+  margin-block: 1.75rem 2.25rem;
+  padding: 1.25rem clamp(1rem, 3vw, 1.75rem);
+  border-inline-start: 3px solid var(--hy-teal);
+  border-radius: 0 8px 8px 0;
+  background: var(--hy-teal-soft);
+}
+
+.hy-study-insight .hy-label {
+  margin: 0 0 0.5rem;
+  color: var(--hy-teal);
+}
+
+.hy-study-insight p:last-child {
+  margin-bottom: 0;
+  color: var(--hy-ink);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.hy-case-study:has(.hy-study-insight) .hy-prose h3 {
+  font-family: var(--hy-sans);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
 .hy-table-scroll {
   max-width: 100%;
   overflow-x: auto;
@@ -886,6 +913,120 @@ footer.fixed-bottom {
   margin-top: 4rem;
   padding-top: 2rem;
   border-top: 1px solid var(--hy-line);
+}
+
+// Research figures remain vector-sharp; their white canvas is deliberate in both themes.
+.hy-research-figure {
+  margin: 2.5rem 0;
+}
+
+.hy-figure-canvas {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid var(--hy-line);
+  border-radius: 8px;
+}
+
+.hy-figure-canvas img {
+  display: block;
+  width: 100%;
+  min-width: 640px;
+  height: auto;
+}
+
+.hy-figure-canvas:focus-visible {
+  outline: 2px solid var(--hy-teal);
+  outline-offset: 3px;
+}
+
+.hy-research-figure figcaption {
+  margin: 0.85rem 0 0;
+  color: var(--hy-muted);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.hy-research-figure figcaption span {
+  color: var(--hy-ink);
+  font-weight: 600;
+}
+
+.hy-prose:has(.hy-paper-grid) {
+  max-width: none;
+}
+
+.hy-collection-intro {
+  max-width: 780px;
+  margin: 0 auto 2.5rem;
+}
+
+.hy-paper-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.hy-paper-card {
+  overflow: hidden;
+  border: 1px solid var(--hy-line);
+  border-radius: 10px;
+  background: var(--hy-paper);
+}
+
+.hy-paper-image {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1000 / 580;
+  background: #fff;
+  border-bottom: 1px solid var(--hy-line);
+}
+
+.hy-paper-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 180ms ease;
+}
+
+.hy-paper-card:hover .hy-paper-image img {
+  transform: scale(1.025);
+}
+
+.hy-paper-copy {
+  padding: 1.5rem;
+}
+
+.hy-paper-copy h2 {
+  margin: 0.5rem 0 0.85rem;
+  font-size: 1.45rem;
+  line-height: 1.35;
+}
+
+.hy-paper-copy h2 a {
+  color: var(--hy-ink);
+  text-decoration: none;
+}
+
+.hy-paper-copy > p:not(.hy-label) {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 700px) {
+  .hy-paper-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hy-research-figure {
+    margin-inline: -0.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hy-paper-image img {
+    transition: none;
+  }
 }
 
 .hy-related-grid {

@@ -2,7 +2,7 @@
 layout: han-project
 title: Egg Rolling Analysis & Risk Sorting
 description: An undergraduate thesis and provincial innovation project connecting egg morphology, rolling experiments, interpretable risk grading, and an interactive prediction application.
-img: assets/img/projects/egg/egg_pipeline.png
+img: assets/img/research/egg-performance.svg
 importance: 1
 category: research
 discipline: Machine vision
@@ -12,7 +12,7 @@ role: Thesis author and innovation-project lead
 methods: Controlled experiments, machine vision, statistical analysis, machine learning
 outcome: Undergraduate thesis, risk-grading framework, and companion web application
 card_summary: A study of 90 eggs and 270 repeated rolling trials, linking visual morphology to instability and translating the analysis into an interactive application.
-image_alt: Workflow connecting egg morphology, rolling measurements, and risk classification
+image_alt: Reported model comparison for egg rolling-risk classification
 demo: https://egg-rsi-app.streamlit.app
 source_code: https://github.com/WenTian1111/egg-rsi-app
 contents:
@@ -39,13 +39,6 @@ Egg sorting usually begins with properties that can be measured in a still image
 I developed this work through my undergraduate thesis, _Coupling Analysis of Static-Dynamic Characteristics and Sorting Research of Eggs Based on Machine Vision_, and a related Chongqing municipal-level innovation training project. They are connected stages of the same experimental research, not two independent datasets.
 
 Under academic supervision, my responsibilities covered building the experimental platform, collecting and processing the image and video data, developing feature-extraction algorithms, comparing prediction models, and implementing the companion application. The innovation project ran from July 2025 to May 2026; the thesis was defended in May 2026.
-
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    {% include figure.liquid loading="lazy" path="assets/img/projects/egg/roadmap.png" title="Research workflow from image acquisition to rolling-risk prediction" class="img-fluid rounded" %}
-  </div>
-</div>
-<p class="caption">Research workflow: controlled acquisition, feature extraction, static–dynamic analysis, risk grading, and prediction.</p>
 
 <h2 id="experiment">A paired static–dynamic experiment</h2>
 
@@ -87,17 +80,7 @@ I used descriptive statistics, Pearson correlations, and one- and two-factor ana
 
 The three dynamic outcomes were standardized and combined through principal component analysis. The first two components explained **81.751%** of their variance. A weighted composite was scaled to a **0–100 Rolling Stability Index (RSI)**, with higher values representing higher instability within this study. K-means then produced three risk grades.
 
-<div class="hy-table-scroll" role="region" aria-label="Rolling-risk group sizes" tabindex="0">
-  <table>
-    <caption>Trial-level risk groups in the experimental dataset</caption>
-    <thead><tr><th scope="col">Risk grade</th><th scope="col">Rolling trials</th><th scope="col">Share</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Low</th><td>12</td><td>4.4%</td></tr>
-      <tr><th scope="row">Medium</th><td>127</td><td>47.0%</td></tr>
-      <tr><th scope="row">High</th><td>131</td><td>48.5%</td></tr>
-    </tbody>
-  </table>
-</div>
+The resulting groups are strongly imbalanced, with relatively few low-risk trials. That imbalance is important when interpreting the classification results.
 
 RSI is an **experiment-derived instability label**, not a measured probability of shell breakage. The risk groups summarize motion in this dataset; their proportions should not be interpreted as the prevalence of damage in commercial egg handling.
 
@@ -105,18 +88,10 @@ RSI is an **experiment-derived instability label**, not a measured probability o
 
 The prediction task uses static features as inputs and the dynamic RSI grade as the target. The final thesis reports an **80:20 stratified trial-level split**: 216 training records and 54 test records, with five-fold cross-validation within the training set for model selection.
 
-<div class="hy-table-scroll" role="region" aria-label="Thesis model comparison" tabindex="0">
-  <table>
-    <caption>Reported final-thesis benchmark · Table 2.15 · all values are percentages</caption>
-    <thead><tr><th scope="col">Model</th><th scope="col">Accuracy</th><th scope="col">Macro F1</th><th scope="col">Macro AUC</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Logistic regression</th><td>59.26</td><td>66.57</td><td>79.67</td></tr>
-      <tr><th scope="row">Support vector machine</th><td><strong>74.07</strong></td><td><strong>81.64</strong></td><td>85.85</td></tr>
-      <tr><th scope="row">Random forest</th><td>72.22</td><td>80.36</td><td>86.19</td></tr>
-      <tr><th scope="row">Gradient boosting</th><td>72.22</td><td>80.36</td><td><strong>86.65</strong></td></tr>
-    </tbody>
-  </table>
-</div>
+<figure class="hy-research-figure">
+  <div class="hy-figure-canvas"><img src="{{ '/assets/img/research/egg-performance.svg' | relative_url }}" alt="A compact comparison of reported accuracy, macro F1, and macro AUC. Redrawn from final-thesis Table 2.15; the axes span 50–100%. These are reported scores, not a new training run." loading="lazy" width="1000" height="580"></div>
+  <figcaption><span>Figure 1.</span> A compact comparison of reported accuracy, macro F1, and macro AUC. Redrawn from final-thesis Table 2.15; the axes span 50–100%. These are reported scores, not a new training run.</figcaption>
+</figure>
 
 **SVM led on accuracy and macro F1; gradient boosting led on macro AUC.** These metrics measure different aspects of classification, so a model should not be described as best on every measure. The results above follow the final thesis table; earlier analysis exports and the companion app contain different training results and are not combined with this benchmark.
 

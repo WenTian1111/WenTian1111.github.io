@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" role="img" aria-labelledby="title desc">
+  <title id="title">Reported non-cutting travel decomposition</title>
+  <desc id="desc">
+    The third cutting-layout task combines a base route of 31.55 drawing units, a link of 6.1406 units and internal travel of 44 units, totaling
+    approximately 81.69. This reproduces a reported route construction, not a proof of global optimality.
+  </desc>
+  <rect width="1000" height="580" fill="#fff" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="45" font-size="17" fill="#5a6677">NON-CUTTING TRAVEL · LAYOUT 3</text>
+    <text x="42" y="87" font-size="29" fill="#122034">Where the reported travel length comes from</text>
+    <text x="42" y="121" font-size="18" fill="#5a6677">A decomposition of one layout, rather than a comparison of different layouts</text>
+    <text x="42" y="209" font-size="20" fill="#5a6677">Base route</text>
+    <rect x="250" y="180" width="227.16" height="42" fill="#234563" />
+    <text x="489.15999999999997" y="209" font-size="20" fill="#234563">31.55</text>
+    <line x1="477.15999999999997" y1="225" x2="477.15999999999997" y2="275" stroke="#5a6677" stroke-width="1" stroke-dasharray="4 4" />
+    <text x="42" y="304" font-size="20" fill="#5a6677">Approach link</text>
+    <rect x="477.15999999999997" y="275" width="44.21232" height="42" fill="#c47a46" />
+    <text x="533.37232" y="304" font-size="20" fill="#c47a46">6.14</text>
+    <line x1="521.37232" y1="320" x2="521.37232" y2="370" stroke="#5a6677" stroke-width="1" stroke-dasharray="4 4" />
+    <text x="42" y="399" font-size="20" fill="#5a6677">Internal travel</text>
+    <rect x="521.3723200000001" y="370" width="316.8" height="42" fill="#0f766e" />
+    <text x="850.1723200000001" y="399" font-size="20" fill="#0f766e">44.00</text>
+    <line x1="250" y1="450" x2="902" y2="450" stroke="#dce3ea" stroke-width="1" />
+    <line x1="250" y1="450" x2="250" y2="457" stroke="#5a6677" stroke-width="1" />
+    <text x="250" y="480" font-size="17" fill="#5a6677" text-anchor="middle">0</text>
+    <line x1="358" y1="450" x2="358" y2="457" stroke="#5a6677" stroke-width="1" />
+    <text x="358" y="480" font-size="17" fill="#5a6677" text-anchor="middle">15</text>
+    <line x1="466" y1="450" x2="466" y2="457" stroke="#5a6677" stroke-width="1" />
+    <text x="466" y="480" font-size="17" fill="#5a6677" text-anchor="middle">30</text>
+    <line x1="574" y1="450" x2="574" y2="457" stroke="#5a6677" stroke-width="1" />
+    <text x="574" y="480" font-size="17" fill="#5a6677" text-anchor="middle">45</text>
+    <line x1="682" y1="450" x2="682" y2="457" stroke="#5a6677" stroke-width="1" />
+    <text x="682" y="480" font-size="17" fill="#5a6677" text-anchor="middle">60</text>
+    <line x1="790" y1="450" x2="790" y2="457" stroke="#5a6677" stroke-width="1" />
+    <text x="790" y="480" font-size="17" fill="#5a6677" text-anchor="middle">75</text>
+    <line x1="898" y1="450" x2="898" y2="457" stroke="#5a6677" stroke-width="1" />
+    <text x="898" y="480" font-size="17" fill="#5a6677" text-anchor="middle">90</text>
+    <text x="576" y="516" font-size="18" fill="#5a6677" text-anchor="middle">Cumulative non-cutting travel (drawing units)</text>
+    <text x="42" y="556" font-size="17" fill="#5a6677">Reported total: 81.69 drawing units · rounded components sum to the same total</text>
+  </g>
+</svg>

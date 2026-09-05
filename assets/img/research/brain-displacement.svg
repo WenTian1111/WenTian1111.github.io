@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" role="img" aria-labelledby="title desc">
+  <title id="title">Reported tissue displacement examples</title>
+  <desc id="desc">
+    The second-stage manuscript reports surrounding-tissue displacement of 2.4 centimetres in the solid-lesion scenario and 1.57 centimetres in the
+    fluid-lesion scenario. These are single idealized numerical examples without reported uncertainty, not clinical measurements or lesion-tracking
+    accuracy.
+  </desc>
+  <rect width="1000" height="580" fill="#fff" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="45" font-size="17" fill="#5a6677">IDEALIZED MECHANICAL SIMULATION</text>
+    <text x="42" y="87" font-size="29" fill="#122034">Two reported displacement examples</text>
+    <text x="42" y="121" font-size="18" fill="#5a6677">Second-stage manuscript · surrounding-tissue displacement</text>
+    <line x1="360" y1="186" x2="360" y2="427" stroke="#dce3ea" stroke-width="1" />
+    <text x="360" y="462" font-size="17" fill="#5a6677" text-anchor="middle">0.0</text>
+    <line x1="447.5" y1="186" x2="447.5" y2="427" stroke="#dce3ea" stroke-width="1" />
+    <text x="447.5" y="462" font-size="17" fill="#5a6677" text-anchor="middle">0.5</text>
+    <line x1="535" y1="186" x2="535" y2="427" stroke="#dce3ea" stroke-width="1" />
+    <text x="535" y="462" font-size="17" fill="#5a6677" text-anchor="middle">1.0</text>
+    <line x1="622.5" y1="186" x2="622.5" y2="427" stroke="#dce3ea" stroke-width="1" />
+    <text x="622.5" y="462" font-size="17" fill="#5a6677" text-anchor="middle">1.5</text>
+    <line x1="710" y1="186" x2="710" y2="427" stroke="#dce3ea" stroke-width="1" />
+    <text x="710" y="462" font-size="17" fill="#5a6677" text-anchor="middle">2.0</text>
+    <line x1="797.5" y1="186" x2="797.5" y2="427" stroke="#dce3ea" stroke-width="1" />
+    <text x="797.5" y="462" font-size="17" fill="#5a6677" text-anchor="middle">2.5</text>
+    <line x1="885" y1="186" x2="885" y2="427" stroke="#dce3ea" stroke-width="1" />
+    <text x="885" y="462" font-size="17" fill="#5a6677" text-anchor="middle">3.0</text>
+    <text x="335" y="259" font-size="20" fill="#5a6677" text-anchor="end">Solid-lesion scenario</text>
+    <rect x="360" y="234" width="420" height="40" fill="#234563" />
+    <text x="793" y="261" font-size="21" fill="#234563">2.40</text>
+    <text x="335" y="376" font-size="20" fill="#5a6677" text-anchor="end">Fluid-lesion scenario</text>
+    <rect x="360" y="351" width="274.75" height="40" fill="#0f766e" />
+    <text x="647.75" y="378" font-size="21" fill="#0f766e">1.57</text>
+    <text x="623" y="502" font-size="19" fill="#5a6677" text-anchor="middle">Displacement (cm)</text>
+    <line x1="42" y1="525" x2="958" y2="525" stroke="#dce3ea" stroke-width="1" />
+    <text x="42" y="556" font-size="17" fill="#5a6677">Single numerical examples under idealized assumptions · not clinical predictions</text>
+  </g>
+</svg>

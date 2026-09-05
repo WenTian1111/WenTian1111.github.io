@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" role="img" aria-labelledby="title desc">
+  <title id="title">Modeling where to search next</title>
+  <desc id="desc">A drift model becomes a search-planning question Conceptual workflow; no simulated outcomes are depicted.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7" fill="none" stroke="#0f766e" stroke-width="1.2" />
+    </marker>
+  </defs>
+  <rect width="1000" height="580" fill="#fff" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="45" font-size="17" fill="#5a6677">SUBMERSIBLE SEARCH UNDER UNCERTAINTY</text>
+    <text x="42" y="87" font-size="29" fill="#122034">Modeling where to search next</text>
+    <text x="42" y="124" font-size="18" fill="#5a6677">A drift model becomes a search-planning question</text>
+    <text x="66" y="206" font-size="22" fill="#0f766e">01</text>
+    <rect x="121" y="175" width="806" height="58" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="147" y="210" font-size="21" fill="#122034">Represent currents and buoyancy</text>
+    <line x1="523" y1="235" x2="523" y2="248" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="66" y="284" font-size="22" fill="#0f766e">02</text>
+    <rect x="121" y="253" width="806" height="58" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="147" y="288" font-size="21" fill="#122034">Generate candidate paths with random walks</text>
+    <line x1="523" y1="313" x2="523" y2="326" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="66" y="362" font-size="22" fill="#0f766e">03</text>
+    <rect x="121" y="331" width="806" height="58" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="147" y="366" font-size="21" fill="#122034">Summarize possible locations as search regions</text>
+    <line x1="523" y1="391" x2="523" y2="404" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="66" y="440" font-size="22" fill="#0f766e">04</text>
+    <rect x="121" y="409" width="806" height="58" rx="6" fill="#f7f9fb" stroke="#dce3ea" />
+    <text x="147" y="444" font-size="21" fill="#122034">Compare equipment coverage, precision and cost</text>
+    <text x="42" y="548" font-size="17" fill="#5a6677">MCM 2024 · model architecture, not an operational rescue plan</text>
+  </g>
+</svg>

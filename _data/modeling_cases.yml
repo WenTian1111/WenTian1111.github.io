@@ -1,0 +1,56 @@
+- title: "Smartphone Usage & Recommendation"
+  number: "01"
+  year: "2023"
+  event: "Dingding Cup"
+  discipline: "Data science"
+  summary: "From 20 app categories to clustering, prediction, and recommendation—with a closer look at why 98% accuracy can hide poor minority-class recall."
+  url: /projects/modeling/smartphone-analytics/
+  figure: /assets/img/research/smartphone-evaluation.svg
+- title: "Wind–Solar–Storage Coordination"
+  number: "02"
+  year: "2024"
+  event: "Electrician Cup"
+  discipline: "Energy systems"
+  summary: "A three-park comparison of renewable curtailment and supply cost, progressing from a common battery to park-specific sizing and joint operation."
+  url: /projects/modeling/microgrid-storage/
+  figure: /assets/img/research/energy-dispatch.svg
+- title: "Bench-Dragon Procession Dynamics"
+  number: "03"
+  year: "2024"
+  event: "CUMCM"
+  discipline: "Computational geometry"
+  summary: "Five connected tasks for a 223-segment procession: position, collision, spiral pitch, turning geometry, and the speed of the full linked chain."
+  url: /projects/modeling/bench-dragon/
+  figure: /assets/img/research/dragon-initialization.svg
+- title: "Submersible Search under Uncertainty"
+  number: "04"
+  year: "2024"
+  event: "MCM / ICM"
+  discipline: "Stochastic modeling"
+  summary: "From 1,000 modeled drift realizations to spatial uncertainty and equipment comparison—showing how a change in priorities changes the ranking."
+  url: /projects/modeling/submersible-search/
+  figure: /assets/img/research/submersible-ranking.svg
+- title: "A Two-Stage Brain Mechanics Model"
+  number: "05"
+  year: "2024"
+  event: "Certification Cup"
+  discipline: "Computational biomechanics"
+  summary: "Two stages of idealized mechanics, connecting material and boundary assumptions with illustrative displacement results for solid and fluid inclusion scenarios."
+  url: /projects/modeling/brain-biomechanics/
+  figure: /assets/img/research/brain-displacement.svg
+- title: "Steel-Plate Cutting Path Planning"
+  number: "06"
+  year: "2024"
+  event: "May Day Modeling"
+  discipline: "Graph optimization"
+  summary: "Four cutting layouts connect Eulerian reasoning with geometric entry points. A route-length decomposition explains where non-cutting travel accumulates."
+  url: /projects/modeling/cutting-paths/
+  figure: /assets/img/research/cutting-travel.svg
+- title: "Constrained Geometric Simulation"
+  number: "07"
+  year: "2025"
+  event: "CUMCM"
+  discipline: "Numerical optimization"
+  summary: "A non-operational research reflection on geometric abstraction, constrained numerical search, and the distinction between computation and validation."
+  url: /projects/modeling/constrained-simulation/
+  figure: /assets/img/research/visibility-methods.svg

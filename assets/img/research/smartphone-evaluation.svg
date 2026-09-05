@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" role="img" aria-labelledby="title desc">
+  <title id="title">Class imbalance and class-specific recall</title>
+  <desc id="desc">
+    The report lists 27,058,692 other-class records and 536,486 app-a records. Their shares are 98.06 and 1.94 percent. Reported recall is 1.00 and
+    0.00 respectively, despite overall accuracy near 98 percent. Individual usage data are not shown.
+  </desc>
+  <rect width="1000" height="580" fill="#fff" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="45" font-size="17" fill="#5a6677">CLASSIFICATION UNDER IMBALANCE</text>
+    <text x="42" y="87" font-size="29" fill="#122034">What the overall score does not show</text>
+    <text x="42" y="121" font-size="18" fill="#5a6677">Final-round classification report · app a versus other app classes</text>
+    <text x="56" y="173" font-size="22" fill="#122034">a Evaluation class balance</text>
+    <rect x="61" y="228" width="347.11778151965535" height="60" fill="#234563" />
+    <rect x="408.11778151965535" y="228" width="6.882218480344646" height="60" fill="#c47a46" />
+    <text x="62" y="327" font-size="21" fill="#234563">98.06% Other classes</text>
+    <text x="62" y="367" font-size="21" fill="#c47a46">1.94% App a</text>
+    <text x="62" y="418" font-size="17" fill="#5a6677">27,595,178 evaluation records</text>
+    <text x="521" y="173" font-size="22" fill="#122034">b Class-specific recall</text>
+    <line x1="676" y1="208" x2="676" y2="418" stroke="#dce3ea" stroke-width="1" />
+    <text x="676" y="450" font-size="17" fill="#5a6677" text-anchor="middle">0</text>
+    <line x1="736.5" y1="208" x2="736.5" y2="418" stroke="#dce3ea" stroke-width="1" />
+    <text x="736.5" y="450" font-size="17" fill="#5a6677" text-anchor="middle">25</text>
+    <line x1="797" y1="208" x2="797" y2="418" stroke="#dce3ea" stroke-width="1" />
+    <text x="797" y="450" font-size="17" fill="#5a6677" text-anchor="middle">50</text>
+    <line x1="857.5" y1="208" x2="857.5" y2="418" stroke="#dce3ea" stroke-width="1" />
+    <text x="857.5" y="450" font-size="17" fill="#5a6677" text-anchor="middle">75</text>
+    <line x1="918" y1="208" x2="918" y2="418" stroke="#dce3ea" stroke-width="1" />
+    <text x="918" y="450" font-size="17" fill="#5a6677" text-anchor="middle">100</text>
+    <text x="653" y="262" font-size="18" fill="#5a6677" text-anchor="end">Other classes</text>
+    <line x1="676" y1="256" x2="918" y2="256" stroke="#234563" stroke-width="3" />
+    <circle cx="918" cy="256" r="7" fill="#234563" />
+    <text x="653" y="366" font-size="18" fill="#5a6677" text-anchor="end">App a</text>
+    <line x1="676" y1="360" x2="676" y2="360" stroke="#c47a46" stroke-width="3" />
+    <circle cx="676" cy="360" r="7" fill="#c47a46" />
+    <text x="796" y="487" font-size="18" fill="#5a6677" text-anchor="middle">Recall (%)</text>
+    <line x1="42" y1="516" x2="958" y2="516" stroke="#dce3ea" stroke-width="1" />
+    <text x="42" y="550" font-size="17" fill="#5a6677">Recall values are rounded as in the report; overall accuracy is approximately 98%.</text>
+  </g>
+</svg>
