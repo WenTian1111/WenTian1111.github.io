@@ -21,6 +21,21 @@ description: Han YANG · Animal Science, Applied Mathematics, and an emerging re
   <button type="button" class="hy-button hy-button-secondary hy-print-button" onclick="window.print()">Print / save PDF</button>
 </div>
 
+<section class="hy-cv-downloads" aria-label="Downloadable curricula vitae">
+  <a class="hy-cv-download" href="{{ '/assets/pdf/han-yang-academic-cv.pdf' | relative_url }}" target="_blank" rel="noopener" type="application/pdf" aria-label="Open Academic CV, English PDF, 2 pages, in a new tab">
+    <span class="hy-label">English · Academic</span>
+    <span class="hy-cv-download-title">Academic CV <span aria-hidden="true">↗</span></span>
+    <span class="hy-cv-download-detail">Research, education & selected achievements</span>
+    <span class="hy-cv-file">PDF · 2 pages</span>
+  </a>
+  <a class="hy-cv-download" href="{{ '/assets/pdf/han-yang-resume-zh.pdf' | relative_url }}" target="_blank" rel="noopener" type="application/pdf" aria-label="Open Chinese résumé, PDF, 2 pages, in a new tab">
+    <span class="hy-label">中文 · Professional</span>
+    <span class="hy-cv-download-title"><span lang="zh-CN">中文简历</span> <span aria-hidden="true">↗</span></span>
+    <span class="hy-cv-download-detail" lang="zh-CN">教育背景、科研经历与专业实践</span>
+    <span class="hy-cv-file">PDF · 2 pages</span>
+  </a>
+</section>
+
 <nav class="hy-section-nav" aria-label="CV sections">
   <a href="#education">Education</a><a href="#projects">Research</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#awards">Awards</a><a href="#skills">Skills</a>
 </nav>
@@ -58,7 +73,7 @@ description: Han YANG · Animal Science, Applied Mathematics, and an emerging re
         </article>
       {% endfor %}
       {% if section_name == 'Projects' %}<a class="hy-all-work" href="{{ '/projects/' | relative_url }}">Read illustrated project accounts <span aria-hidden="true">→</span></a>{% endif %}
-      {% if section_name == 'Awards' %}<a class="hy-all-work" href="{{ '/certificates/' | relative_url }}">Full awards and certifications record <span aria-hidden="true">→</span></a>{% endif %}
+      {% if section_name == 'Awards' %}<a class="hy-all-work" href="{{ '/certificates/' | relative_url }}">Explore honors, awards & further learning <span aria-hidden="true">→</span></a>{% endif %}
     </div>
   </section>
 {% endfor %}
