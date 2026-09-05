@@ -145,4 +145,3 @@ The study establishes a workflow for relating observable shape to measured motio
 A useful next step is a larger, multi-condition experiment with egg-level holdouts and direct damage measurements. That would test whether the proposed risk grading remains useful outside the original setup.
 
 <p class="hy-source-note">Research record: final undergraduate thesis (May 2026), municipal innovation-training research and completion reports (2026), and the companion application. These materials describe related work using the same experimental series.</p>
-

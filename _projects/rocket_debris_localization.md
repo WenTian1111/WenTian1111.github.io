@@ -135,4 +135,3 @@ Han Yang. “Research on Multi-Object Localization of Rocket Debris.” _Frontie
 [View publications]({{ '/publications/' | relative_url }})
 
 <p class="hy-source-note">Research record: the 24-page manuscript, especially Sections 3 and 5–7. Publication month, issue, and page range follow the journal's publication notice dated December 1, 2024.</p>
-
