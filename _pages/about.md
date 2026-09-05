@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle:
 
@@ -20,7 +20,7 @@ latest_posts:
     <div class="hy-hero-copy">
       <p class="hy-kicker">Philosophy · Mathematical modeling · Data-driven inquiry</p>
       <h1 id="home-title">Han YANG</h1>
-      <p class="hy-role">Incoming M.A. student in Religious Studies at The Chinese University of Hong Kong</p>
+      <p class="hy-role">Admitted to the M.A. in Religious Studies at The Chinese University of Hong Kong · enrollment forthcoming</p>
       <h2>Studying how conceptual frameworks and quantitative models help us understand complex systems.</h2>
       <p class="hy-intro">
         My work brings together Chinese philosophy, mathematical modeling, and empirical research. I am interested in how ideas
@@ -57,7 +57,7 @@ latest_posts:
   <div class="hy-fact-strip" aria-label="Academic snapshot">
     <div><strong>2026</strong><span>B.Sc. Animal Science</span></div>
     <div><strong>Applied Mathematics</strong><span>Undergraduate minor</span></div>
-    <div><strong>3</strong><span>Core research projects</span></div>
+    <div><strong>{{ site.projects | size }}</strong><span>Project collections</span></div>
     <div><strong>1</strong><span>Research publication</span></div>
   </div>
 
@@ -67,7 +67,7 @@ latest_posts:
         <p class="hy-label">Research interests</p>
         <h2 id="research-title">Three connected lines of inquiry</h2>
       </div>
-      <p>Rather than treating the humanities and quantitative science as separate worlds, I use each to sharpen the other.</p>
+      <p>My long-term interests connect philosophical questions about order and change with the practical discipline of building and testing models.</p>
     </header>
 
     <div class="hy-research-grid">
@@ -105,17 +105,13 @@ latest_posts:
         <a class="hy-project-card" href="{{ project.url | relative_url }}">
           <div class="hy-project-media">
             {% if project.img %}
-              <img
-                src="{{ project.img | relative_url }}"
-                alt="Preview for {{ project.title | escape }}"
-                loading="lazy"
-              >
+              <img src="{{ project.img | relative_url }}" alt="{{ project.image_alt | escape }}" loading="lazy" width="640" height="400">
             {% endif %}
           </div>
           <div class="hy-project-copy">
-            <p class="hy-project-type">Selected research</p>
+            <p class="hy-project-type">{{ project.discipline | default: 'Selected research' }}</p>
             <h3>{{ project.title }}</h3>
-            <p>{{ project.description }}</p>
+            <p>{{ project.card_summary | default: project.description }}</p>
             <span>View project <span aria-hidden="true">↗</span></span>
           </div>
         </a>
@@ -137,10 +133,10 @@ latest_posts:
 
     <div class="hy-timeline">
       <article>
-        <span>2026—</span>
+        <span>Admitted</span>
         <div>
           <h3>M.A. in Religious Studies</h3>
-          <p>The Chinese University of Hong Kong · incoming student</p>
+          <p>The Chinese University of Hong Kong · enrollment forthcoming</p>
         </div>
       </article>
       <article>

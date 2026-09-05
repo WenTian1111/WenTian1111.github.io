@@ -5,7 +5,7 @@
     "image": "",
     "email": "2549675208a@gmail.com",
     "phone": "",
-    "summary": "An interdisciplinary researcher bridging animal science, applied mathematics, and computational methods. Admitted to the M.A. in Religious Studies (MARS) programme at The Chinese University of Hong Kong, with entry deferred to 2027. Passionate about applying computational approaches — NLP, complex systems, and mathematical modeling — to the study of classical Chinese philosophy and traditional knowledge systems.",
+    "summary": "B.Sc. graduate in Animal Science with a minor in Applied Mathematics from Southwest University. My experience spans machine vision, experimental analysis, and mathematical modeling. Admitted to the M.A. in Religious Studies at The Chinese University of Hong Kong, with enrollment forthcoming. My current interests include Chinese philosophy and the use of computational methods in the humanities.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -52,6 +52,12 @@
   ],
   "volunteer": [],
   "education": [
+    {
+      "institution": "The Chinese University of Hong Kong",
+      "area": "Religious Studies",
+      "studyType": "M.A.",
+      "highlights": ["Admitted; enrollment forthcoming"]
+    },
     {
       "institution": "Southwest University (211 & Double First-Class)",
       "location": "Chongqing, China",
