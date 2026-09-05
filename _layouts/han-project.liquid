@@ -24,7 +24,7 @@ layout: default
     </div>
   </dl>
 
-  {% if page.demo or page.publication %}
+  {% if page.demo or page.publication or page.source_code %}
     <nav class="hy-case-links" aria-label="Project resources">
       {% if page.demo -%}
         <a class="hy-button hy-button-primary" href="{{ page.demo }}">Open live application <span aria-hidden="true">↗</span></a>
@@ -32,7 +32,18 @@ layout: default
       {% if page.publication -%}
         <a class="hy-button hy-button-secondary" href="{{ '/publications/' | relative_url }}">Publication details</a>
       {%- endif %}
+      {% if page.source_code -%}
+        <a class="hy-button hy-button-secondary" href="{{ page.source_code }}">Public code <span aria-hidden="true">↗</span></a>
+      {%- endif %}
       <a class="hy-text-link" href="mailto:{{ site.data.socials.email }}">Discuss this project <span aria-hidden="true">↗</span></a>
+    </nav>
+  {% endif %}
+
+  {% if page.contents %}
+    <nav class="hy-section-nav hy-case-nav" aria-label="On this page">
+      {% for section in page.contents -%}
+        <a href="#{{ section.id }}">{{ section.label }}</a>
+      {%- endfor %}
     </nav>
   {% endif %}
 
@@ -52,3 +63,4 @@ layout: default
     </div>
   </nav>
 </article>
+
