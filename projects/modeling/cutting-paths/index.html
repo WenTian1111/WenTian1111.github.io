@@ -1,0 +1,165 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Steel-Plate Cutting Path Planning | Han YANG </title> <meta name="author" content="Han YANG"> <meta name="description" content="A geometric treatment of connected contours, separate components, and the travel needed to move between them."> <meta name="keywords" content="Han Yang, Chinese philosophy, mathematical modeling, machine vision, digital humanities"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%93%96&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://wentian1111.github.io/projects/modeling/cutting-paths/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> <link rel="stylesheet" href="/assets/css/han-site.css?v=f0b101217084a90093badfe99ff9a7d1"> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Han YANG </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">About </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">Projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">Publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item "> <a class="nav-link" href="/certificates/">Awards </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <article class="hy-page hy-case-study"> <a class="hy-back-link" href="/projects/math_modeling_series/"><span aria-hidden="true">←</span> All modeling studies</a> <header class="hy-page-header"> <p class="hy-label">Graph optimization · 2024</p> <h1>Steel-Plate Cutting Path Planning</h1> <p class="hy-page-intro">How can a tool visit every contour while reducing non-cutting travel?</p> </header> <dl class="hy-project-facts"> <div> <dt>My role</dt> <dd>Independent researcher — modeling, implementation, analysis, and writing</dd> </div> <div> <dt>Approach</dt> <dd>Eulerian reasoning, greedy construction, parametric geometry</dd> </div> <div> <dt>Outcome</dt> <dd>May Day Modeling · 2024 · competition manuscript</dd> </div> </dl> <nav class="hy-section-nav hy-case-nav" aria-label="On this page"> <a href="#abstract">Abstract</a><a href="#method">Model design</a><a href="#findings">Results</a><a href="#discussion">Discussion</a> </nav> <div class="hy-prose"> <h2 id="abstract">Abstract</h2> <p>Cutting time is not determined solely by the length of the required contours. A tool must also travel between components without cutting. This study separates those two forms of movement and investigates how graph structure and geometric entry points affect the non-cutting portion of a route.</p> <p>The four supplied layouts develop the question progressively: first a connected contour arrangement, then separate circular and elliptical components, followed by additional internal rectangular parts. The work combines a topological question—whether a continuous traversal exists—with a geometric one—where to enter, leave, and connect the contours.</p> <aside class="hy-study-insight" aria-label="Study takeaway"> <p class="hy-label">In brief</p> <p>Continuous traversal and minimum travel are different goals. Graph structure helps organize the cutting sequence; geometric entry points determine the additional movement between components.</p> </aside> <figure class="hy-research-figure"> <div class="hy-figure-canvas" tabindex="0" role="region" aria-label="Scrollable contour and route diagram"><img src="/assets/img/research/cutting-methods.svg" alt="Connected contours and links between separate components. Solid teal lines represent cutting; dashed ochre connections represent non-cutting motion. Schematic geometry, not a claimed optimum." loading="lazy" width="1000" height="580"></div> <figcaption><span>Figure 1.</span> Connected contours and links between separate components. Solid teal lines represent cutting; dashed ochre connections represent non-cutting motion. Schematic geometry, not a claimed optimum.</figcaption> </figure> <h2 id="method">Model design</h2> <h3 id="define-what-the-objective-counts">Define what the objective counts</h3> <p>The competition defines idle travel as movement in the horizontal plane that does not cut material; vertical lifting is excluded. Each layout uses the specified lower-right starting point. The reported objective is therefore not total cutting time, total contour length, or a complete machine-cycle cost. All lengths shown here retain the source drawing’s units, without assuming millimetres or centimetres.</p> <p>This definition separates the contour segments that must be cut from the extra connections used to reach them. Figure 1 shows that distinction schematically: solid lines represent cutting, while dashed links represent non-cutting movement. The drawing explains the model structure and is not a scaled manufacturing plan.</p> <h3 id="use-connectivity-before-optimizing-distances">Use connectivity before optimizing distances</h3> <p>For connected layouts, I used Eulerian reasoning to examine the possibility of traversing the required edges continuously. Once components are disconnected, that traversal question no longer determines the whole route. The calculation must also choose links, component order, and suitable entry points.</p> <p>The manuscript uses greedy route construction for these choices, supported by planar geometry. This offers a workable candidate construction, but a locally short next connection need not produce the shortest complete route. The graph and geometric parts of the problem must therefore be interpreted together.</p> <h3 id="parameterize-curved-boundaries">Parameterize curved boundaries</h3> <p>For the elliptical component, candidate entry locations are expressed through an ellipse parameter, and their approach distances are evaluated geometrically. The manuscript uses MATLAB calculations to search this parameterized problem, alongside geometric drawings of the selected routes. In the second layout, it reports an ellipse parameter of approximately 1.1552 radians and an approach contribution of 15.5535 drawing units.</p> <p>The third layout adds twelve symmetric rectangular parts within the ellipse. Its construction includes the preceding approach, an additional connector, and travel associated with the internal rectangles. The fourth layout instead considers a different internal arrangement with four rectangular parts and a bridging construction. These are distinct geometric cases, not successive benchmark runs on an unchanged instance.</p> <h2 id="findings">Selected results</h2> <figure class="hy-research-figure"> <div class="hy-figure-canvas" tabindex="0" role="region" aria-label="Scrollable research result figure"><img src="/assets/img/research/cutting-travel.svg" alt="Decomposition of the third layout's reported non-cutting route length. Values are in the source drawing's units. This displays the paper's construction and does not establish a globally optimal route." loading="lazy" width="1000" height="580"></div> <figcaption><span>Figure 2.</span> Decomposition of the third layout's reported non-cutting route length. Values are in the source drawing's units. This displays the paper's construction and does not establish a globally optimal route.</figcaption> </figure> <h3 id="interpreting-the-route-length-decomposition">Interpreting the route-length decomposition</h3> <p>The result figure focuses on the third layout because the reported total can be broken into interpretable contributions. The preceding approach accounts for approximately 31.55 drawing units, the additional link for 6.1406, and the internal rectangular travel for 44. Their sum is 81.6906, reported as 81.69 after rounding. Figure 2 displays this accounting as a cumulative route-length decomposition rather than an unexplained total.</p> <p>The internal-rectangle contribution is the largest component in that construction. This helps identify where the reported route spends its idle distance; it does not prove that the same contribution could be removed while preserving feasibility. Nor is the 31.55-unit component a baseline algorithm against which an improvement percentage should be calculated.</p> <h3 id="four-layouts-four-different-questions">Four layouts, four different questions</h3> <p>Across the four tasks, the manuscript reports idle-travel lengths of approximately 64.03, 31.55, 81.69, and 47.55 drawing units. The second total combines the elliptical approach with the circular-component contribution. The third and fourth reflect different internal arrangements. A lower total between tasks cannot establish a better algorithm when the geometry and required operations have changed.</p> <p>The central result is the construction of routes that connect contour topology with explicit geometric choices. The decomposition makes that reasoning inspectable while avoiding an unsupported claim of global optimality.</p> <h2 id="discussion">Discussion</h2> <p>A greedy construction is not, by itself, proof of a globally shortest route. A useful continuation would compare complete routes for the same layout against an exact or exhaustive small-instance baseline. Each candidate would need to satisfy the same contour, starting-point, and bridging requirements before its length could be meaningfully compared.</p> <p>For a manufacturing application, the objective would also need to account for kerf, cut order, thermal effects, and part stability, as well as motion excluded by the competition’s idle-travel definition. Those extensions were not validated in this study. The portfolio presents the submitted geometric reasoning and selected route accounting, not a machine-ready cutting program.</p> <p class="hy-source-note">Research record: May Day Mathematical Modeling competition manuscript, 2024. Original study: <em>Steel-plate cutting modeling using an improved greedy algorithm based on Euler's theorem</em>. Independently developed by Han Yang.</p> </div> <nav class="hy-related" aria-label="More research projects"> <p class="hy-label">Continue exploring</p> <div class="hy-related-grid"> <a href="/projects/egg_dynamics_analysis/"><span>Machine vision</span><strong>Egg Rolling Analysis &amp; Risk Sorting</strong><span aria-hidden="true">→</span></a> <a href="/projects/rocket_debris_localization/"><span>Geometric modeling</span><strong>Multi-Object Localization of Rocket Debris</strong><span aria-hidden="true">→</span></a> <a href="/projects/math_modeling_series/"><span>Applied mathematics</span><strong>Applied Mathematical Modeling</strong><span aria-hidden="true">→</span></a> </div> </nav> </article> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Han YANG. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://WenTian1111.github.io" target="_blank">Han YANG</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "About",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-projects",
+          title: "Projects",
+          description: "Experimental studies and mathematical models, with the questions, methods, and contributions behind each project.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-publications",
+          title: "Publications",
+          description: "Published work and a design patent application.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "Han YANG · Animal Science, Applied Mathematics, and an emerging research interest in Chinese philosophy.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "nav-awards",
+          title: "Awards",
+          description: "Scholarships, competition results, and additional training recorded during my undergraduate years.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/certificates/";
+          },
+        },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
+        
+          title: 'Google Gemini updates: Flash 1.5, Gemma 2 and Project Astra <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "We’re sharing updates across our Gemini family of models and a glimpse of Project Astra, our vision for the future of AI assistants.",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/", "_blank");
+          
+        },
+      },{id: "post-displaying-external-posts-on-your-al-folio-blog",
+        
+          title: 'Displaying External Posts on Your al-folio Blog <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://medium.com/@al-folio/displaying-external-posts-on-your-al-folio-blog-b60a1d241a0a?source=rss-17feae71c3c4------2", "_blank");
+          
+        },
+      },{id: "news-national-first-prize-chinese-mathematics-competitions-cmc",
+          title: 'National First Prize, Chinese Mathematics Competitions (CMC).',
+          description: "",
+          section: "News",},{id: "news-published-personal-mathematics-competition-experience-on-netease-news-originally-featured-on-the-official-national-competition-website-achieving-14-000-views",
+          title: 'Published personal mathematics competition experience on NetEase News. Originally featured on the official...',
+          description: "",
+          section: "News",},{id: "news-beijing-challenge-group-annual-scholarship-top-0-25",
+          title: 'Beijing Challenge Group Annual Scholarship (Top 0.25%).',
+          description: "",
+          section: "News",},{id: "news-southwest-university-first-class-scholarship-top-3",
+          title: 'Southwest University First-Class Scholarship (Top 3%).',
+          description: "",
+          section: "News",},{id: "news-southwest-university-academic-science-and-technology-award-top-2",
+          title: 'Southwest University Academic Science and Technology Award (Top 2%).',
+          description: "",
+          section: "News",},{id: "news-advanced-individual-for-summer-three-goes-to-the-countryside-social-practice-activity",
+          title: 'Advanced Individual for Summer “Three Goes to the Countryside” Social Practice Activity.',
+          description: "",
+          section: "News",},{id: "news-national-first-prize-certification-cup-mathematical-modeling-network-challenge",
+          title: 'National First Prize, “Certification Cup” Mathematical Modeling Network Challenge.',
+          description: "",
+          section: "News",},{id: "news-chongqing-advanced-individual-for-innovation-ability-enhancement-top-0-09-awarded-in-the-shortest-time-based-on-freshman-year-performance",
+          title: 'Chongqing Advanced Individual for Innovation Ability Enhancement (Top 0.09%). Awarded in the shortest...',
+          description: "",
+          section: "News",},{id: "news-provincial-first-prize-china-undergraduate-mathematical-contest-in-modeling-cumcm",
+          title: 'Provincial First Prize, China Undergraduate Mathematical Contest in Modeling (CUMCM).',
+          description: "",
+          section: "News",},{id: "news-southwest-university-diligent-endeavor-scholarship-top-2",
+          title: 'Southwest University Diligent Endeavor Scholarship (Top 2%).',
+          description: "",
+          section: "News",},{id: "news-vtr-bio-tech-scholarship-top-0-08-only-one-undergraduate-and-one-postgraduate-recipient-in-the-faculty",
+          title: 'VTR Bio-Tech Scholarship (Top 0.08%). Only one undergraduate and one postgraduate recipient in...',
+          description: "",
+          section: "News",},{id: "projects-egg-rolling-analysis-amp-risk-sorting",
+          title: 'Egg Rolling Analysis &amp;amp; Risk Sorting',
+          description: "An undergraduate thesis and provincial innovation project connecting egg morphology, rolling experiments, interpretable risk grading, and an interactive prediction application.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/egg_dynamics_analysis/";
+            },},{id: "projects-applied-mathematical-modeling",
+          title: 'Applied Mathematical Modeling',
+          description: "Seven independent competition studies across data science, energy systems, geometry, uncertainty, and computational mechanics.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/math_modeling_series/";
+            },},{id: "projects-multi-object-localization-of-rocket-debris",
+          title: 'Multi-Object Localization of Rocket Debris',
+          description: "A numerical study of sonic-boom source localization, joint position–time estimation, multi-signal matching, and sensitivity to recording errors.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/rocket_debris_localization/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%32%35%34%39%36%37%35%32%30%38%61@%67%6D%61%69%6C.%63%6F%6D", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/WenTian1111", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>

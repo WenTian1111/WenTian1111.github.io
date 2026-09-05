@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" role="img" aria-labelledby="title desc">
+  <title id="title">Cutting contours and non-cutting connections</title>
+  <desc id="desc">
+    Conceptual geometry illustrates Eulerian reasoning for connected contours and linking travel between separate components. This is not a
+    reproduction of an optimized path or a scaled manufacturing drawing.
+  </desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7" fill="none" stroke="#0f766e" stroke-width="1.2" />
+    </marker>
+  </defs>
+  <rect width="1000" height="580" fill="#fff" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="45" font-size="17" fill="#5a6677">GEOMETRIC PATH PLANNING</text>
+    <text x="42" y="87" font-size="29" fill="#122034">Separate cutting from non-cutting motion</text>
+    <text x="49" y="147" font-size="22" fill="#122034">a Connected contours</text>
+    <text x="548" y="147" font-size="22" fill="#122034">b Separate components</text>
+    <polyline points="85,390 205,200 325,390 85,390 205,465 325,390 415,257 205,200" fill="none" stroke="#0f766e" stroke-width="3" />
+    <circle cx="85" cy="390" r="6" fill="#234563" />
+    <circle cx="205" cy="200" r="6" fill="#234563" />
+    <circle cx="325" cy="390" r="6" fill="#234563" />
+    <circle cx="205" cy="465" r="6" fill="#234563" />
+    <circle cx="415" cy="257" r="6" fill="#234563" />
+    <ellipse cx="744" cy="323" rx="166" ry="121" fill="none" stroke="#0f766e" stroke-width="3" />
+    <ellipse cx="657" cy="264" rx="33" ry="33" fill="none" stroke="#0f766e" stroke-width="3" />
+    <ellipse cx="834" cy="264" rx="33" ry="33" fill="none" stroke="#0f766e" stroke-width="3" />
+    <ellipse cx="657" cy="380" rx="33" ry="33" fill="none" stroke="#0f766e" stroke-width="3" />
+    <ellipse cx="834" cy="380" rx="33" ry="33" fill="none" stroke="#0f766e" stroke-width="3" />
+    <line x1="910" y1="323" x2="867" y2="264" stroke="#c47a46" stroke-width="2" stroke-dasharray="7 5" />
+    <line x1="801" y1="264" x2="690" y2="264" stroke="#c47a46" stroke-width="2" stroke-dasharray="7 5" />
+    <line x1="657" y1="297" x2="657" y2="347" stroke="#c47a46" stroke-width="2" stroke-dasharray="7 5" />
+    <line x1="690" y1="380" x2="801" y2="380" stroke="#c47a46" stroke-width="2" stroke-dasharray="7 5" />
+    <text x="245" y="511" font-size="19" fill="#5a6677" text-anchor="middle">Eulerian reasoning</text>
+    <text x="744" y="511" font-size="19" fill="#5a6677" text-anchor="middle">Bridge selection and contour order</text>
+    <text x="48" y="552" font-size="17" fill="#5a6677">Schematic geometry · teal: cutting contours · ochre dashes: non-cutting travel</text>
+  </g>
+</svg>

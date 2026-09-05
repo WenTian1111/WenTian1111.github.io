@@ -1,0 +1,165 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Constrained Geometric Simulation | Han YANG </title> <meta name="author" content="Han YANG"> <meta name="description" content="A method-level account of geometric abstraction, constrained objectives, population-based search, and sensitivity review."> <meta name="keywords" content="Han Yang, Chinese philosophy, mathematical modeling, machine vision, digital humanities"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%93%96&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://wentian1111.github.io/projects/modeling/constrained-simulation/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> <link rel="stylesheet" href="/assets/css/han-site.css?v=f0b101217084a90093badfe99ff9a7d1"> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Han YANG </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">About </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">Projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">Publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item "> <a class="nav-link" href="/certificates/">Awards </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <article class="hy-page hy-case-study"> <a class="hy-back-link" href="/projects/math_modeling_series/"><span aria-hidden="true">←</span> All modeling studies</a> <header class="hy-page-header"> <p class="hy-label">Numerical optimization · 2025</p> <h1>Constrained Geometric Simulation</h1> <p class="hy-page-intro">How can a simulation be organized around explicit geometry and feasibility?</p> </header> <dl class="hy-project-facts"> <div> <dt>My role</dt> <dd>Independent researcher — modeling, implementation, analysis, and writing</dd> </div> <div> <dt>Approach</dt> <dd>Geometric abstraction, constrained numerical search, sensitivity analysis</dd> </div> <div> <dt>Outcome</dt> <dd>CUMCM · 2025 · competition manuscript</dd> </div> </dl> <nav class="hy-section-nav hy-case-nav" aria-label="On this page"> <a href="#abstract">Abstract</a><a href="#method">Study structure</a><a href="#findings">Research reflection</a><a href="#discussion">Discussion</a> </nav> <div class="hy-prose"> <h2 id="abstract">Abstract</h2> <p>This competition project studies how to translate a scenario into a numerical model with explicit geometric assumptions and feasibility checks. It connects simulation and optimization, treating the interpretation of an objective as part of the modeling task rather than a detail to add after the search.</p> <p>The original scenario concerns a defensive military application. This public research note therefore focuses on general mathematical concepts and the interpretation of computational evidence. It is a methodological account, not a reproduction of the application model or its optimized settings.</p> <aside class="hy-study-insight" aria-label="Study takeaway"> <p class="hy-label">In brief</p> <p>A numerical search result is conditional on its model. The transferable lesson is to distinguish a computed score, satisfaction of stated constraints, and evidence that a model represents reality.</p> </aside> <figure class="hy-research-figure"> <div class="hy-figure-canvas" tabindex="0" role="region" aria-label="Scrollable general modeling diagram"><img src="/assets/img/research/visibility-methods.svg" alt="A non-operational overview of the numerical modeling process. No deployment parameters or optimized trajectories are shown." loading="lazy" width="1000" height="580"></div> <figcaption><span>Figure 1.</span> A non-operational overview of the numerical modeling process. No deployment parameters or optimized trajectories are shown.</figcaption> </figure> <h2 id="method">Study structure</h2> <h3 id="representation-and-assumptions">Representation and assumptions</h3> <p>The manuscript develops a geometric abstraction of its scenario and formulates a constrained numerical objective. At the general mathematical level, this requires distinguishing fixed assumptions, quantities represented by the model, and the quantity being evaluated. The public summary retains those conceptual distinctions without reproducing application-specific formulas or decision variables.</p> <h3 id="simulation-and-numerical-search">Simulation and numerical search</h3> <p>The submitted work uses population-based optimization, identified in the manuscript as particle-swarm optimization. Simulation and optimization play different conceptual roles: simulation evaluates a modeled situation, while optimization compares candidate outcomes within a stated formulation. The method name alone does not establish accuracy, convergence, or a globally optimal result.</p> <p>Figure 1 summarizes this organization at a non-operational level. It is a conceptual diagram, not an empirical convergence curve, a reproduced simulation output, or a newly run experiment. No numerical settings or implementation details from the application are included.</p> <h2 id="findings">Research reflection</h2> <h3 id="what-a-computed-result-means">What a computed result means</h3> <p>The transferable contribution is the organization of the calculation: make assumptions visible, state what is evaluated, recognize the role of constraints, and interpret the result within that scope. A high objective value and satisfaction of modeled constraints answer different questions. Neither, on its own, establishes how the result would translate to the physical world.</p> <p>This distinction also separates verification from validation. Verification concerns whether a calculation follows its mathematical specification; validation concerns whether the model is supported by evidence about the phenomenon it represents. This page does not claim field validation, a certified optimum, or a new numerical performance result.</p> <h3 id="documenting-a-modeling-study">Documenting a modeling study</h3> <p>The project provides a record of independently connecting abstraction, mathematical formulation, computation, and written analysis in a competition setting. In this portfolio, the emphasis is on explaining that chain of reasoning and its evidential limits. The account is intentionally narrower than the original manuscript: it presents general modeling literacy without turning the source material into an operational guide.</p> <h2 id="discussion">Discussion</h2> <p>The interpretation of any simulation is conditional on its assumptions, numerical approximations, and available evidence. Sensitivity and repeatability are relevant concepts, but this page does not introduce new application-specific tests, improved strategies, or performance claims. The figure should be read as an explanation of the study’s structure only.</p> <p>Operational trajectories, deployment settings, timing schedules, and implementation code are not reproduced. The public account remains limited to high-level mathematical methods and research reflection, with no claim of field validation.</p> <p class="hy-source-note">Research record: Submitted CUMCM competition manuscript, 2025, summarized at the level of general mathematical methods. Original study: <em>Multi-objective simulation design using particle-swarm optimization</em>. Independently developed by Han Yang.</p> </div> <nav class="hy-related" aria-label="More research projects"> <p class="hy-label">Continue exploring</p> <div class="hy-related-grid"> <a href="/projects/egg_dynamics_analysis/"><span>Machine vision</span><strong>Egg Rolling Analysis &amp; Risk Sorting</strong><span aria-hidden="true">→</span></a> <a href="/projects/rocket_debris_localization/"><span>Geometric modeling</span><strong>Multi-Object Localization of Rocket Debris</strong><span aria-hidden="true">→</span></a> <a href="/projects/math_modeling_series/"><span>Applied mathematics</span><strong>Applied Mathematical Modeling</strong><span aria-hidden="true">→</span></a> </div> </nav> </article> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Han YANG. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://WenTian1111.github.io" target="_blank">Han YANG</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "About",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-projects",
+          title: "Projects",
+          description: "Experimental studies and mathematical models, with the questions, methods, and contributions behind each project.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-publications",
+          title: "Publications",
+          description: "Published work and a design patent application.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "Han YANG · Animal Science, Applied Mathematics, and an emerging research interest in Chinese philosophy.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "nav-awards",
+          title: "Awards",
+          description: "Scholarships, competition results, and additional training recorded during my undergraduate years.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/certificates/";
+          },
+        },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
+        
+          title: 'Google Gemini updates: Flash 1.5, Gemma 2 and Project Astra <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "We’re sharing updates across our Gemini family of models and a glimpse of Project Astra, our vision for the future of AI assistants.",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/", "_blank");
+          
+        },
+      },{id: "post-displaying-external-posts-on-your-al-folio-blog",
+        
+          title: 'Displaying External Posts on Your al-folio Blog <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://medium.com/@al-folio/displaying-external-posts-on-your-al-folio-blog-b60a1d241a0a?source=rss-17feae71c3c4------2", "_blank");
+          
+        },
+      },{id: "news-national-first-prize-chinese-mathematics-competitions-cmc",
+          title: 'National First Prize, Chinese Mathematics Competitions (CMC).',
+          description: "",
+          section: "News",},{id: "news-published-personal-mathematics-competition-experience-on-netease-news-originally-featured-on-the-official-national-competition-website-achieving-14-000-views",
+          title: 'Published personal mathematics competition experience on NetEase News. Originally featured on the official...',
+          description: "",
+          section: "News",},{id: "news-beijing-challenge-group-annual-scholarship-top-0-25",
+          title: 'Beijing Challenge Group Annual Scholarship (Top 0.25%).',
+          description: "",
+          section: "News",},{id: "news-southwest-university-first-class-scholarship-top-3",
+          title: 'Southwest University First-Class Scholarship (Top 3%).',
+          description: "",
+          section: "News",},{id: "news-southwest-university-academic-science-and-technology-award-top-2",
+          title: 'Southwest University Academic Science and Technology Award (Top 2%).',
+          description: "",
+          section: "News",},{id: "news-advanced-individual-for-summer-three-goes-to-the-countryside-social-practice-activity",
+          title: 'Advanced Individual for Summer “Three Goes to the Countryside” Social Practice Activity.',
+          description: "",
+          section: "News",},{id: "news-national-first-prize-certification-cup-mathematical-modeling-network-challenge",
+          title: 'National First Prize, “Certification Cup” Mathematical Modeling Network Challenge.',
+          description: "",
+          section: "News",},{id: "news-chongqing-advanced-individual-for-innovation-ability-enhancement-top-0-09-awarded-in-the-shortest-time-based-on-freshman-year-performance",
+          title: 'Chongqing Advanced Individual for Innovation Ability Enhancement (Top 0.09%). Awarded in the shortest...',
+          description: "",
+          section: "News",},{id: "news-provincial-first-prize-china-undergraduate-mathematical-contest-in-modeling-cumcm",
+          title: 'Provincial First Prize, China Undergraduate Mathematical Contest in Modeling (CUMCM).',
+          description: "",
+          section: "News",},{id: "news-southwest-university-diligent-endeavor-scholarship-top-2",
+          title: 'Southwest University Diligent Endeavor Scholarship (Top 2%).',
+          description: "",
+          section: "News",},{id: "news-vtr-bio-tech-scholarship-top-0-08-only-one-undergraduate-and-one-postgraduate-recipient-in-the-faculty",
+          title: 'VTR Bio-Tech Scholarship (Top 0.08%). Only one undergraduate and one postgraduate recipient in...',
+          description: "",
+          section: "News",},{id: "projects-egg-rolling-analysis-amp-risk-sorting",
+          title: 'Egg Rolling Analysis &amp;amp; Risk Sorting',
+          description: "An undergraduate thesis and provincial innovation project connecting egg morphology, rolling experiments, interpretable risk grading, and an interactive prediction application.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/egg_dynamics_analysis/";
+            },},{id: "projects-applied-mathematical-modeling",
+          title: 'Applied Mathematical Modeling',
+          description: "Seven independent competition studies across data science, energy systems, geometry, uncertainty, and computational mechanics.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/math_modeling_series/";
+            },},{id: "projects-multi-object-localization-of-rocket-debris",
+          title: 'Multi-Object Localization of Rocket Debris',
+          description: "A numerical study of sonic-boom source localization, joint position–time estimation, multi-signal matching, and sensitivity to recording errors.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/rocket_debris_localization/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%32%35%34%39%36%37%35%32%30%38%61@%67%6D%61%69%6C.%63%6F%6D", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/WenTian1111", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
