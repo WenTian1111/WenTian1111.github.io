@@ -581,8 +581,8 @@ footer.fixed-bottom {
 }
 
 .hy-home .hy-project-media img {
-  object-fit: contain;
-  padding: 0.65rem;
+  object-fit: cover;
+  padding: 0;
   background: #fff;
 }
 
@@ -665,7 +665,7 @@ footer.fixed-bottom {
   justify-content: center;
   aspect-ratio: 8 / 5;
   overflow: hidden;
-  padding: 1rem;
+  padding: 0;
   border: 1px solid var(--hy-line);
   border-radius: 12px;
   background: #fff;
@@ -675,7 +675,13 @@ footer.fixed-bottom {
   display: block;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.hy-project-thumbnail img[src$=".svg"],
+.hy-home .hy-project-media img[src$=".svg"] {
   object-fit: contain;
+  padding: 0.65rem;
 }
 
 .hy-project-summary .hy-label {
@@ -1307,8 +1313,13 @@ footer.fixed-bottom {
   font-size: 0.875rem;
 }
 
-.hy-award-highlight-lead .hy-award-overline {
+.hy-award-highlight-lead .hy-award-overline,
+.hy-award-highlight-lead .hy-award-overline span {
   color: #a7e0d7;
+}
+
+.hy-award-highlight-lead .hy-award-highlight-detail {
+  color: #e6edf4;
 }
 
 .hy-award-highlight-lead .hy-award-issuer {
