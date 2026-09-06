@@ -1,0 +1,191 @@
+featured:
+  - year: "2024"
+    category: Municipal honor
+    title: Recognition for innovation
+    detail: Chongqing Advanced Individual for Innovation Ability Enhancement
+    issuer: Chongqing Municipal Education Commission
+    chinese: 重庆市普通高校创新能力提升先进个人
+  - year: "2024 · 2025"
+    category: Mathematical modeling
+    title: CUMCM · First Prize
+    detail: First Prize in the Chongqing division in two consecutive years
+    issuer: China Undergraduate Mathematical Contest in Modeling
+    url: /projects/math_modeling_series/
+    link: Explore the modeling portfolio
+  - year: "2024"
+    category: National competition
+    title: Certification Cup · First Prize
+    detail: Stage 2 First Prize · Stage 1 Second Prize
+    issuer: 17th Certification Cup Mathematical Modeling Challenge
+    url: /projects/modeling/brain-biomechanics/
+    link: Read the biomechanics study
+
+honors:
+  - year: "2025"
+    title: VTR Bio-Tech Scholarship
+    chinese: 溢多利奖学金
+    issuer: Southwest University · Guangdong VTR Bio-Tech
+    detail: 2024 award; certificate issued in May 2025.
+  - year: "2024"
+    title: Diligent Endeavor Award
+    chinese: 砥砺奋斗奖
+    issuer: Southwest University
+    detail: Academic year 2023–2024.
+  - year: "2023"
+    title: Challenge Inspirational Scholarship
+    chinese: 挑战励志奖学金
+    issuer: College of Animal Science, Southwest University · Beijing Challenge Group
+    detail: Academic year 2022–2023.
+  - year: "2023"
+    title: First-Class Scholarship
+    chinese: 一等奖学金
+    issuer: Southwest University
+    detail: Academic year 2022–2023.
+  - year: "2023"
+    title: Academic Science & Technology Award
+    chinese: 学术科技奖
+    issuer: Southwest University
+    detail: Academic year 2022–2023.
+  - year: "2023"
+    title: Outstanding Individual in Summer Social Practice
+    chinese: 暑期“三下乡”社会实践活动先进个人
+    issuer: Southwest University
+    detail: Recognition for university summer social practice.
+
+competitions:
+  - id: modeling
+    number: "01"
+    title: Mathematical modeling
+    description: From data analysis and geometric simulation to computational mechanics.
+    entries:
+      - year: "2025"
+        title: China Undergraduate Mathematical Contest in Modeling
+        short: CUMCM
+        result: First Prize
+        scope: Chongqing division · Undergraduate
+        url: /projects/modeling/constrained-simulation/
+        link: Research reflection
+      - year: "2024"
+        title: China Undergraduate Mathematical Contest in Modeling
+        short: CUMCM
+        result: First Prize
+        scope: Chongqing division · Undergraduate
+        url: /projects/modeling/bench-dragon/
+        link: Bench-dragon study
+      - year: "2024"
+        title: 17th Certification Cup Mathematical Modeling Challenge
+        result: First Prize
+        scope: National · Stage 2
+        detail: Also awarded Second Prize in Stage 1.
+        url: /projects/modeling/brain-biomechanics/
+        link: Brain mechanics study
+      - year: "2024"
+        title: 16th Huazhong Cup Mathematical Modeling Challenge
+        result: Third Prize
+        scope: Undergraduate group
+      - year: "2024"
+        title: 21st May Day Mathematical Modeling Competition
+        result: Third Prize
+        scope: Undergraduate group
+        url: /projects/modeling/cutting-paths/
+        link: Cutting-path study
+      - year: "2024"
+        title: 6th Zhongqing Cup Mathematical Modeling Competition
+        result: Second Prize
+        scope: Undergraduate group
+      - year: "2024"
+        title: 16th Southwest University Mathematical Modeling Competition
+        result: Second Prize
+        scope: University competition
+      - year: "2023"
+        title: Dingding Cup Big Data Challenge
+        result: Second Prize
+        scope: Preliminary round · Undergraduate
+        url: /projects/modeling/smartphone-analytics/
+        link: Smartphone analytics study
+  - id: mathematics
+    number: "02"
+    title: Mathematics
+    description: Recognition in mathematical analysis, problem solving, and quantitative reasoning.
+    entries:
+      - year: "2024"
+        title: 5th National Higher Education Mathematics Ability Challenge
+        result: First Prize
+        scope: Preliminary round, third session · Non-mathematics group
+      - year: "2024"
+        title: 2nd Mathematical Innovative Thinking Challenge
+        result: Second Prize
+        scope: Mathematical analysis · University Group A
+      - year: "2024"
+        title: 3rd National University Olympic Mathematics Competition
+        result: Bronze Award
+        scope: Summer session · Mathematics
+      - year: "2024"
+        title: National College Student High-Tech Competition
+        result: Third Prize
+        scope: Mathematics track
+      - year: "2023"
+        title: 14th Chinese Mathematics Competitions
+        short: CMC
+        result: First Prize
+        scope: Non-mathematics group · Chinese Mathematical Society
+        detail: Certificate issued in March 2023.
+      - year: "2022"
+        title: 5th Huashu Cup National University Mathematics Competition
+        result: Third Prize
+        scope: Preliminary round · Non-mathematics group
+  - id: innovation
+    number: "03"
+    title: Innovation & enterprise
+    description: A complementary record in entrepreneurship, sustainability, and career development.
+    entries:
+      - year: "2024"
+        title: 3rd National University Technology Innovation & Entrepreneurship Competition
+        result: First Prize
+        scope: Provincial round
+      - year: "2024"
+        title: 7th Visionary Cup Innovation & Employment Competition
+        result: Third Prize
+        scope: National finals · Undergraduate
+        detail: Second Prize in the national preliminary round.
+      - year: "2024"
+        title: 2nd National College Career Planning Competition
+        result: Bronze Award
+        scope: Southwest University round
+        detail: First Prize in the College of Animal Science growth-track selection.
+      - year: "2023"
+        title: Industry Integration & New Engineering Innovation Competition
+        result: Third Prize
+        scope: Huaxi regional round
+        detail: Shared elderly-care project.
+      - year: "2023"
+        title: 2nd EY ESG University Innovation Challenge
+        result: Third Prize
+        scope: Chongqing · Online preliminary round
+      - year: "2023"
+        title: 1st Ping An Caimeng Cup Financial Literacy Competition
+        result: First Prize
+        scope: Preliminary round
+
+learning:
+  - year: "2024"
+    title: Project Management Essentials Certified
+    subtitle: PMEC
+    provider: Management and Strategy Institute
+    type: Professional development certificate
+  - year: "2024"
+    title: Introduction to Microsoft Excel
+    provider: Coursera Project Network
+    type: Guided project completion
+  - year: "2024"
+    title: AutoCAD 3D training
+    provider: Itronix Solutions
+    type: Third-party training certificate
+  - year: "2024"
+    title: ChatGPT training
+    provider: Itronix Solutions
+    type: Third-party training certificate
+  - year: "2024"
+    title: Low-carbon entrepreneurship
+    provider: China Youth Entrepreneurship and Employment Foundation
+    type: Online course completion · 创青春
