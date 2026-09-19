@@ -56,7 +56,7 @@ latest_posts:
 
   <div class="hy-fact-strip" aria-label="Academic snapshot">
     <div><strong>2026</strong><span>B.Sc. Animal Science</span></div>
-    <div><strong>Applied Mathematics</strong><span>Undergraduate minor</span></div>
+    <div><strong>Applied Mathematics</strong><span>Undergraduate coursework</span></div>
     <div><strong>{{ site.projects | size }}</strong><span>Project collections</span></div>
     <div><strong>1</strong><span>Research publication</span></div>
   </div>
@@ -143,7 +143,7 @@ latest_posts:
         <span>2022–26</span>
         <div>
           <h3>B.Sc. in Animal Science</h3>
-          <p>Southwest University · minor in Applied Mathematics</p>
+          <p>Southwest University · with coursework in Applied Mathematics</p>
         </div>
       </article>
       <article>
