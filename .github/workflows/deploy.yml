@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - "assets/**"
+      - "_scripts/**"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -28,6 +29,7 @@ on:
       - main
     paths:
       - "assets/**"
+      - "_scripts/**"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -89,6 +91,8 @@ jobs:
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Remove unused generated files
+        run: python3 _scripts/prune_site.py _site --apply
       - name: Deploy 🚀
         # Pull requests are built for review and never deployed to GitHub Pages.
         if: github.event_name != 'pull_request'
