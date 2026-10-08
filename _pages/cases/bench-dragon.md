@@ -291,6 +291,7 @@ C_2&=M_2-R_2\hat{\mathbf N},\\
 S=R_1+R_2&=-\frac{\|M_1\|^2}{M_1\cdot\hat{\mathbf N}}.
 \end{aligned}
 \tag{9}
+\]
 </div>
 
 The 2:1 radius condition then determines the selected member. This construction fixes a route for handle centers. It does not establish that every finite-width board or the complete procession remains inside the circular region at all times.
