@@ -1,309 +1,320 @@
 ---
 layout: han-project
-title: "Multibeam Bathymetry & Survey Planning"
-description: "A geometric framework linking three-dimensional sonar coverage to terrain-aware survey-line planning."
+title: Multibeam Bathymetry & Survey Planning
+description: From edge-ray geometry and a three-dimensional orientation model to adaptive
+  survey spacing, explicit coverage evaluation, and independently checked terrain
+  scenarios.
 permalink: /projects/modeling/multibeam-bathymetry/
-discipline: "Computational geometry · Marine surveying"
-period: "2023 study"
-question: "How can a three-dimensional sonar footprint become an efficient survey plan?"
-role: "AI-assisted modeling, numerical analysis, and research synthesis"
-methods: "Ray–surface geometry, effective-slope reduction, adaptive line spacing"
-outcome: "63 survey lines · 315 nautical miles · numerical full coverage"
+discipline: Marine surveying · Computational geometry
+period: 2023 study
+question: How should survey spacing adapt to water depth and terrain while keeping
+  coverage claims numerically and physically explicit?
+role: AI-assisted modeling, numerical analysis, and research synthesis
+methods: Ray–terrain intersection, effective-slope reduction, greedy spacing, interval-union
+  evaluation, candidate and uncertainty analysis
+outcome: 34 ideal-slope lines · 63 terrain lines · 315 NM survey length · independent
+  geometric and coverage checks
 parent_url: /projects/math_modeling_series/
 parent_label: All modeling studies
 contents:
   - label: Abstract
     id: abstract
-  - label: Background
-    id: background
-  - label: Study roadmap
-    id: roadmap
-  - label: Cross-section
-    id: geometry
-  - label: 3D geometry
+  - label: 1. Introduction
+    id: introduction
+  - label: 2. Geometry, inputs and assumptions
+    id: scope
+  - label: 3. Cross-section coverage
+    id: cross-section
+  - label: 4. Three-dimensional survey orientation
     id: heading
-  - label: Ideal slope
+  - label: 5. Ideal-slope planning
     id: ideal-plan
-  - label: Real terrain
-    id: terrain-plan
-  - label: Validation
-    id: validation
-  - label: Discussion
+  - label: 6. Terrain-aware formulation
+    id: terrain
+  - label: 7. Selected terrain plan
+    id: real-plan
+  - label: 8. Candidate selection and boundary effects
+    id: selection
+  - label: 9. Resolution and interpolation
+    id: sensitivity
+  - label: 10. Terrain uncertainty
+    id: uncertainty
+  - label: 11. Independent verification
+    id: verification
+  - label: 12. Discussion and conclusions
     id: discussion
 ---
 
-<style>
-.hy-case-study .hy-equation { overflow-x: auto; font-size: 1.05rem; }
-.hy-case-study .hy-multibeam-zoom { display: block; position: relative; background: #fff; border: 1px solid var(--hy-line); border-radius: 12px; overflow: hidden; }
-.hy-case-study .hy-multibeam-zoom img { display: block; width: 100%; max-width: 100%; height: auto; margin: 0; }
-.hy-case-study .hy-multibeam-zoom-label { display: block; padding: .5rem .85rem; text-align: right; font-size: .8rem; background: var(--hy-surface); color: var(--hy-teal); }
-.hy-case-study .hy-multibeam-zoom:focus-visible { outline: 3px solid var(--hy-teal); outline-offset: 3px; }
-.hy-case-study .hy-stage-map { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; padding: 0; list-style: none; }
-.hy-case-study .hy-stage-map li { padding: 1.05rem; border: 1px solid var(--hy-line); border-radius: 12px; background: var(--hy-surface); }
-.hy-case-study .hy-stage-map strong { display: block; color: var(--hy-teal); margin-bottom: .3rem; }
-.hy-case-study .hy-stage-map a { text-decoration: none; }
-.hy-case-study .hy-stage-map p { font-size: .95rem; margin: 0; }
-@media (max-width: 600px) { .hy-case-study .hy-stage-map { grid-template-columns: 1fr; } }
-</style>
+<link rel="stylesheet" href="{{ '/assets/css/modeling-notes.css' | relative_url }}">
 
 <h2 id="abstract">Abstract</h2>
 
-Multibeam bathymetry measures a strip of seabed on each vessel pass. The strip changes with water depth, seabed slope, and heading, so uniform survey-line spacing can leave shallow areas unmeasured while oversampling deeper water. This study connects an analytical coverage model to a terrain-aware planning algorithm. Ray–plane intersections give the coverage width on a sloping cross-section; an effective-slope transformation extends the result to arbitrary headings on a planar seabed. For gridded terrain, edge rays intersect an interpolated depth surface, and a greedy placement rule adapts line spacing to local coverage. A separate interval-union evaluator checks the resulting plan.
+A multibeam sonar covers a strip of seabed whose width depends on local depth, seabed slope and survey orientation. A uniform spacing rule can therefore leave shallow-water gaps while producing excessive overlap in deeper water. This study follows that mechanism in stages: a two-dimensional ray-intersection model, a three-dimensional orientation reduction, contour-parallel planning on an ideal plane, and numerical planning on a supplied bathymetric grid.
 
-On an ideal planar region, the constructed plan uses 34 lines and 68 nautical miles, with 10% overlap between adjacent swaths. On the supplied bathymetric grid, a selected north–south plan uses 63 lines and 315 nautical miles, achieving numerical full coverage under the stated geometry and evaluation resolution. Relative to a shallow-depth uniform-spacing baseline evaluated on the same domain, route length falls by 46.6% and excess-overlap length by 68.9%. These results support adaptive survey planning within the tested candidate set; they do not establish global optimality or field-validated measurement accuracy.
+For the ideal 4 × 2 nautical-mile area, a 10% adjacent-swath overlap rule generates 34 survey lines and 68 nautical miles of survey length. For a separate 4 × 5 nautical-mile terrain grid, the selected straight north–south family contains 63 lines totaling 315 nautical miles. Its evaluated missed area is numerically negligible; compared with a corrected, full-coverage shallow-depth spacing baseline, survey length is 46.61% shorter and cumulative excess-overlap length is 68.93% lower.
 
-<aside class="hy-study-insight" aria-label="Study takeaway">
-<p class="hy-label">Central idea</p>
-<p>First understand the footprint of one sonar pass; then use that geometry to decide how an entire region should be surveyed.</p>
-</aside>
+New checks independently reconstruct planar placement, solve 94 analytical ray cases by bracketed root finding, compare 70 terrain-edge intersections and merge coverage intervals at 465 stored slices. Archived resolution, interpolation and perturbation studies are interpreted separately. These results establish a reproducible geometric planning scenario within the tested candidate family. They do not establish field measurement accuracy, continuous coverage under unknown terrain, or global optimality over arbitrary routes.
 
-<h2 id="background">1. Background: from a sonar fan to a survey plan</h2>
+<h2 id="introduction">1. Introduction</h2>
 
-A multibeam survey vessel measures a strip of seabed on each pass. Its transducer emits a fan of rays in a vertical plane perpendicular to the direction of travel. The intersection between this fan and the seabed defines the coverage swath. Adjacent passes must cover the gaps between them, while repeated coverage consumes survey effort.
+### 1.1 The planning question
 
-The difficulty is that the footprint is not fixed. A ray travels farther before meeting a deeper seabed, creating a wider swath. A slope changes the two edge intersections asymmetrically. A different heading changes both the slope seen by the fan and the depths encountered along the vessel's path. Consequently, a single spacing chosen for an entire region can be too wide in shallow water and unnecessarily narrow elsewhere.
+A survey vessel does not measure every seabed point directly beneath its track. A fan of acoustic beams reaches to both sides, producing a depth-dependent swath. On a sloping seabed, the two edge beams meet different depths and travel different distances. The shallow-side reach is narrower than the deep-side reach. Designing tracks from one representative depth hides this asymmetry.
 
-<figure class="hy-research-figure hy-multibeam-cover">
-  <a class="hy-multibeam-zoom" href="{{ '/assets/img/research/multibeam/cover.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 1 at full size">
-    <img src="{{ '/assets/img/research/multibeam/cover.webp' | relative_url }}" alt="Conceptual survey vessel sending a multibeam sonar fan toward an undulating seabed." width="1647" height="955" loading="lazy">
-    <span class="hy-multibeam-zoom-label">View full size ↗</span>
-  </a>
-  <figcaption><span>Figure 1.</span> The physical setting: a vessel-mounted fan covers a strip of seabed. This AI-generated illustration introduces the mechanism; it is not a reconstruction of the supplied terrain or an observed sonar measurement.</figcaption>
-</figure>
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/cover.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 1 at full size"><img src="{{ '/assets/img/research/multibeam/cover.webp' | relative_url }}" alt="Supplied conceptual cover showing the vessel, sonar fan and seabed. It illustrates the research setting; the rendered seabed is not the supplied depth grid or a record of a field survey." loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 1.</span> Supplied conceptual cover showing the vessel, sonar fan and seabed. It illustrates the research setting; the rendered seabed is not the supplied depth grid or a record of a field survey.</figcaption></figure>
 
-This study asks how to translate that three-dimensional mechanism into a transparent planning procedure. It proceeds in four stages, increasing the complexity one step at a time. The first two stages explain coverage geometry; the third tests how it can guide line placement on an ideal slope; the fourth extends the calculation to a supplied depth grid.
+The practical objective is to cover the modeled area with appropriately overlapping swaths while limiting survey effort. Three quantities must remain distinct: the length of vessel survey tracks, the proportion of area not covered, and cumulative along-track length where adjacent swaths overlap excessively. Minimizing one does not necessarily minimize the others.
 
-The model treats the sea surface as a horizontal reference and the sonar fan as continuous geometric coverage. It neglects refraction, discrete beam footprints, vessel motion, tides, and navigation uncertainty. These assumptions isolate the layout problem. Coverage here means geometric coverage under the model, rather than a claim about acoustic detection probability or field measurement accuracy.
+### 1.2 A progression from mechanism to deployment
 
-<h2 id="roadmap">Study roadmap</h2>
+The cross-section model first explains why width changes. The orientation model then asks how a three-dimensional plane appears within the vertical sonar-fan plane. The ideal-slope calculation isolates spacing decisions under transparent geometry. Only after those mechanisms are established does the study introduce irregular bathymetry, interpolation, numerical intersections and candidate comparison.
 
-<ol class="hy-stage-map">
-<li><a href="#geometry"><strong>A · Explain one cross-section</strong></a><p>Intersect the fan edges with a sloping seabed. Determine how depth changes width and why fixed spacing can create gaps.</p></li>
-<li><a href="#heading"><strong>B · Account for heading</strong></a><p>Reduce the three-dimensional plane geometry to an equivalent cross-section with a heading-dependent effective slope.</p></li>
-<li><a href="#ideal-plan"><strong>C · Plan an ideal region</strong></a><p>Use the coverage model to place contour-parallel lines with a prescribed overlap and a clear boundary stopping rule.</p></li>
-<li><a href="#terrain-plan"><strong>D · Adapt to supplied terrain</strong></a><p>Interpolate the depth grid, intersect rays numerically, compare candidate plans, and evaluate the coverage union.</p></li>
-</ol>
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/workflow.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 2 at full size"><img src="{{ '/assets/img/research/multibeam/workflow.webp' | relative_url }}" alt="Supplied research roadmap. Panels progress from analytical geometry to ideal-slope and terrain-aware planning. The terrain image is conceptual; numerical results refer to the supplied grid. The verification band summarizes types of checks, whose specific evidence and limits are described below." loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 2.</span> Supplied research roadmap. Panels progress from analytical geometry to ideal-slope and terrain-aware planning. The terrain image is conceptual; numerical results refer to the supplied grid. The verification band summarizes types of checks, whose specific evidence and limits are described below.</figcaption></figure>
 
-<figure class="hy-research-figure hy-multibeam-workflow">
-  <a class="hy-multibeam-zoom" href="{{ '/assets/img/research/multibeam/workflow.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 2 at full size">
-    <img src="{{ '/assets/img/research/multibeam/workflow.webp' | relative_url }}" alt="Four-panel infographic linking analytical cross-sections, effective-slope reduction, ideal-slope planning, and terrain-aware planning, followed by numerical checks." width="1774" height="887" loading="lazy">
-    <span class="hy-multibeam-zoom-label">View full size ↗</span>
-  </a>
-  <figcaption><span>Figure 2.</span> Overview of the method and its checks. Panel C concerns the ideal planar region; Panel D concerns the supplied-grid calculation. Terrain drawings and line counts shown visually are illustrative; the printed result values come from the computational study. Exact geometry, width conventions, and coverage definitions are specified below.</figcaption>
-</figure>
+This sequence prevents the final 63-line result from arriving before the reader understands the underlying coverage model. It also separates an idealized analytical example from the terrain calculation; their areas, depth trends and overlap settings differ.
 
-<h2 id="geometry">2. Stage A: coverage on a sloping cross-section</h2>
+<h2 id="scope">2. Geometry, inputs and assumptions</h2>
 
-### 2.1 The footprint of a single pass
+### 2.1 Coordinate and measurement conventions
 
-The first task is deliberately local. Before placing any regional route, consider a vessel above a plane with a 1.5° slope and a 120° sonar opening angle. The sloping surface makes the shallow-side edge ray meet the bottom sooner than the deep-side ray. Treating these two distances separately is the key to a consistent coverage calculation.
+Depth is positive downward. One nautical mile (NM) is 1,852 m. The nominal sonar opening angle is 120°, so each edge beam makes 60° with the vertical. The analytical plane has slope 1.5°. Its cross-section depth increases along the horizontal downslope coordinate.
 
-Let $D$ be the depth immediately beneath the vessel, $\theta$ the full transducer opening angle, and $\alpha$ the seabed slope in the cross-section. Write $c=\cos(\theta/2)$ and $s=\sin(\theta/2)$. Intersecting the two edge rays with the seabed gives the shallow-side and deep-side horizontal half-widths:
+<div class="hy-model-table"><table><caption>Table 1. Three distinct model settings.</caption><thead><tr><th scope="col">Setting</th><th scope="col">Inputs</th><th scope="col">Purpose</th></tr></thead><tbody><tr><td>Local cross-section</td><td>Center depth 70 m; nine positions from −800 to 800 m</td><td>Width and adjacent-track overlap</td></tr><tr><td>Oriented planar survey</td><td>Center depth 120 m; eight headings and eight travel distances</td><td>Orientation-dependent width</td></tr><tr><td>Ideal planning rectangle</td><td>4 × 2 NM; center depth 110 m</td><td>Analytical contour-parallel placement</td></tr><tr><td>Terrain planning rectangle</td><td>4 × 5 NM; 251 × 201 depth grid</td><td>Numerical adaptive spacing</td></tr></tbody></table></div>
+
+### 2.2 Declared assumptions
+
+The geometric model treats beams as straight rays in a homogeneous medium and the fan plane as vertical and perpendicular to the survey line. Vessel motion, refraction, sound-speed profiles, beam footprint size and detection quality are not estimated. Depth is a surface intersection rather than an acoustic signal model.
+
+Ideal planning uses a plane, straight parallel lines and a specified overlap floor. Terrain planning keeps straight parallel lines but replaces the plane with a bilinear depth surface. Its interpolator clamps outside-domain queries to the nearest boundary. This explicit boundary extension allows edge rays to be evaluated but is not observed bathymetry beyond the supplied rectangle.
+
+Track length counts survey-line chords only. Turns, transit, acceleration, obstacles and navigational restrictions are excluded. An apparent reduction in survey length is consequently not an established reduction in operational time or cost.
+
+<h2 id="cross-section">3. Cross-section coverage</h2>
+
+### 3.1 Intersect the two edge rays
+
+Let D be the depth below the vessel, α the seabed slope and θ the sonar opening angle. The ray on the shallow side intersects the bed sooner than the ray on the deep side. Horizontal half-widths follow directly from intersecting each ray with the linear depth function:
 
 <div class="hy-equation">
 \[
-a_{\mathrm{sh}}=\frac{Ds}{c+s\tan\alpha},
-\qquad
-a_{\mathrm{dp}}=\frac{Ds}{c-s\tan\alpha}.
+a_L=\frac{D\sin(\theta/2)}{\cos(\theta/2)+\sin(\theta/2)\tan\alpha},\qquad a_R=\frac{D\sin(\theta/2)}{\cos(\theta/2)-\sin(\theta/2)\tan\alpha}.
 \tag{1}
 \]
 </div>
 
-Their sum is the horizontal footprint. The corresponding distance measured along the sloping seabed is
+Both denominators must remain positive for the intended intersections. The horizontal width and the distance measured along the sloping bed are related by:
 
 <div class="hy-equation">
 \[
-W(D,\alpha)=
-\frac{D\sin\theta\,\sec\alpha}
-{c^2-s^2\tan^2\alpha}.
+W_h=a_L+a_R,\qquad W_{\mathrm{bed}}=\frac{W_h}{\cos\alpha},\qquad D(x)=D_0+x\tan\alpha.
 \tag{2}
 \]
 </div>
 
-The formula requires positive ray-intersection denominators. In the flat-seabed limit it reduces to $W=2D\tan(\theta/2)$. With 200 m line spacing and a central depth of 70 m, the nine analytical positions produce widths from 170.33 m to 315.81 m. Geometric overlap ranges from −11.17% to 33.64%: a negative value marks a gap, while a large positive value indicates repeated coverage.
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/cross-section.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 3 at full size"><img src="{{ '/assets/img/research/multibeam/cross-section.svg' | relative_url }}" alt="Analytical cross-section and overlap behavior. Width measured along the seabed differs from its horizontal projection. Negative overlap indicates a geometric gap rather than a negative physical area." loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 3.</span> Analytical cross-section and overlap behavior. Width measured along the seabed differs from its horizontal projection. Negative overlap indicates a geometric gap rather than a negative physical area.</figcaption></figure>
 
-### 2.2 Why a fixed spacing can fail
+The nine reference positions have depths from 49.05 to 90.95 m and along-bed widths from 170.33 to 315.81 m. A fixed 200 m separation is too wide at shallow positions and comparatively conservative at deeper positions. The saved geometric overlap range is −11.17% to 33.64%.
 
-In the analytical example, nine line positions are separated by 200 m, with a 70 m reference depth. Moving across the slope changes depth from approximately 49.05 to 90.95 m. The widening swath changes the outcome even though the line spacing remains identical: the shallow pairs leave gaps, while deeper pairs overlap increasingly.
+### 3.2 Overlap must compare the actual neighboring edges
 
-<figure class="hy-research-figure hy-multibeam-data">
-  <a class="hy-multibeam-zoom" href="{{ '/assets/img/research/multibeam/cross-section.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 3 at full size">
-    <img src="{{ '/assets/img/research/multibeam/cross-section.svg' | relative_url }}" alt="Recomputed swath widths across nine positions and adjacent geometric overlap ratios, including negative overlap in shallow water." width="1000" height="580" loading="lazy">
-    <span class="hy-multibeam-zoom-label">View full size ↗</span>
-  </a>
-  <figcaption><span>Figure 3.</span> A controlled demonstration of the spacing problem. Widths range from 170.33 to 315.81 m; adjacent overlap ranges from −11.17% to 33.64%. The first line has no preceding pair, so its overlap is not plotted.</figcaption>
-</figure>
-
-The implication is a planning principle rather than a final route: spacing should depend on the local footprint. A width formula is useful because it explains both failures—missing shallow water and repeatedly covering deep water—with the same geometric mechanism.
-
-<h2 id="heading">3. Stage B: reduce three-dimensional geometry to an effective slope</h2>
-
-### 3.1 What changes when the vessel turns?
-
-A seabed has one physical slope, but the sonar fan sees a cross-section determined by the vessel's heading. The slope inside that section differs from the slope along the vessel's path. Separating those two effects avoids confusing a wider footprint with a change in depth encountered during travel.
-
-Let $\beta$ be the angle between the survey heading and the horizontal projection of the seabed normal. The fan lies in the vertical plane perpendicular to that heading. The slope seen inside that plane is
+For neighboring tracks separated by horizontal distance d, the deeper-side reach of the previous swath combines with the shallower-side reach of the current swath:
 
 <div class="hy-equation">
 \[
-T=\tan\alpha_{\mathrm{eff}}
-=\tan\alpha\,|\sin\beta|.
+\eta_i=\frac{a_{R,i-1}+a_{L,i}-d_i}{W_{h,i}}.
 \tag{3}
 \]
 </div>
 
-For a vessel traveling a horizontal distance $t$ from the reference point, the adopted down-slope coordinate convention gives $D(t)=D_0+t\tan\alpha\cos\beta$. The cross-section result becomes
+All distances in this ratio use the same horizontal metric. Dividing a horizontal overlap by along-bed width introduces an unnecessary cosine factor. The simpler expression 1 − d/W assumes a common width and symmetric alignment; it is not generally the correct neighboring-swath ratio on a slope.
+
+The current archive includes a corrected overlap convention. This article uses the revised outputs rather than older backup results. Distinguishing a definition correction from a new optimization result makes the numerical history auditable.
+
+<h2 id="heading">4. Three-dimensional survey orientation</h2>
+
+### 4.1 Reduce the three-dimensional plane
+
+Let β be the angle between the survey direction and the horizontal downslope direction. The sonar fan lies in the vertical plane perpendicular to the vessel's track. Restricting a planar seabed to this fan plane produces an effective cross-sectional slope:
 
 <div class="hy-equation">
 \[
-W(t,\beta)=
-\frac{D(t)\sin\theta\sqrt{1+T^2}}
-{c^2-s^2T^2}.
+\tan\alpha_{\mathrm{eff}}=\tan\alpha\,|\sin\beta|,\qquad D(t,\beta)=D_0+t\tan\alpha\cos\beta.
 \tag{4}
 \]
 </div>
 
-This reduction retains the three-dimensional heading dependence while avoiding repeated spatial construction. At $\beta=90^\circ$, travel follows a depth contour and the width remains approximately 416.69 m for the 120 m reference-depth example. Across 64 heading–distance combinations, the closed form agrees with direct three-dimensional ray–plane intersections to a maximum relative difference of about $2.7\times10^{-15}$.
+The width formula is then evaluated with the local depth and effective slope. For a contour-following direction, β = 90° or 270°, the vessel stays at constant depth. For downslope or upslope headings, depth changes strongly along the line even though the perpendicular fan section is flat.
 
-### 3.2 Three interpretable heading cases
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/heading.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 4 at full size"><img src="{{ '/assets/img/research/multibeam/heading.svg' | relative_url }}" alt="Orientation affects both the effective fan-section slope and the depth encountered along the track. The constant-depth contour-following cases and changing-depth slope-aligned cases are different geometric mechanisms." loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 4.</span> Orientation affects both the effective fan-section slope and the depth encountered along the track. The constant-depth contour-following cases and changing-depth slope-aligned cases are different geometric mechanisms.</figcaption></figure>
 
-For the 120 m reference-depth example, a down-slope heading encounters increasing depths and widening coverage; an up-slope heading encounters decreasing depths and narrowing coverage. A contour-following heading stays at constant depth. Its cross-sectional slope is nonzero, but that slope and the footprint remain constant along the line.
+### 4.2 Reference calculation and checks
 
-<figure class="hy-research-figure hy-multibeam-data">
-  <a class="hy-multibeam-zoom" href="{{ '/assets/img/research/multibeam/heading.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 4 at full size">
-    <img src="{{ '/assets/img/research/multibeam/heading.svg' | relative_url }}" alt="Analytical swath width versus travel for down-slope, contour-following, and up-slope headings on the same planar seabed." width="1000" height="580" loading="lazy">
-    <span class="hy-multibeam-zoom-label">View full size ↗</span>
-  </a>
-  <figcaption><span>Figure 4.</span> Heading changes the depth encountered during travel. The contour-following case stays at approximately 416.69 m width; the other two cases widen or narrow. These curves use the archived analytical equations, not generated terrain imagery.</figcaption>
-</figure>
+Eight headings and eight travel distances from 0 to 2.1 NM generate 64 reference widths. The saved range is 62.90–768.48 m. At the central point, the contour-following width is approximately 416.69 m and remains constant along that ideal plane.
 
-This stage supplies a compact model for heading comparison. Agreement with direct three-dimensional intersections checks the reduction within the assumed plane geometry; it does not by itself validate the model against measured sonar data.
+The new verification constructs a three-dimensional ray vector for each side, intersects it with the plane using bracketed root finding, and measures the distance between the resulting points. Seventy-two heading/depth cases agree with the effective-slope expression to approximately 3.4 × 10⁻¹³ m. This independent algebraic route tests the reduction; it does not introduce refraction or nonplanar terrain.
 
-<h2 id="ideal-plan">4. Stage C: place survey lines on an ideal planar region</h2>
+<h2 id="ideal-plan">5. Ideal-slope planning</h2>
 
-### 4.1 Define the region and the overlap convention
+### 5.1 Place the first and subsequent tracks
 
-The next step moves from one pass to an entire region. The ideal domain measures 4 nautical miles east–west and 2 nautical miles north–south, with 110 m central depth and a 1.5° slope. Water is shallower toward the east and deeper toward the west. North–south lines follow its straight depth contours, so each line has constant depth along its length.
+The ideal rectangle is 4 NM across the slope and 2 NM along the contours. Central depth is 110 m. Its east boundary is shallow, around 13 m, while the west boundary is deep, around 207 m. Let ξ measure distance from the shallow boundary toward deeper water.
 
-When neighboring swaths have different widths, the flat-seabed expression $1-d/W$ can misclassify a gap. For a planar slope, let $d_i$ be the separation between adjacent lines and $D_i$ the depth beneath line $i$. The overlap relative to the new swath is
+The first line is placed so its shallow edge reaches the area boundary. Each next line uses the largest separation satisfying a 10% neighboring-swath overlap. The last deep edge must reach or pass the far boundary:
 
 <div class="hy-equation">
 \[
-\eta_{i+1}=\frac{
-a_{\mathrm{dp}}(D_i)+a_{\mathrm{sh}}(D_{i+1})-d_i}
-{a_{\mathrm{sh}}(D_{i+1})+a_{\mathrm{dp}}(D_{i+1})}.
+\xi_1=a_L(D(\xi_1)),\qquad a_R(D(\xi_{i-1}))+a_L(D(\xi_i))-(\xi_i-\xi_{i-1})=\eta_{\min}W_h(D(\xi_i)).
 \tag{5}
 \]
 </div>
 
-Both numerator and denominator use horizontal distances; measuring both along the planar slope gives the same ratio. The ideal-region planner starts at the shallow boundary and places each next contour-following line at the largest spacing compatible with a 10% overlap lower bound. It stops when the deep-side edge covers the opposite boundary. The resulting 34 lines have 33 adjacent overlaps of approximately 10% and cover the full cross-slope interval in the model.
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/ideal-plan.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 5 at full size"><img src="{{ '/assets/img/research/multibeam/ideal-plan.svg' | relative_url }}" alt="Ideal planar placement. Lines stay straight and parallel to depth contours; spacing increases toward deeper water. The overlap rule applies between neighboring swaths." loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 5.</span> Ideal planar placement. Lines stay straight and parallel to depth contours; spacing increases toward deeper water. The overlap rule applies between neighboring swaths.</figcaption></figure>
 
-### 4.2 A boundary-aware greedy construction
+A new closed recurrence independently reproduces the 34 archived placements within 0.00492 m, consistent with saved coordinates rounded to two decimals. All 33 neighboring overlap ratios are 10%. The last deep edge extends slightly beyond the rectangle; the model does not require an edge beam to stop exactly at the boundary.
 
-The first line is positioned so that its shallow-side footprint just reaches the eastern boundary. Each subsequent line is placed as far toward deeper water as the 10% overlap constraint permits. The algorithm stops when the deep-side footprint covers the western boundary; the final line is not simply forced onto that boundary.
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/planar-recurrence.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 6 at full size"><img src="{{ '/assets/img/research/multibeam/planar-recurrence.svg' | relative_url }}" alt="New independent planar reconstruction showing increasing depth and spacing. These coordinates come from a closed recurrence rather than the source placement solver." width="950" height="380" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 6.</span> New independent planar reconstruction showing increasing depth and spacing. These coordinates come from a closed recurrence rather than the source placement solver.</figcaption></figure>
 
-<figure class="hy-research-figure hy-multibeam-data">
-  <a class="hy-multibeam-zoom" href="{{ '/assets/img/research/multibeam/ideal-plan.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 5 at full size">
-    <img src="{{ '/assets/img/research/multibeam/ideal-plan.svg' | relative_url }}" alt="Actual computed positions of the 34 ideal-region lines and their changing horizontal spacing, with wider spacing in deep western water." width="1000" height="580" loading="lazy">
-    <span class="hy-multibeam-zoom-label">View full size ↗</span>
-  </a>
-  <figcaption><span>Figure 5.</span> The ideal-slope construction produces 34 lines of 2 nautical miles each: 68 nautical miles in total. Line spacing is denser in shallow eastern water and wider in deep western water. The numerical interval union has no gaps, and the 33 adjacent overlap ratios are approximately 10%.</figcaption>
-</figure>
+### 5.2 Compare equivalent coverage tasks
 
-This controlled case shows how the local formula becomes a regional plan. The greedy argument applies within the specified contour-parallel family and overlap convention. It is not a demonstration that contour-parallel lines are globally shortest among arbitrary headings or curved routes. All lengths in this account exclude turns and transit between lines; one nautical mile equals 1,852 m.
+<div class="hy-model-table"><table><caption>Table 2. Ideal-plane spacing strategies.</caption><thead><tr><th scope="col">Strategy</th><th scope="col">Lines</th><th scope="col">Survey length</th><th scope="col">Coverage behavior</th></tr></thead><tbody><tr><td>Adaptive 10% overlap</td><td>34</td><td>68 NM</td><td>No gaps; 10% adjacent overlap</td></tr><tr><td>Spacing from average depth</td><td>22</td><td>44 NM</td><td>Ten coverage gaps; unsuitable for full coverage</td></tr><tr><td>Spacing from shallowest depth</td><td>174</td><td>348 NM</td><td>No gaps; substantial excessive overlap</td></tr></tbody></table></div>
 
-<h2 id="terrain-plan">5. Stage D: plan on the supplied bathymetric grid</h2>
+The short average-depth plan is not an equivalent full-coverage competitor. The shallow-depth plan meets coverage but spends many tracks on regions where wider spacing is feasible. Within the declared contour-parallel family, the adaptive rule advances as far as possible at each step while preserving the overlap requirement. This structure explains the efficiency of the constructed candidate; it is not a proof of minimum length over curved tracks, other orientations or multiple line families.
 
-### 5.1 Replace the plane with a depth surface
+Raising the ideal overlap floor from 5% to 20% increases saved line counts from 33 to 39, or 66 to 78 NM. Increasing a safety margin has a quantifiable survey-effort cost.
 
-The final case uses a different region: 4 nautical miles east–west by 5 nautical miles north–south. The supplied grid contains 251 × 201 samples, or 50,451 depth values, with 0.02 nautical mile spacing (37.04 m) and depths from 20 to approximately 197.2 m. Here a single slope no longer describes the whole seabed, and a straight north–south line need not follow a depth contour.
+<h2 id="terrain">6. Terrain-aware formulation</h2>
 
-For varying bathymetry, bilinear interpolation defines the depth field $D(x,y)$. Let $\mathbf p$ be the vessel position, $\mathbf v$ the horizontal unit vector perpendicular to the survey heading, and $\tau$ the slant range. Each edge intersection solves
+### 6.1 Replace the plane with a grid
+
+The supplied terrain has 251 north–south rows and 201 east–west columns: 50,451 depth values spaced by 0.02 NM, or 37.04 m. Depth ranges from 20 to 197.2 m, with mean 62.54 m and standard deviation 29.79 m. There are no missing grid entries.
+
+A fitted plane leaves residual standard deviation 19.68 m and maximum absolute residual 99.49 m. The grid therefore cannot be treated simply as the preceding ideal plane. Its broad eastward depth trend also differs from the east-shallow ideal planning example. The two cases demonstrate different settings rather than a single progressively enlarged dataset.
+
+### 6.2 Numerical edge intersection
+
+For vessel position p, a horizontal cross-track direction v and edge sign ±, the distance τ along the ray solves:
 
 <div class="hy-equation">
 \[
-\tau\cos(\theta/2)=
-D\!\left(\mathbf p\pm\tau\sin(\theta/2)\mathbf v\right).
+F_\pm(\tau)=\tau\cos(\theta/2)-D\!\left(\mathbf p\pm\tau\sin(\theta/2)\mathbf v\right)=0.
 \tag{6}
 \]
 </div>
 
-The implementation brackets a root and refines it by bisection. For the supplied interpolated surface, the estimated gradient bound is about 0.0589, below $\cot60^\circ$. This provides a positive derivative margin of about 0.449 for the edge-ray intersection function, supporting a unique intersection under these assumptions.
+The source brackets intersections and performs 24 bisection iterations. Design samples are approximately 20 m apart along the survey line, with endpoints explicitly included. The new check instead uses SciPy's regular-grid interpolator with declared clamping and Brent's root solver. Seventy selected intersections across seven tracks and five along-track positions differ from saved edges by at most 1.754 × 10⁻⁶ m.
 
-At each tested heading, greedy placement increases the separation until the local overlap constraint would fail. The design uses 20 m along-line sampling. A separate evaluator samples cross-sections and merges all coverage intervals, accounting for multiple overlaps rather than subtracting only adjacent pairs. This separation tests coverage arithmetic, although the evaluator shares the ray–surface intersection implementation with the planner.
+A conservative gradient bound is 0.058918. The ray derivative has a positive lower bound, cos(60°) − sin(60°)G ≈ 0.448975, for this bilinear surface and its clamped extension. This supports a unique intersection for the modeled edge rays. It does not guarantee that an acoustic system resolves all bottom returns or that unobserved terrain between grid points follows the interpolant.
 
-### 5.2 Comparing candidate plans
+<h2 id="real-plan">7. Selected terrain plan</h2>
 
-The outer search tests headings between −45° and 45°, with 5° spacing and 1° refinement near the selected direction. It also tests overlap lower bounds of 5%, 8%, 10%, and 12%. A missed-area tolerance of 0.1% defines admissibility; among admissible candidates, selection first minimizes the cumulative line length with overlap above 20%, then total line length. This is a chosen multi-objective priority, not a universal optimum criterion.
+### 7.1 Evaluate coverage as a union
 
-The selected plan has heading 0°—north–south—and a 5% design overlap lower bound. The 10% overlap rule belongs to the separate ideal-slope example; the terrain case does not require its local overlap to stay within 10–20%. Local terrain variation still produces substantial overlap above 20%, which is measured and reported rather than hidden.
+At each along-track slice u, each swath contributes a cross-track interval Iᵢ(u). Intersecting those intervals with the area boundary and taking their full union avoids double-counting areas covered by three or more swaths:
 
-### 5.3 Inspect the selected plan before comparing costs
-
-The terrain plan uses 63 north–south lines of 5 nautical miles each, totaling 315 nautical miles. At the 9.26 m evaluation slice spacing, the independent interval-union calculation returns a missed-area proportion of about $4.9\times10^{-13}$, which is numerical zero for the reporting precision.
-
-<figure class="hy-research-figure hy-multibeam-data">
-  <a class="hy-multibeam-zoom" href="{{ '/assets/img/research/multibeam/multibeam-overview.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 6 at full size">
-    <img src="{{ '/assets/img/research/multibeam/multibeam-overview.svg' | relative_url }}" alt="Supplied bathymetric grid with the computed 63 north–south lines, beside the 590 versus 315 nautical mile comparison." width="1000" height="580" loading="lazy">
-    <span class="hy-multibeam-zoom-label">View full size ↗</span>
-  </a>
-  <figcaption><span>Figure 6.</span> The actual supplied depth grid and selected line positions, introduced after the geometry and ideal-slope construction. The selected plan contains 63 straight north–south lines and totals 315 nautical miles. Both the selected plan and the shallow-depth baseline achieve numerical full coverage under the stated evaluator.</figcaption>
-</figure>
-
-<div class="hy-table-scroll" tabindex="0" role="region" aria-label="Scrollable survey-plan comparison">
-  <table>
-    <caption>Table 1. Plans on the supplied terrain grid, evaluated using the same boundary and coverage conventions.</caption>
-    <thead><tr><th scope="col">Plan</th><th scope="col">Lines</th><th scope="col">Survey length (NM)</th><th scope="col">Missed area (%)</th><th scope="col">Excess-overlap length (NM)</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Terrain-aware selected plan</th><td>63</td><td>315.0</td><td>≈ 0</td><td>172.065</td></tr>
-      <tr><th scope="row">Uniform spacing: shallowest depth</th><td>118</td><td>590.0</td><td>≈ 0</td><td>553.830</td></tr>
-      <tr><th scope="row">Uniform spacing: mean depth</th><td>39</td><td>195.0</td><td>14.83</td><td>68.005</td></tr>
-    </tbody>
-  </table>
+<div class="hy-equation">
+\[
+A_{\mathrm{miss}}=\int\left|[v_{\mathrm{lo}}(u),v_{\mathrm{hi}}(u)]\setminus\bigcup_i I_i(u)\right|\,du,\qquad r_{\mathrm{miss}}=\frac{A_{\mathrm{miss}}}{A_{\mathrm{region}}}.
+\tag{7}
+\]
 </div>
 
-Excess-overlap length is the sum, across adjacent swath pairs, of the along-line portions whose overlap exceeds 20%; it is not an overlap-area percentage. The selected plan gives 318,664.38 m, equivalent to 172.065 nautical miles. A location covered by several swaths can contribute to several adjacent-pair terms.
+The selected plan uses straight north–south tracks with terrain-adaptive cross-track spacing. On an irregular surface these straight tracks do not literally follow every depth contour. The adaptation is in line spacing, not in bending the vessel path.
 
-### 5.4 Why the baseline matters
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/multibeam-overview.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 7 at full size"><img src="{{ '/assets/img/research/multibeam/multibeam-overview.svg' | relative_url }}" alt="Supplied depth grid and the selected 63 straight survey lines. The terrain-dependent spacing is visible across the rectangle. This is a computational coverage plan, not a recorded survey." loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 7.</span> Supplied depth grid and the selected 63 straight survey lines. The terrain-dependent spacing is visible across the rectangle. This is a computational coverage plan, not a recorded survey.</figcaption></figure>
 
-Uniform spacing based on the shallowest depth provides numerical full coverage but requires 118 lines. Relative to that admissible baseline, the selected terrain-aware plan reduces survey-line length from 590 to 315 nautical miles, a 46.6% decrease, and reduces excess-overlap length by 68.9%. The mean-depth baseline is shorter but leaves approximately 14.83% of the domain unmeasured; it is not an equivalent full-coverage alternative.
+### 7.2 Quantitative outcome
 
-<figure class="hy-research-figure hy-multibeam-data">
-  <a class="hy-multibeam-zoom" href="{{ '/assets/img/research/multibeam/multibeam-comparison.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 7 at full size">
-    <img src="{{ '/assets/img/research/multibeam/multibeam-comparison.svg' | relative_url }}" alt="Survey length and excess-overlap length for the selected terrain-aware plan and two uniform-spacing baselines." width="1000" height="580" loading="lazy">
-    <span class="hy-multibeam-zoom-label">View full size ↗</span>
-  </a>
-  <figcaption><span>Figure 7.</span> Comparing efficiency requires a coverage condition. The 39-line mean-depth baseline is shorter but misses 14.83% of the region. Relative to the admissible shallow-depth baseline, adaptive spacing reduces survey length by 46.6% and excess-overlap length by 68.9%.</figcaption>
-</figure>
+The final plan has 63 lines of 5 NM each, totaling 315 NM. The saved evaluation at 9.26 m along-track spacing reports missed area at floating-point scale. Independent archived interval-union evaluation likewise reports a negligible residual, while a separate grid occupancy check reports zero uncovered cells.
 
-The important distinction from Stage C is that terrain adaptation means changing the spacing of straight lines according to spatially varying footprints. It does not mean bending every line along a depth contour. The illustrated terrain in the workflow explains the procedure; Figure 6 provides the actual depth field and computed line coordinates.
+<div class="hy-model-table"><table><caption>Table 3. Terrain plans after corrected endpoint evaluation.</caption><thead><tr><th scope="col">Plan</th><th scope="col">Lines</th><th scope="col">Survey length</th><th scope="col">Missed area</th></tr></thead><tbody><tr><td>Selected adaptive plan</td><td>63</td><td>315 NM</td><td>Numerically negligible</td></tr><tr><td>Shallow-depth fixed spacing</td><td>118</td><td>590 NM</td><td>Numerically negligible</td></tr><tr><td>Average-depth fixed spacing</td><td>39</td><td>195 NM</td><td>Approximately 14.83%</td></tr></tbody></table></div>
 
-<h2 id="validation">6. Numerical checks, sensitivity, and uncertainty</h2>
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/multibeam-comparison.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 8 at full size"><img src="{{ '/assets/img/research/multibeam/multibeam-comparison.svg' | relative_url }}" alt="Length comparison under numerical full coverage. The corrected shallow-depth baseline totals 590 NM. The selected plan is 46.61% shorter; turns and transit are excluded from both values." loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 8.</span> Length comparison under numerical full coverage. The corrected shallow-depth baseline totals 590 NM. The selected plan is 46.61% shorter; turns and transit are excluded from both values.</figcaption></figure>
 
-### 6.1 Check the equations and the coverage arithmetic
+Excess-overlap length is a separate diagnostic. It accumulates distance along adjacent line pairs where overlap exceeds 20%. The selected value is 318,664.38 m, or 172.065 NM, versus 1,025,693.16 m for the corrected shallow-depth baseline. This is not overlap area or unique vessel distance; multiple adjacent pairs may contribute at the same along-track location.
 
-The study uses complementary checks rather than treating one performance number as validation of the whole system. Analytical cross-sections agree with numerical ray tracing to machine precision, and the heading-dependent model agrees with direct three-dimensional intersections. These checks establish implementation consistency within the assumed geometry.
+The archive's earlier baseline omitted endpoints, producing a false 0.2% coverage loss and chords of 9,240 rather than 9,260 m. Revised baseline outputs include both endpoints. The selected 63-line design is unchanged; using the corrected comparison is essential for the reported 46.61% and 68.93% reductions.
 
-Coverage is checked on cross-sections perpendicular to the survey heading. At each along-line station, the evaluator sorts the cross-track swath intervals, merges their union, and measures any remaining uncovered interval inside the region. This matters because a location may be covered by more than two swaths: subtracting only adjacent-pair overlaps would not recover the full union correctly.
+<h2 id="selection">8. Candidate selection and boundary effects</h2>
 
-### 6.2 Test evaluation resolution and interpolation
+### 8.1 The selection rule
 
-For the terrain plan, coverage interval ordering shows no violations in the evaluator. Refining evaluation spacing from 0.02 to 0.0025 nautical miles changes the reported excess-overlap length by about 47 m, or 0.015%, while missed area remains numerically zero. This is a resolution-sensitivity result, not a proof that no arbitrarily small gap exists in continuous space.
+The direction search evaluates 19 coarse headings from −45° to +45°, then eight locally refined headings: 27 saved candidates. It is a finite candidate search within a prescribed angular window. Additional ±60° checks do not make the search exhaustive.
 
-The archived strip-holdout experiment compares interpolation against withheld values from the supplied grid. Bilinear interpolation gives approximately 3.07 mm mean absolute error and 4.26 mm root mean squared error; the maximum is about 15 mm. These small values describe interpolation on this particular grid, not sonar accuracy or an independently measured seabed truth.
+Candidates are first screened by a missed-area ceiling of 0.1%. Among admissible candidates, lower cumulative excess overlap is preferred, with total survey length breaking ties. This lexicographic choice is a declared planning preference, rather than a universal objective:
 
-### 6.3 Distinguish fixed-plan noise from replanning
+<div class="hy-equation">
+\[
+\text{admit }r_{\mathrm{miss}}\le 0.001;\qquad \operatorname{lexmin}\left(L_{\mathrm{excess}},L_{\mathrm{survey}}\right).
+\tag{8}
+\]
+</div>
 
-The archived fixed-plan perturbation experiment adds Gaussian depth noise with an assumed standard deviation of 0.5 m. Across 30 realizations, maximum missed area is approximately 0.000624% and the excess-overlap standard deviation is approximately 388 m. Replanning under perturbation is a separate experiment and does not demonstrate that the unchanged plan remains strictly gap-free. These noise results depend on the assumed perturbation model and have not been verified against field observations.
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/candidate-tradeoffs.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 9 at full size"><img src="{{ '/assets/img/research/multibeam/candidate-tradeoffs.svg' | relative_url }}" alt="Saved heading feasibility and overlap-floor tradeoffs. The feasibility panel uses the tested parallel families; boundary completion and candidate design affect the interpretation of apparently unfavorable headings." width="958" height="380" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 9.</span> Saved heading feasibility and overlap-floor tradeoffs. The feasibility panel uses the tested parallel families; boundary completion and candidate design affect the interpretation of apparently unfavorable headings.</figcaption></figure>
 
-The assumed noise distribution is part of the experiment, not a measured sensor-error specification. A small missed-area percentage under perturbation is evidence of numerical sensitivity at that noise scale, while strict zero-gap coverage and operational reliability are different claims.
+At the selected north–south heading, an extended overlap-floor scan from 5% to 14% yields 63–70 lines and 315–350 NM. Excess-overlap length also rises. The 5% setting is selected for this terrain candidate family. It must not be confused with the 10% setting of the ideal-plane demonstration or described as a universal surveying requirement.
 
-<h2 id="discussion">7. Discussion: what the study establishes</h2>
+### 8.2 Boundary loss does not prove orientation infeasibility
 
-The useful connection is between local geometry and regional planning. An interpretable coverage formula explains why spacing should change with depth; the effective-slope transformation explains how heading changes the footprint; a numerical terrain model extends that logic beyond planar seabeds. The selected plan demonstrates that the resulting adaptive spacing can outperform a conservative uniform-spacing baseline under a common numerical evaluator.
+Oblique parallel families in the saved scan lose coverage around clipped line ends. That is partly a boundary-completion problem, rather than evidence that the corresponding physical heading cannot cover the area. An archived augmented −5° candidate adds 18 cross-direction boundary lines, reducing missed area from 0.2348% to approximately 0.0810% at its stated grid resolution, while increasing total length to 386.34 NM.
 
-The search remains restricted: headings are sampled, inner placement is greedy, and mixed-heading or curved routes are not exhaustively optimized. Therefore the result is a selected candidate within the tested design procedure, not a globally shortest survey or a proven optimum over all parallel-line placements. The ideal-slope greedy argument also applies within its specified contour-following line family.
+This augmented result passes the 0.1% ceiling but belongs to a broader route family. Its stored excess-overlap diagnostic still refers to the original oblique family, so it is not a complete like-for-like excess-overlap comparison for the mixed plan. Relaxing the ceiling to 0.5% or 1% can instead select a different, shorter candidate with admitted gaps. These results show that conclusions depend on the area-loss tolerance, objective priorities and allowed boundary repairs.
 
-Operational follow-up would include turn and transit costs, refraction and beam footprints, correlated terrain errors, vessel motion, and navigation uncertainty. An expanded search could vary the first-line position, compare mixed-heading plans, and report a Pareto frontier over missed area, excess overlap, and travel. Field validation would require independent soundings and an explicit survey-accuracy specification.
+<h2 id="sensitivity">9. Resolution and interpolation</h2>
 
-<p class="hy-source-note">Study record: the archived 2023 multibeam survey-planning manuscript, supplied bathymetric grid, Python implementation, and numerical output files. Core geometry and the selected route were recomputed for this web account; the extended convergence, interpolation, and noise experiments are reported from the archived records. This is an AI-assisted computational research note.</p>
+### 9.1 Separate design resolution from evaluation resolution
+
+The archived evaluation repeats the fixed plan at along-track steps of 0.02, 0.01, 0.005 and 0.0025 NM, or 37.04 down to 4.63 m. Missed area remains numerically negligible. Excess-overlap length ranges from 318,664.38 to 318,710.68 m, a span of 46.30 m, about 0.015% of the reported value.
+
+Reducing design sampling from 20 to 10 m leaves the selected line count and placement behavior unchanged in the saved comparison. These tests support numerical stability over the tested resolutions. They do not prove coverage everywhere on a continuous, unknown seabed.
+
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/resolution-and-interpolation.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 10 at full size"><img src="{{ '/assets/img/research/multibeam/resolution-and-interpolation.svg' | relative_url }}" alt="Evaluation-step stability and interpolation cross-validation. The interpolation errors compare withheld grid values with predictions from remaining grid information, rather than sonar measurements with independent seabed truth." width="950" height="380" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 10.</span> Evaluation-step stability and interpolation cross-validation. The interpolation errors compare withheld grid values with predictions from remaining grid information, rather than sonar measurements with independent seabed truth.</figcaption></figure>
+
+### 9.2 What interpolation validation measures
+
+The saved strip holdout removes selected rows and columns, yielding 20,090 validation grid values at a 185.2 m spacing pattern. Nearest-neighbor interpolation gives RMSE 0.4767 m; bilinear interpolation gives 0.004264 m; bicubic interpolation gives 0.004467 m.
+
+<div class="hy-model-table"><table><caption>Table 4. Saved withheld-grid interpolation errors.</caption><thead><tr><th scope="col">Method</th><th scope="col">MAE (m)</th><th scope="col">RMSE (m)</th><th scope="col">Maximum absolute error (m)</th></tr></thead><tbody><tr><td>Nearest neighbor</td><td>0.329794</td><td>0.476730</td><td>2.000</td></tr><tr><td>Bilinear</td><td>0.003070</td><td>0.004264</td><td>0.015</td></tr><tr><td>Bicubic</td><td>0.003664</td><td>0.004467</td><td>0.017745</td></tr></tbody></table></div>
+
+The small bilinear error indicates that the supplied grid is smooth under this particular holdout test. It does not establish centimeter-scale physical bathymetric accuracy. Shared structure within one supplied grid, uncertainty in the original depths and the absence of independent field control remain relevant.
+
+<h2 id="uncertainty">10. Terrain uncertainty</h2>
+
+### 10.1 Keep the plan fixed before assessing robustness
+
+Thirty archived scenarios add independent Gaussian grid perturbations with assumed standard deviation 0.5 m. The final 63-line geometry stays fixed. Every trial produces a small nonzero missed-area value: median 0.00037195%, 95th percentile 0.00058413%, and maximum 0.00062434%. Mean excess-overlap length is 318,890.324 m, with standard deviation 387.865 m.
+
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/multibeam/terrain-uncertainty.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 11 at full size"><img src="{{ '/assets/img/research/multibeam/terrain-uncertainty.svg' | relative_url }}" alt="Two archived perturbation protocols under assumed 0.5 m grid noise. The first evaluates the existing plan; the second allows redesigned line placement. Their different protocols should not be merged into one robustness claim." width="950" height="380" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 11.</span> Two archived perturbation protocols under assumed 0.5 m grid noise. The first evaluates the existing plan; the second allows redesigned line placement. Their different protocols should not be merged into one robustness claim.</figcaption></figure>
+
+### 10.2 Replanning is a different experiment
+
+Ten separate archived scenarios allow a new plan after perturbing the depths. They retain the selected 5% overlap setting and produce 65 lines, totaling 325 NM, with numerically negligible evaluated missed area. This is approximately 3.17% more survey length than the unperturbed 315 NM plan.
+
+<div class="hy-model-table"><table><caption>Table 5. Fixed versus adaptive response to assumed noise.</caption><thead><tr><th scope="col">Protocol</th><th scope="col">Trials</th><th scope="col">Plan treatment</th><th scope="col">Interpretation</th></tr></thead><tbody><tr><td>Fixed geometry</td><td>30</td><td>63 saved lines retained</td><td>Small admitted coverage losses under the assumed perturbations</td></tr><tr><td>Replanning</td><td>10</td><td>New line placement; 65 lines</td><td>Coverage recovered by changing survey effort</td></tr><tr><td>Noise model</td><td>Both</td><td>Independent Gaussian grid noise, σ = 0.5 m</td><td>Scenario assumption; not calibrated field uncertainty</td></tr></tbody></table></div>
+
+Noise magnitude and spatial independence are assumptions. Spatially correlated depth error, systematic sound-speed bias, unknown terrain outside the rectangle and vessel-position uncertainty are not tested. Replanning also presumes that enough updated terrain information exists before the new survey. Thus the experiment demonstrates conditional response to a specified perturbation, not operational reliability under all measurement errors.
+
+<h2 id="verification">11. Independent verification</h2>
+
+### 11.1 New checks for this research note
+
+The new audit preserves the original project and reconstructs critical quantities through separate code paths. Bracketed ray equations replace closed-form substitutions; a vector plane intersection checks the effective-slope reduction; a closed recurrence checks the ideal placement; a separate interpolator and root solver check selected terrain edges. Interval merging is independently performed on every stored design slice.
+
+<div class="hy-model-table"><table><caption>Table 6. New independent checks and their scope.</caption><thead><tr><th scope="col">Check</th><th scope="col">Result</th><th scope="col">Limit</th></tr></thead><tbody><tr><td>22 cross-section edge cases</td><td>Maximum difference 5.69 × 10⁻¹⁴ m</td><td>Planar straight-ray geometry</td></tr><tr><td>72 three-dimensional cases</td><td>Maximum width difference 3.42 × 10⁻¹³ m</td><td>Planar orientation reduction</td></tr><tr><td>34 ideal placements</td><td>Maximum saved-coordinate difference 0.00492 m</td><td>Archive coordinates rounded to 0.01 m</td></tr><tr><td>70 terrain intersections</td><td>Maximum edge difference 1.754 × 10⁻⁶ m</td><td>Selected points on the same supplied grid</td></tr><tr><td>465 interval-union slices</td><td>Maximum uncovered width 0 m</td><td>Stored design slice locations</td></tr><tr><td>Original materials</td><td>354 source-file hashes unchanged</td><td>Read-only project preservation</td></tr></tbody></table></div>
+
+### 11.2 Archived checks retained with attribution
+
+The archive additionally reports 2,850 interior-beam checks with no edge-containment violations, a full interval-union evaluator and an independent occupancy check. The interval evaluator changes the coverage arithmetic but shares the source ray-intersection implementation. It is therefore useful cross-checking, not a wholly independent physical model.
+
+The public article distinguishes these archived outputs from the fresh checks and from conceptual images. The new tests do not overwrite the original result files, regenerate the manuscript, or relabel a synthetic picture as a measured bathymetric surface. Publication does not require changing the preserved research archive.
+
+<h2 id="discussion">12. Discussion and conclusions</h2>
+
+The study supports a clear geometric conclusion: swath width should be evaluated at the local depth and cross-sectional slope, and track separation should use actual neighboring edge intersections. The ideal example makes the mechanism analytically visible. The supplied-grid example shows how the same reasoning can be transferred to numerical terrain intersections and interval-union coverage.
+
+The selected 63-line plan is an effective candidate within its tested straight-line family. Its survey-length advantage over the corrected conservative baseline is substantial, while the average-depth shortcut fails the full-coverage task. Those findings are stronger when overlap definitions, endpoints, feasibility ceilings and cumulative-length metrics are stated explicitly.
+
+Several extensions remain open. A broader route family could combine headings or curved tracks and handle boundary completion directly. Operational effort should include turns, transit and restrictions. Physical uncertainty should be calibrated against independent measurements and include correlated bathymetric error, vessel pose and sound-speed effects. Coverage evaluation should then be linked to actual measurement quality, rather than only a straight-ray footprint.
+
+### Materials and evidence
+
+This note is based on the original bathymetric grid, revised October 2026 result summaries, saved placement arrays, source geometry and evaluator implementations, interpolation holdouts and the two perturbation protocols in the local research archive. Newly drawn verification and sensitivity figures were created from those saved quantities or explicitly labeled independent calculations. The supplied cover and research roadmap are retained as conceptual illustrations. The note is a project research exposition; it does not claim field deployment or independent sonar accuracy validation.
