@@ -2,7 +2,7 @@
 layout: han-project
 title: Multi-Object Localization of Rocket Debris
 description: A numerical study of sonic-boom source localization, joint position–time estimation, multi-signal matching, and sensitivity to recording errors.
-img: assets/img/research/rocket-geometry.svg
+img: assets/img/projects/rocket/rocket_cover.png
 importance: 2
 category: research
 discipline: Geometric modeling
@@ -12,7 +12,7 @@ role: Sole author; mathematical modeling, numerical solution, and analysis
 methods: Geometric constraints, nonlinear least squares, combinatorial matching, Monte Carlo analysis
 outcome: Journal article · December 2024 · issue 6 · pages 1–24
 card_summary: A numerical case study of seven monitoring stations and four sound sources, combining position–time estimation with signal association and error analysis.
-image_alt: Monitoring geometry and sensitivity of the estimated source altitudes
+image_alt: Globe and overlapping localization spheres, an illustration of geometric positioning
 publication: true
 contents:
   - label: Scope & contribution

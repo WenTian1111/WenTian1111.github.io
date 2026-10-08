@@ -4,9 +4,9 @@ This is the personal academic website of **Han YANG**, built with [al-folio](htt
 
 ## About
 
-I am an incoming M.A. student in Religious Studies at The Chinese University of Hong Kong (CUHK), and a recent graduate of Southwest University where I majored in Animal Science and Applied Mathematics.
+I have been admitted to the M.A. in Religious Studies at The Chinese University of Hong Kong (CUHK), with enrollment forthcoming. I graduated from Southwest University with a major in Animal Science and a minor in Applied Mathematics.
 
-My academic vision is to bridge ancient Chinese philosophical frameworks with modern scientific inquiry, exploring the fundamental logic underlying the universe.
+My interests connect Chinese philosophy, mathematical modeling, and data-driven research.
 
 ## Website
 
@@ -17,6 +17,8 @@ Visit: [wentian1111.github.io](https://wentian1111.github.io)
 - Academic CV with education, honors, and research experience
 - Research project showcase (egg dynamics, mathematical modeling, rocket debris localization)
 - Publications and patents
+
+Project covers are illustrative. Research figures inside the case studies present documented methods and results; raw datasets and private application materials are not distributed through this website.
 
 ## Built With
 

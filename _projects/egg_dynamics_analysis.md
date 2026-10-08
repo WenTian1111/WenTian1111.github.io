@@ -2,7 +2,7 @@
 layout: han-project
 title: Egg Rolling Analysis & Risk Sorting
 description: An undergraduate thesis and provincial innovation project connecting egg morphology, rolling experiments, interpretable risk grading, and an interactive prediction application.
-img: assets/img/research/egg-performance.svg
+img: assets/img/projects/egg/experiment_platform.png
 importance: 1
 category: research
 discipline: Machine vision
@@ -12,7 +12,7 @@ role: Thesis author and innovation-project lead
 methods: Controlled experiments, machine vision, statistical analysis, machine learning
 outcome: Undergraduate thesis, risk-grading framework, and companion web application
 card_summary: A study of 90 eggs and 270 repeated rolling trials, linking visual morphology to instability and translating the analysis into an interactive application.
-image_alt: Reported model comparison for egg rolling-risk classification
+image_alt: Illustration of the paired static-imaging and inclined rolling experiment platforms
 demo: https://egg-rsi-app.streamlit.app
 source_code: https://github.com/WenTian1111/egg-rsi-app
 contents:
