@@ -1,17 +1,17 @@
 ---
 layout: han-project
 title: Applied Mathematical Modeling
-description: A collection of computational studies across marine surveying, energy systems, manufacturing, motion, sensor fusion, healthy aging, and inverse geometry.
+description: A collection of computational studies across droplet evaporation, marine surveying, energy systems, manufacturing, motion, sensor fusion, healthy aging, and inverse geometry.
 img: assets/img/research/modeling-collection/cover.webp
 importance: 3
 category: research
 discipline: Applied mathematics
-period: 2023–2025
+period: Foundational study · 2023–2025
 question: How can real-world constraints become a useful mathematical model?
 role: AI-assisted modeling, numerical analysis, and research communication
 methods: Statistical learning, numerical simulation, optimization, computational geometry
-outcome: Eight research notes
-card_summary: A collection of eight computational studies, each presented through its research question, modeling approach, selected figures, and discussion.
+outcome: Nine research notes
+card_summary: A collection of nine computational studies, each presented through its research question, modeling approach, selected figures, and discussion.
 image_alt: Conceptual landscape connecting mathematical surfaces, spiral curves, and a spatial network
 ---
 
@@ -36,4 +36,4 @@ image_alt: Conceptual landscape connecting mathematical surfaces, spiral curves,
 {% endfor %}
 </div>
 
-<p class="hy-source-note">Computational studies, 2023–2025. The figures distinguish reported numerical results from conceptual method diagrams. These studies are not presented as peer-reviewed publications or field-validated systems.</p>
+<p class="hy-source-note">Nine computational studies, from foundational droplet evaporation to the 2023–2025 modeling series. The figures distinguish reported numerical results from conceptual method diagrams. These studies are not presented as peer-reviewed publications or field-validated systems.</p>

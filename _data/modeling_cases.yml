@@ -1,72 +1,83 @@
-- title: Multibeam Bathymetry & Survey Planning
+- title: Closed-Container Droplet Evaporation
   number: "01"
+  year: Foundational study
+  event: Heat and mass transfer
+  discipline: Multiphysics · Mechanistic modeling
+  summary: A sealed droplet links vapor capacity, shrinking volume and evaporative
+    cooling, including a temperature-driven switch between residual liquid and near-disappearance.
+  url: /projects/modeling/droplet-evaporation/
+  figure: /assets/img/research/droplet-evaporation/cover.webp
+- title: Multibeam Bathymetry & Survey Planning
+  number: "02"
   year: "2023"
   event: Marine surveying
   discipline: Computational geometry
-  summary:
-    "From three-dimensional sonar geometry to terrain-aware line spacing: a 63-line plan with numerical full coverage and 46.6% less survey length
-    than a shallow-depth baseline."
+  summary: "From three-dimensional sonar geometry to terrain-aware line spacing: a
+    63-line plan with numerical full coverage and 46.6% less survey length than a
+    shallow-depth baseline."
   url: /projects/modeling/multibeam-bathymetry/
   figure: /assets/img/research/multibeam/cover.webp
 - title: Wind–Solar–Storage Coordination
-  number: "02"
+  number: "03"
   year: "2024"
   event: Energy systems
   discipline: Energy systems · Optimization
-  summary:
-    "From hourly renewable mismatches to investment-aware battery sizing: separating the value of sharing resources from the incremental value of
-    storage."
+  summary: "From hourly renewable mismatches to investment-aware battery sizing: separating
+    the value of sharing resources from the incremental value of storage."
   url: /projects/modeling/microgrid-storage/
   figure: /assets/img/research/microgrid-storage/cover.webp
 - title: Bench-Dragon Procession Dynamics
-  number: "03"
+  number: "04"
   year: "2024"
   event: Computational geometry
   discipline: Computational geometry · Linked-body motion
-  summary: A linked-body geometry study that progresses from spiral motion to collision-aware pitch, turning construction, and speed amplification.
+  summary: A linked-body geometry study that progresses from spiral motion to collision-aware
+    pitch, turning construction, and speed amplification.
   url: /projects/modeling/bench-dragon/
   figure: /assets/img/research/bench-dragon/cover.webp
 - title: Steel-Plate Cutting Path Planning
-  number: "04"
+  number: "05"
   year: "2024"
   event: Manufacturing geometry
   discipline: Manufacturing geometry · Route optimization
-  summary: Four cutting layouts connect discrete scheduling with continuous geometry, while separating a feasible route from an optimality certificate.
+  summary: Four cutting layouts connect discrete scheduling with continuous geometry,
+    while separating a feasible route from an optimality certificate.
   url: /projects/modeling/cutting-paths/
   figure: /assets/img/research/cutting-paths/cover.webp
 - title: Multi-Source Navigation under Uncertain Signals
-  number: "05"
+  number: "06"
   year: "2024"
   event: Statistical estimation
   discipline: Statistical estimation · Sensor fusion
-  summary:
-    A progression from multi-channel position estimation to bias diagnostics, with synthetic checks exposing the difference between confidence and
-    accuracy.
+  summary: A progression from multi-channel position estimation to bias diagnostics,
+    with synthetic checks exposing the difference between confidence and accuracy.
   url: /projects/modeling/navigation/
   figure: /assets/img/research/navigation/cover.webp
 - title: Healthy Aging & Equitable Care Networks
-  number: "06"
+  number: "07"
   year: "2024"
   event: Public-health data
   discipline: Public-health data · Service-network modeling
-  summary: From country-level healthy-aging indicators to a modeled service network, with clear boundaries between association, prediction, and policy effects.
+  summary: From country-level healthy-aging indicators to a modeled service network,
+    with clear boundaries between association, prediction, and policy effects.
   url: /projects/modeling/elderly-care/
   figure: /assets/img/research/elderly-care/cover.webp
 - title: Planar Curve Reconstruction from Fiber Sensors
-  number: "07"
+  number: 08
   year: "2024"
   event: Inverse geometry
   discipline: Inverse geometry · Optical sensing
-  summary:
-    From six optical sensor readings to a reconstructed planar curve, separating integration accuracy from the much larger uncertainty of curvature
-    sign and measurement noise.
+  summary: From six optical sensor readings to a reconstructed planar curve, separating
+    integration accuracy from the much larger uncertainty of curvature sign and measurement
+    noise.
   url: /projects/modeling/fiber-reconstruction/
   figure: /assets/img/research/fiber-reconstruction/cover.webp
 - title: Geometric Simulation & Evidence Discipline
-  number: 08
+  number: 09
   year: "2025"
   event: Numerical research
   discipline: Numerical research · Verification practice
-  summary: A non-operational research reflection on assumptions, reproducibility, numerical verification, and the limits of simulation evidence.
+  summary: A non-operational research reflection on assumptions, reproducibility,
+    numerical verification, and the limits of simulation evidence.
   url: /projects/modeling/constrained-simulation/
   figure: /assets/img/research/constrained-simulation/cover.webp
