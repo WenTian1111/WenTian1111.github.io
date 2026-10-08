@@ -165,10 +165,11 @@ cv:
           - Published in Frontier and Progress of Computational Mathematics and Modeling (December 2024, no. 6)
         start_date: 2024-05-01
         end_date: 2024-08-01
-      - name: "Mathematical Modeling Competitions (Independent Research)"
-        summary: "Independently developed seven competition studies across smartphone analytics, renewable-storage dispatch, bench-dragon kinematics, submersible search, computational biomechanics, cutting-path planning, and constrained geometric simulation. Responsible for mathematical modeling, implementation, analysis, and manuscript preparation."
+      - name: "Mathematical Modeling Competitions & Research Series (Independent Research)"
+        summary: "Independently formulated and solved an eight-part applied mathematical modeling series spanning marine bathymetric surveying, renewable microgrid storage coordination, linked-body spiral kinematics (bench-dragon dynamics), CNC cutting-path optimization, multi-channel sensor navigation, public-health care networks, fiber-optic curve reconstruction, and constrained geometric simulation. Formulated mathematical frameworks coupling nonlinear optimization, computational geometry, statistical estimation, and Monte Carlo sensitivity analysis; responsible for end-to-end mathematical modeling, algorithm implementation, numerical simulation, and manuscript preparation."
         highlights:
-          - First-class awards at both national and provincial levels
+          - First-class awards at both national and provincial levels across mathematical modeling competitions
+          - Synthesized into eight evidence-based computational research notes with explicit problem design, methods, and verification
         start_date: 2023-03-01
         end_date: 2026-01-01
     References: []
