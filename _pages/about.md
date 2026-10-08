@@ -133,13 +133,6 @@ latest_posts:
 
     <div class="hy-timeline">
       <article>
-        <span>Admitted</span>
-        <div>
-          <h3>M.A. in Religious Studies</h3>
-          <p>The Chinese University of Hong Kong</p>
-        </div>
-      </article>
-      <article>
         <span>Sep. 2022 – Jun. 2026</span>
         <div>
           <h3>B.Sc. in Animal Science</h3>
