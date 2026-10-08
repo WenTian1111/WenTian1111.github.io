@@ -136,11 +136,11 @@ latest_posts:
         <span>Admitted</span>
         <div>
           <h3>M.A. in Religious Studies</h3>
-          <p>The Chinese University of Hong Kong · enrollment forthcoming</p>
+          <p>The Chinese University of Hong Kong</p>
         </div>
       </article>
       <article>
-        <span>2022–26</span>
+        <span>Sep. 2022 – Jun. 2026</span>
         <div>
           <h3>B.Sc. in Animal Science</h3>
           <p>Southwest University · with coursework in Applied Mathematics</p>
@@ -151,6 +151,13 @@ latest_posts:
         <div>
           <h3>First research publication</h3>
           <p>Multi-object localization of rocket debris using sonic-boom arrival times</p>
+        </div>
+      </article>
+      <article>
+        <span>2022–2023</span>
+        <div>
+          <h3>Chongqing Advanced Individual for Innovation Ability Enhancement</h3>
+          <p>Awarded in the shortest time among recipients · Conferred by Chongqing Municipal Education Commission</p>
         </div>
       </article>
     </div>
