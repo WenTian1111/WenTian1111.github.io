@@ -1,17 +1,17 @@
 ---
 layout: han-project
 title: Applied Mathematical Modeling
-description: A collection of computational studies across data science, energy systems, geometry, uncertainty, and computational mechanics.
+description: A collection of computational studies across marine surveying, energy systems, manufacturing, motion, sensor fusion, healthy aging, and inverse geometry.
 img: assets/img/research/dragon-geometry.svg
 importance: 3
 category: research
 discipline: Applied mathematics
 period: 2023–2025
 question: How can real-world constraints become a useful mathematical model?
-role: Modeling, computation, analysis, and research communication
+role: AI-assisted modeling, numerical analysis, and research communication
 methods: Statistical learning, numerical simulation, optimization, computational geometry
-outcome: Seven research notes
-card_summary: A collection of seven computational studies, each presented through its research question, modeling approach, selected figures, and discussion.
+outcome: Eight research notes
+card_summary: A collection of eight computational studies, each presented through its research question, modeling approach, selected figures, and discussion.
 image_alt: Spiral geometry and a linked-body modeling workflow
 ---
 
@@ -24,7 +24,7 @@ image_alt: Spiral geometry and a linked-body modeling workflow
 {% for study in site.data.modeling_cases %}
   <article class="hy-paper-card">
     <a class="hy-paper-image" href="{{ study.url | relative_url }}" aria-label="Read {{ study.title | escape }}">
-      <img src="{{ study.figure | relative_url }}" alt="{{ study.title | escape }} — selected research figure" loading="lazy" width="1000" height="580">
+      <img src="{{ study.figure | relative_url }}" alt="{{ study.title | escape }} — conceptual project cover" loading="lazy" width="1000" height="580">
     </a>
     <div class="hy-paper-copy">
       <p class="hy-label">{{ study.number }} <span> / {{ study.event }} · {{ study.year }}</span></p>

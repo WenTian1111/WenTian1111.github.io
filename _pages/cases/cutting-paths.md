@@ -1,86 +1,145 @@
 ---
 layout: han-project
-title: "Steel-Plate Cutting Path Planning"
-description: "A geometric treatment of connected contours, separate components, and the travel needed to move between them."
+title: Steel-Plate Cutting Path Planning
+description: Four cutting layouts connect discrete scheduling with continuous geometry, while separating a feasible route from an optimality certificate.
 permalink: /projects/modeling/cutting-paths/
-discipline: "Graph optimization"
-period: "2024"
-question: "How can a tool visit every contour while reducing non-cutting travel?"
-role: Independent researcher — modeling, implementation, analysis, and writing
-methods: "Eulerian reasoning, greedy construction, parametric geometry"
-outcome: "May Day Modeling · 2024 · competition manuscript"
+discipline: Manufacturing geometry · Route optimization
+period: 2024 study
+question: How can contour order and continuous entry points reduce travel between cuts?
+role: AI-assisted modeling, numerical analysis, and research synthesis
+methods: Contour scheduling, geometric entry optimization, lower bounds, finite-width bridge unions
+outcome: Four layouts · continuous entry points · qualified optimality evidence
 parent_url: /projects/math_modeling_series/
 parent_label: All modeling studies
 contents:
   - label: Abstract
     id: abstract
-  - label: Model design
-    id: method
-  - label: Results
-    id: findings
-  - label: Discussion
+  - label: "1. Background: optimize the distance that can change"
+    id: background
+  - label: 2. Study roadmap
+    id: roadmap
+  - label: 3. Formulate structure and geometry together
+    id: objective
+  - label: "4. Layout I: a continuous entry point matters"
+    id: first
+  - label: "5. Layout II: split visits and certify a candidate family"
+    id: second
+  - label: "6. Layout III: an improved route with an open gap"
+    id: third
+  - label: "7. Layout IV: bridges change the boundary"
+    id: bridges
+  - label: 8. Verification, limitations, and next steps
     id: discussion
 ---
 
+<link rel="stylesheet" href="{{ '/assets/css/modeling-notes.css' | relative_url }}">
+
 <h2 id="abstract">Abstract</h2>
 
-Cutting time is not determined solely by the length of the required contours. A tool must also travel between components without cutting. This study separates those two forms of movement and investigates how graph structure and geometric entry points affect the non-cutting portion of a route.
+Cutting a collection of contours creates two different lengths: the material-processing distance and the non-cutting travel between operations. This study targets the latter. Four layouts progressively introduce geometric entry points, split contour visits, precedence constraints, and finite-width bridges between pieces. Discrete structure selection and continuous geometric refinement are treated together because neither the contour order nor the entry point alone determines travel.
 
-The four supplied layouts develop the question progressively: first a connected contour arrangement, then separate circular and elliptical components, followed by additional internal rectangular parts. The work combines a topological question—whether a continuous traversal exists—with a geometric one—where to enter, leave, and connect the contours.
+Selected non-cutting distances are 64.0312, 130.5356, 203.2436, and 133.9784 in the problem's coordinate units. The second layout has a certificate within the implemented candidate family; the third retains a sizable lower-bound gap and is presented as a feasible improved route. This distinction is part of the result rather than a footnote: a smaller objective than a baseline is not, by itself, evidence of global optimality.
 
-<aside class="hy-study-insight" aria-label="Study takeaway">
-  <p class="hy-label">In brief</p>
-  <p>Continuous traversal and minimum travel are different goals. Graph structure helps organize the cutting sequence; geometric entry points determine the additional movement between components.</p>
-</aside>
+<h2 id="background">1. Background: optimize the distance that can change</h2>
 
-<figure class="hy-research-figure">
-  <div class="hy-figure-canvas" tabindex="0" role="region" aria-label="Scrollable contour and route diagram"><img src="{{ '/assets/img/research/cutting-methods.svg' | relative_url }}" alt="Connected contours and links between separate components. Solid teal lines represent cutting; dashed ochre connections represent non-cutting motion. Schematic geometry, not a claimed optimum." loading="lazy" width="1000" height="580"></div>
-  <figcaption><span>Figure 1.</span> Connected contours and links between separate components. Solid teal lines represent cutting; dashed ochre connections represent non-cutting motion. Schematic geometry, not a claimed optimum.</figcaption>
-</figure>
+Some cutting length is prescribed by the contours. Travel between those contours, however, depends on the machine's order of visits, where each visit begins, and whether a contour can be split into multiple operations. The study therefore measures non-cutting travel rather than treating all visible path length as an interchangeable objective.
 
-<h2 id="method">Model design</h2>
+<figure class="hy-research-figure hy-model-figure">
+<a class="hy-model-zoom" href="{{ '/assets/img/research/cutting-paths/cover.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 1 at full size">
+<img src="{{ '/assets/img/research/cutting-paths/cover.webp' | relative_url }}" alt="Conceptual cutting-head and steel-plate setting" width="1647" height="955" loading="lazy">
+<span class="hy-model-zoom-label">View full size ↗</span></a>
+<figcaption><span>Figure 1.</span> Conceptual cutting-head and steel-plate setting. The illustration is not a machine trial or a to-scale reconstruction of one of the four supplied layouts.</figcaption></figure>
 
-### Define what the objective counts
+The inputs are idealized contour geometries including polylines, rectangles, circles, and ellipses. Coordinates are retained in their supplied units. The source does not justify converting the reported lengths into millimeters, minutes, or production cost. A real manufacturing objective would need feed rates, acceleration, pierce delays, heat effects, and machine constraints.
 
-The competition defines idle travel as movement in the horizontal plane that does not cut material; vertical lifting is excluded. Each layout uses the specified lower-right starting point. The reported objective is therefore not total cutting time, total contour length, or a complete machine-cycle cost. All lengths shown here retain the source drawing's units, without assuming millimetres or centimetres.
+<h2 id="roadmap">2. Study roadmap</h2>
 
-This definition separates the contour segments that must be cut from the extra connections used to reach them. Figure 1 shows that distinction schematically: solid lines represent cutting, while dashed links represent non-cutting movement. The drawing explains the model structure and is not a scaled manufacturing plan.
+The first layout isolates continuous entry geometry. The second adds structural alternatives such as split visits. The third introduces further order constraints and demonstrates the importance of lower bounds. The fourth asks how finite-width connections change the contour to be cut.
 
-### Use connectivity before optimizing distances
+<figure class="hy-research-figure hy-model-figure">
+<a class="hy-model-zoom" href="{{ '/assets/img/research/cutting-paths/workflow.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 2 at full size">
+<img src="{{ '/assets/img/research/cutting-paths/workflow.webp' | relative_url }}" alt="Overview of contour preprocessing, candidate structures, continuous geometric refinement, and route verification" width="1672" height="941" loading="lazy">
+<span class="hy-model-zoom-label">View full size ↗</span></a>
+<figcaption><span>Figure 2.</span> Overview of contour preprocessing, candidate structures, continuous geometric refinement, and route verification. Diagram routes are explanatory; numerical distances below come from saved output tables.</figcaption></figure>
 
-For connected layouts, I used Eulerian reasoning to examine the possibility of traversing the required edges continuously. Once components are disconnected, that traversal question no longer determines the whole route. The calculation must also choose links, component order, and suitable entry points.
+<h2 id="objective">3. Formulate structure and geometry together</h2>
 
-The manuscript uses greedy route construction for these choices, supported by planar geometry. This offers a workable candidate construction, but a locally short next connection need not produce the shortest complete route. The graph and geometric parts of the problem must therefore be interpreted together.
+Let an operation finish at $q_j^{\mathrm{out}}$ and the next begin at $q_{j+1}^{\mathrm{in}}$. The objective sums the straight non-cutting moves required by the selected sequence:
 
-### Parameterize curved boundaries
+<div class="hy-equation">
+\[
+L_{\mathrm{idle}}=\sum_j\left\|q_j^{\mathrm{out}}-q_{j+1}^{\mathrm{in}}\right\|.
+\tag{1}
+\]
+</div>
 
-For the elliptical component, candidate entry locations are expressed through an ellipse parameter, and their approach distances are evaluated geometrically. The manuscript uses MATLAB calculations to search this parameterized problem, alongside geometric drawings of the selected routes. In the second layout, it reports an ellipse parameter of approximately 1.1552 radians and an approach contribution of 15.5535 drawing units.
+For a closed contour, the entry point may lie anywhere on its parameterized boundary $C(s)$, with $0\le s<\operatorname{perimeter}(C)$. Restricting entry to corners converts a continuous geometric decision into an artificial discrete rule and can miss a shorter move. The sequence must also respect required precedence, such as processing an inner shape before its enclosing boundary.
 
-The third layout adds twelve symmetric rectangular parts within the ellipse. Its construction includes the preceding approach, an additional connector, and travel associated with the internal rectangles. The fourth layout instead considers a different internal arrangement with four rectangular parts and a bridging construction. These are distinct geometric cases, not successive benchmark runs on an unchanged instance.
+The computational procedure separates a candidate's combinatorial structure from the continuous entry-point problem inside it. Simple lower bounds discard structures that cannot beat the best known route; promising structures receive a more detailed geometric refinement. Finally, an independent route walk recomputes length and checks whether the prescribed operations and constraints are respected.
 
-<h2 id="findings">Selected results</h2>
+This layered design makes the evidence interpretable: structural enumeration, continuous refinement, and physical feasibility are different checks. Each has to be specified before an optimality claim can be assessed.
 
-<figure class="hy-research-figure">
-  <div class="hy-figure-canvas" tabindex="0" role="region" aria-label="Scrollable research result figure"><img src="{{ '/assets/img/research/cutting-travel.svg' | relative_url }}" alt="Decomposition of the third layout's reported non-cutting route length. Values are in the source drawing's units. This displays the paper's construction and does not establish a globally optimal route." loading="lazy" width="1000" height="580"></div>
-  <figcaption><span>Figure 2.</span> Decomposition of the third layout's reported non-cutting route length. Values are in the source drawing's units. This displays the paper's construction and does not establish a globally optimal route.</figcaption>
-</figure>
+<h2 id="first">4. Layout I: a continuous entry point matters</h2>
 
-### Interpreting the route-length decomposition
+The first example gives a compact demonstration of the geometric issue. The selected idle distance is $2\sqrt{1025}=64.0312$. A corner-only alternative gives approximately 65.3112. The improvement comes from allowing the entry location to move along an edge rather than treating the contour as a list of corner candidates.
 
-The result figure focuses on the third layout because the reported total can be broken into interpretable contributions. The preceding approach accounts for approximately 31.55 drawing units, the additional link for 6.1406, and the internal rectangular travel for 44. Their sum is 81.6906, reported as 81.69 after rounding. Figure 2 displays this accounting as a cumulative route-length decomposition rather than an unexplained total.
+<div class="hy-equation">
+\[
+L_{\mathrm{I}}=2\sqrt{1025}\approx64.0312.
+\tag{2}
+\]
+</div>
 
-The internal-rectangle contribution is the largest component in that construction. This helps identify where the reported route spends its idle distance; it does not prove that the same contribution could be removed while preserving feasibility. Nor is the 31.55-unit component a baseline algorithm against which an improvement percentage should be calculated.
+The lesson is broader than the size of this particular reduction: when the object to be visited is a curve, the best connection is a nearest-point or jointly optimized boundary-point problem. A graph of representative vertices may be useful as a bound or initialization, but it is not automatically equivalent to the continuous problem.
 
-### Four layouts, four different questions
+<figure class="hy-research-figure hy-model-figure">
+<a class="hy-model-zoom" href="{{ '/assets/img/research/cutting-paths/layouts.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 3 at full size">
+<img src="{{ '/assets/img/research/cutting-paths/layouts.svg' | relative_url }}" alt="Selected non-cutting travel for the four layouts" width="720" height="418" loading="lazy">
+<span class="hy-model-zoom-label">View full size ↗</span></a>
+<figcaption><span>Figure 3.</span> Selected non-cutting travel for the four layouts. These are different input geometries, so their absolute bar heights are not a performance ranking between tasks. All values retain the problem coordinate units.</figcaption></figure>
 
-Across the four tasks, the manuscript reports idle-travel lengths of approximately 64.03, 31.55, 81.69, and 47.55 drawing units. The second total combines the elliptical approach with the circular-component contribution. The third and fourth reflect different internal arrangements. A lower total between tasks cannot establish a better algorithm when the geometry and required operations have changed.
+<h2 id="second">5. Layout II: split visits and certify a candidate family</h2>
 
-The central result is the construction of routes that connect contour topology with explicit geometric choices. The decomposition makes that reasoning inspectable while avoiding an unsupported claim of global optimality.
+The second layout permits more elaborate operation structures. The selected split-contour route has idle distance 130.5355649, compared with 150.62541385 for the evaluated single-loop alternative and 177.6145593 for the nearest-neighbor baseline. These correspond to reductions of about 13.3% and 26.5% against the two stated references.
 
-<h2 id="discussion">Discussion</h2>
+The archived search enumerates 86,400 candidate structures and refines 594 of them. The next candidate's saved lower bound is 130.5363128, already above the selected objective. Under the implemented structural family and refinement conventions, that bound closes the remaining structural search.
 
-A greedy construction is not, by itself, proof of a globally shortest route. A useful continuation would compare complete routes for the same layout against an exact or exhaustive small-instance baseline. Each candidate would need to satisfy the same contour, starting-point, and bridging requirements before its length could be meaningfully compared.
+This is a meaningful certificate, but its scope must be retained. It applies to the operations, structure enumeration, and continuous-solving assumptions actually encoded. It does not prove optimality after adding arbitrary contour splitting, new machine motions, or manufacturing constraints absent from the study.
 
-For a manufacturing application, the objective would also need to account for kerf, cut order, thermal effects, and part stability, as well as motion excluded by the competition's idle-travel definition. Those extensions were not validated in this study. The portfolio presents the submitted geometric reasoning and selected route accounting, not a machine-ready cutting program.
+<h2 id="third">6. Layout III: an improved route with an open gap</h2>
 
-<p class="hy-source-note">Research record: May Day Mathematical Modeling competition manuscript, 2024. Original study: <em>Steel-plate cutting modeling using an improved greedy algorithm based on Euler's theorem</em>. Independently developed by Han Yang.</p>
+For the third layout, the selected feasible route has idle distance 203.2436, versus 239.8391 for the nearest-neighbor reference. The relaxed lower bound is 147.9435. The absolute gap is approximately 55.30, or about 27.3% of the feasible objective.
+
+<figure class="hy-research-figure hy-model-figure">
+<a class="hy-model-zoom" href="{{ '/assets/img/research/cutting-paths/comparison.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 4 at full size">
+<img src="{{ '/assets/img/research/cutting-paths/comparison.svg' | relative_url }}" alt="Reference comparisons for Layouts II and III" width="720" height="418" loading="lazy">
+<span class="hy-model-zoom-label">View full size ↗</span></a>
+<figcaption><span>Figure 4.</span> Reference comparisons for Layouts II and III. The relaxed lower bound is not a feasible cutting route; it indicates how much room remains before optimality is established.</figcaption></figure>
+
+The large gap limits what can be concluded. The selected route is better than the chosen baseline and passes the saved feasibility checks, but the lower bound is too loose to establish that no better route exists. Describing it as an improved feasible solution communicates the actual state of the evidence more accurately than labeling every selected route “optimal.”
+
+A useful next calculation would either tighten the relaxation or systematically enlarge and certify the candidate search. Those are different improvements from merely rerunning a local optimizer with another initial point.
+
+<h2 id="bridges">7. Layout IV: bridges change the boundary</h2>
+
+In the connected-piece example, a bridge has finite width. Its union with the pieces changes the outline that the cutter must follow. Treating a bridge as a zero-width graph edge would miss that geometric change and could count lengths or connected components incorrectly.
+
+Four symmetry-related three-bridge trees have the same selected idle distance, approximately 133.978394. A tested four-bridge cycle gives approximately 136.6798. The additional connection therefore does not improve the stated idle-travel objective in this comparison.
+
+<figure class="hy-research-figure hy-model-figure">
+<a class="hy-model-zoom" href="{{ '/assets/img/research/cutting-paths/bridges.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 5 at full size">
+<img src="{{ '/assets/img/research/cutting-paths/bridges.svg' | relative_url }}" alt="Three-bridge tree alternatives versus a four-bridge cycle" width="720" height="418" loading="lazy">
+<span class="hy-model-zoom-label">View full size ↗</span></a>
+<figcaption><span>Figure 5.</span> Three-bridge tree alternatives versus a four-bridge cycle. The vertical scale is restricted to show the small difference; printed values provide the complete distances.</figcaption></figure>
+
+Bridge width is 2 in the supplied coordinate units. The calculation forms and verifies the finite-width geometric union before planning travel. The result is conditional on that construction rule and objective; fewer bridges need not always be better under an alternative strength, heat, or material-loss objective.
+
+<h2 id="discussion">8. Verification, limitations, and next steps</h2>
+
+The archived independent route walk reproduces the selected travel totals within zero to approximately $10^{-9}$ numerical discrepancy, and the saved feasibility-error lists are empty. These checks support consistency between a stored route and its reported objective. They do not, by themselves, prove that the route is globally shortest.
+
+One perturbation series contains an inconsistent reference: its zero-perturbation reoptimized value differs from the stated baseline. That series is not used here as clean quantitative robustness evidence. Baseline alignment should be resolved before interpreting its apparent improvement as sensitivity to geometry.
+
+The main contribution is the connection between discrete operation structure and continuous boundary geometry. The main limitation is that the objective is purely geometric non-cutting travel. A production study would add acceleration, pierce costs, thermal distortion, collision clearance, and independent machine trials. Those extensions may change both the best sequence and the best entry points.
+
+<p class="hy-source-note">Source basis: the supplied project manuscript, saved numerical outputs, and analysis scripts. This page summarizes archived calculations; it does not represent a new full model run, a peer-reviewed publication, or independent field validation. Cover and workflow illustrations are AI-generated; quantitative plots are redrawn from saved numerical records. No manuscript download is attached at this stage.</p>

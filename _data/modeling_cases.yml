@@ -1,56 +1,72 @@
-- title: "Multibeam Bathymetry & Survey Planning"
+- title: Multibeam Bathymetry & Survey Planning
   number: "01"
   year: "2023"
-  event: "Marine surveying"
-  discipline: "Computational geometry"
-  summary: "From three-dimensional sonar geometry to terrain-aware line spacing: a 63-line plan with numerical full coverage and 46.6% less survey length than a shallow-depth baseline."
+  event: Marine surveying
+  discipline: Computational geometry
+  summary:
+    "From three-dimensional sonar geometry to terrain-aware line spacing: a 63-line plan with numerical full coverage and 46.6% less survey length
+    than a shallow-depth baseline."
   url: /projects/modeling/multibeam-bathymetry/
   figure: /assets/img/research/multibeam/cover.webp
-- title: "Wind–Solar–Storage Coordination"
+- title: Wind–Solar–Storage Coordination
   number: "02"
   year: "2024"
-  event: "Electrician Cup"
-  discipline: "Energy systems"
-  summary: "A three-park comparison of renewable curtailment and supply cost, progressing from a common battery to park-specific sizing and joint operation."
+  event: Energy systems
+  discipline: Energy systems · Optimization
+  summary:
+    "From hourly renewable mismatches to investment-aware battery sizing: separating the value of sharing resources from the incremental value of
+    storage."
   url: /projects/modeling/microgrid-storage/
-  figure: /assets/img/research/energy-dispatch.svg
-- title: "Bench-Dragon Procession Dynamics"
+  figure: /assets/img/research/microgrid-storage/cover.webp
+- title: Bench-Dragon Procession Dynamics
   number: "03"
   year: "2024"
-  event: "CUMCM"
-  discipline: "Computational geometry"
-  summary: "Five connected tasks for a 223-segment procession: position, collision, spiral pitch, turning geometry, and the speed of the full linked chain."
+  event: Computational geometry
+  discipline: Computational geometry · Linked-body motion
+  summary: A linked-body geometry study that progresses from spiral motion to collision-aware pitch, turning construction, and speed amplification.
   url: /projects/modeling/bench-dragon/
-  figure: /assets/img/research/dragon-initialization.svg
-- title: "Submersible Search under Uncertainty"
+  figure: /assets/img/research/bench-dragon/cover.webp
+- title: Steel-Plate Cutting Path Planning
   number: "04"
   year: "2024"
-  event: "MCM / ICM"
-  discipline: "Stochastic modeling"
-  summary: "From 1,000 modeled drift realizations to spatial uncertainty and equipment comparison—showing how a change in priorities changes the ranking."
-  url: /projects/modeling/submersible-search/
-  figure: /assets/img/research/submersible-ranking.svg
-- title: "A Two-Stage Brain Mechanics Model"
+  event: Manufacturing geometry
+  discipline: Manufacturing geometry · Route optimization
+  summary: Four cutting layouts connect discrete scheduling with continuous geometry, while separating a feasible route from an optimality certificate.
+  url: /projects/modeling/cutting-paths/
+  figure: /assets/img/research/cutting-paths/cover.webp
+- title: Multi-Source Navigation under Uncertain Signals
   number: "05"
   year: "2024"
-  event: "Certification Cup"
-  discipline: "Computational biomechanics"
-  summary: "Two stages of idealized mechanics, connecting material and boundary assumptions with illustrative displacement results for solid and fluid inclusion scenarios."
-  url: /projects/modeling/brain-biomechanics/
-  figure: /assets/img/research/brain-displacement.svg
-- title: "Steel-Plate Cutting Path Planning"
+  event: Statistical estimation
+  discipline: Statistical estimation · Sensor fusion
+  summary:
+    A progression from multi-channel position estimation to bias diagnostics, with synthetic checks exposing the difference between confidence and
+    accuracy.
+  url: /projects/modeling/navigation/
+  figure: /assets/img/research/navigation/cover.webp
+- title: Healthy Aging & Equitable Care Networks
   number: "06"
   year: "2024"
-  event: "May Day Modeling"
-  discipline: "Graph optimization"
-  summary: "Four cutting layouts connect Eulerian reasoning with geometric entry points. A route-length decomposition explains where non-cutting travel accumulates."
-  url: /projects/modeling/cutting-paths/
-  figure: /assets/img/research/cutting-travel.svg
-- title: "Constrained Geometric Simulation"
+  event: Public-health data
+  discipline: Public-health data · Service-network modeling
+  summary: From country-level healthy-aging indicators to a modeled service network, with clear boundaries between association, prediction, and policy effects.
+  url: /projects/modeling/elderly-care/
+  figure: /assets/img/research/elderly-care/cover.webp
+- title: Planar Curve Reconstruction from Fiber Sensors
   number: "07"
+  year: "2024"
+  event: Inverse geometry
+  discipline: Inverse geometry · Optical sensing
+  summary:
+    From six optical sensor readings to a reconstructed planar curve, separating integration accuracy from the much larger uncertainty of curvature
+    sign and measurement noise.
+  url: /projects/modeling/fiber-reconstruction/
+  figure: /assets/img/research/fiber-reconstruction/cover.webp
+- title: Geometric Simulation & Evidence Discipline
+  number: 08
   year: "2025"
-  event: "CUMCM"
-  discipline: "Numerical optimization"
-  summary: "A non-operational research reflection on geometric abstraction, constrained numerical search, and the distinction between computation and validation."
+  event: Numerical research
+  discipline: Numerical research · Verification practice
+  summary: A non-operational research reflection on assumptions, reproducibility, numerical verification, and the limits of simulation evidence.
   url: /projects/modeling/constrained-simulation/
-  figure: /assets/img/research/visibility-methods.svg
+  figure: /assets/img/research/constrained-simulation/cover.webp
