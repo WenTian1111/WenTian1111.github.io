@@ -4,7 +4,7 @@ This is the personal academic website of **Han YANG**, built with [al-folio](htt
 
 ## About
 
-I have been admitted to the M.A. in Religious Studies at The Chinese University of Hong Kong (CUHK), with enrollment forthcoming. I graduated from Southwest University with a major in Animal Science and a minor in Applied Mathematics.
+I have been admitted to Religious Studies at The Chinese University of Hong Kong (CUHK). I graduated from Southwest University with a major in Animal Science and a minor in Applied Mathematics.
 
 My interests connect Chinese philosophy, mathematical modeling, and data-driven research.
 
