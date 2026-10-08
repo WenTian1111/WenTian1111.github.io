@@ -5,7 +5,7 @@
   discipline: "Computational geometry"
   summary: "From three-dimensional sonar geometry to terrain-aware line spacing: a 63-line plan with numerical full coverage and 46.6% less survey length than a shallow-depth baseline."
   url: /projects/modeling/multibeam-bathymetry/
-  figure: /assets/img/research/multibeam-overview.svg
+  figure: /assets/img/research/multibeam/cover.webp
 - title: "Wind–Solar–Storage Coordination"
   number: "02"
   year: "2024"
