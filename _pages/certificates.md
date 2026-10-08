@@ -2,59 +2,98 @@
 layout: han-page
 permalink: /certificates/
 title: Awards
-heading: Awards & certifications
-eyebrow: Academic recognition
-page_class: hy-record-page
+heading: Honors & awards
+eyebrow: Recognition · 2022–2025
+page_class: hy-awards-page
 nav: true
 nav_order: 5
-description: Scholarships, competition results, and additional training recorded during my undergraduate years.
+description: Selected academic honors, scholarships, and competition results—a record of curiosity translated into sustained work.
 ---
 
-## 2025
+{% assign awards = site.data.awards %}
 
-- **VTR Bio-Tech Scholarship**, Mar. 2025
+<section class="hy-award-highlights" aria-label="Selected distinctions">
+  {% for award in awards.featured %}
+    <article class="hy-award-highlight{% if forloop.first %} hy-award-highlight-lead{% endif %}">
+      <div class="hy-award-overline"><span>{{ award.category }}</span><span>{{ award.year }}</span></div>
+      <h2>{{ award.title }}</h2>
+      <p class="hy-award-highlight-detail">{{ award.detail }}</p>
+      {% if award.chinese %}<p class="hy-award-chinese" lang="zh-CN">{{ award.chinese }}</p>{% endif %}
+      <p class="hy-award-issuer">{{ award.issuer }}</p>
+      {% if award.url %}<a class="hy-award-link" href="{{ award.url | relative_url }}">{{ award.link }} <span aria-hidden="true">↗</span></a>{% endif %}
+    </article>
+  {% endfor %}
+</section>
 
-## 2024
+<nav class="hy-section-nav" aria-label="Awards sections">
+  <a href="#honors">Honors & scholarships</a>
+  <a href="#modeling">Modeling</a>
+  <a href="#mathematics">Mathematics</a>
+  <a href="#innovation">Innovation</a>
+  <a href="#learning">Further learning</a>
+</nav>
 
-- **Chongqing Advanced Individual for Innovation Ability Enhancement**, 2024
-- **National First Prize, "Certification Cup" Mathematical Modeling Network Challenge**, 2024
-- **Provincial First Prize, China Undergraduate Mathematical Contest in Modeling (CUMCM)**, Sep. 2024
-- **National First Prize, National Higher Education Institutions Mathematics Ability Challenge**, 2024
-- **National First Prize, National College Students' Mathematical Olympiad**, 2024
-- **Southwest University Diligent Endeavor Scholarship**, Dec. 2024
-- **First Prize, 21st May Mathematical Modeling Competition**, 2024
-- **First Prize, 9th Shuwei Cup Mathematical Modeling Challenge**, 2024
-- **First Prize, 16th Huazhong Cup Mathematical Modeling Challenge**, 2024
-- **First Prize, 6th Zhongqing Cup National Mathematical Modeling Competition**, 2024
-- **First Prize, 14th National College Students' Mathematics Competition (CMC)**, 2024
-- **First Prize, 2nd National College Students' Mathematical Innovation Thinking Challenge**, 2024
-- **First Prize, National College Students' High-Tech Competition - Mathematics**, 2024
-- **First Prize, 7th Visionary Cup National Innovation Employment Competition**, 2024
-- **First Prize, 3rd National College Students' Technology Innovation Entrepreneurship Competition**, 2024
-- **Mathematical Contest In Modeling (MCM)**, 2024
+<section class="hy-awards-section" id="honors" aria-labelledby="honors-title">
+  <header class="hy-awards-section-heading">
+    <p class="hy-label">Academic recognition</p>
+    <h2 id="honors-title">Honors & scholarships</h2>
+    <p>University and industry-supported recognition for academic work, innovation, and engagement.</p>
+  </header>
+  <div class="hy-honors-grid">
+    {% for award in awards.honors %}
+      <article class="hy-honor-card">
+        <span class="hy-award-year">{{ award.year }}</span>
+        <h3>{{ award.title }}</h3>
+        <p class="hy-award-chinese" lang="zh-CN">{{ award.chinese }}</p>
+        <p class="hy-award-issuer">{{ award.issuer }}</p>
+        <p class="hy-award-note">{{ award.detail }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
 
-## 2023
+{% for group in awards.competitions %}
 
-- **Beijing Challenge Group Annual Scholarship**, Nov. 2023
-- **Southwest University First-Class Scholarship**, Dec. 2023
-- **Southwest University Academic Science and Technology Award**, Dec. 2023
-- **Advanced Individual for Summer "Three Goes to the Countryside" Social Practice**, Dec. 2023
-- **National First Prize, Chinese Mathematics Competitions (CMC)**, Mar. 2023
-- **National First Prize, 4th National Higher Education Institutions Mathematics Ability Challenge**, 2023
-- **First Prize, Asia-Pacific Mathematical Modeling Competition**, 2023
-- **First Prize, DingTalk Cup National Big Data Challenge**, 2023
-- **Red Pioneer, National Youth Science Popularization Action**, 2023
-- **First Prize, Industrial Integration Development - New Engineering Innovation Competition**, 2023
+  <section class="hy-awards-section hy-awards-ledger" id="{{ group.id }}" aria-labelledby="{{ group.id }}-title">
+    <header class="hy-awards-section-heading">
+      <p class="hy-label">Competitions / {{ group.number }}</p>
+      <h2 id="{{ group.id }}-title">{{ group.title }}</h2>
+      <p>{{ group.description }}</p>
+    </header>
+    <ol class="hy-award-list">
+      {% for award in group.entries %}
+        <li class="hy-award-row">
+          <span class="hy-award-year">{{ award.year }}</span>
+          <div class="hy-award-body">
+            <h3>{{ award.title }}{% if award.short %} <span class="hy-award-abbr">{{ award.short }}</span>{% endif %}</h3>
+            <p class="hy-award-scope">{{ award.scope }}</p>
+            {% if award.detail %}<p class="hy-award-note">{{ award.detail }}</p>{% endif %}
+            {% if award.url %}<a class="hy-award-link" href="{{ award.url | relative_url }}">{{ award.link }} <span aria-hidden="true">↗</span></a>{% endif %}
+          </div>
+          <span class="hy-award-result">{{ award.result }}</span>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endfor %}
 
-## Certifications
+<section class="hy-awards-section hy-awards-learning" id="learning" aria-labelledby="learning-title">
+  <header class="hy-awards-section-heading">
+    <p class="hy-label">Beyond competitions</p>
+    <h2 id="learning-title">Further learning</h2>
+    <p>Short courses and professional development, listed separately from competitive awards.</p>
+  </header>
+  <ul class="hy-learning-list">
+    {% for item in awards.learning %}
+      <li>
+        <div><h3>{{ item.title }}{% if item.subtitle %} <span class="hy-award-abbr">{{ item.subtitle }}</span>{% endif %}</h3><p>{{ item.provider }}</p></div>
+        <p class="hy-learning-type">{{ item.type }} <span>{{ item.year }}</span></p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
 
-- **OpenAI ChatGPT Professional Certification**
-- **AutoCAD 3D Professional Certification**
-- **Coursera Certified Project**
-- **Project Management Essentials Certified (PMEC)**
-- **PPT Office Skills (Intermediate)**
-- **National Market Survey and Analysis Professional Skills Certificate**
-- **CET-4 (College English Test Band 4)**
-- **Putonghua Proficiency Test Certificate**
-- **COP28 UAE Global Youth Zero Carbon Future Action**
-- **UNICEF Certificate**
+<aside class="hy-awards-footer">
+  <div><h2>The work behind the recognition</h2><p>Models, findings, and reflections from seven independently completed mathematical modeling projects.</p></div>
+  <a class="hy-button hy-button-secondary" href="{{ '/projects/math_modeling_series/' | relative_url }}">Explore the portfolio <span aria-hidden="true">→</span></a>
+</aside>
