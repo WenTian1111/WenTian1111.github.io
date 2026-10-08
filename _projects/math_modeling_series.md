@@ -22,7 +22,7 @@ image_alt: Conceptual landscape connecting mathematical surfaces, spiral curves,
 
 <div class="hy-paper-grid">
 {% for study in site.data.modeling_cases %}
-  <article class="hy-paper-card">
+  <article class="hy-paper-card" id="case-{{ study.number }}">
     <a class="hy-paper-image" href="{{ study.url | relative_url }}" aria-label="Read {{ study.title | escape }}">
       <img src="{{ study.figure | relative_url }}" alt="{{ study.title | escape }} — conceptual project cover" loading="lazy" width="1000" height="580">
     </a>

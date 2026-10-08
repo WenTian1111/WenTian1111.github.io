@@ -11,13 +11,11 @@ featured:
     issuer: China Undergraduate Mathematical Contest in Modeling
     url: /projects/math_modeling_series/
     link: Explore the modeling portfolio
-  - year: "2024"
+  - year: "2023"
     category: National competition
-    title: Certification Cup · First Prize
-    detail: Stage 2 First Prize · Stage 1 Second Prize
-    issuer: 17th Certification Cup Mathematical Modeling Challenge
-    url: /projects/modeling/brain-biomechanics/
-    link: Read the biomechanics study
+    title: CMC · First Prize
+    detail: 14th Chinese Mathematics Competitions
+    issuer: Chinese Mathematical Society
 
 honors:
   - year: "2025"
@@ -70,12 +68,12 @@ competitions:
         result: First Prize
         scope: National · Stage 2
         detail: Also awarded Second Prize in Stage 1.
-        url: /projects/modeling/brain-biomechanics/
-        link: Brain mechanics study
       - year: "2024"
         title: 16th Huazhong Cup Mathematical Modeling Challenge
         result: Third Prize
         scope: Undergraduate group
+        url: /projects/modeling/fiber-reconstruction/
+        link: Fiber reconstruction study
       - year: "2024"
         title: 21st May Day Mathematical Modeling Competition
         result: Third Prize
@@ -86,6 +84,8 @@ competitions:
         title: 6th Zhongqing Cup Mathematical Modeling Competition
         result: Second Prize
         scope: Undergraduate group
+        url: /projects/modeling/elderly-care/
+        link: Elderly care study
       - year: "2024"
         title: 16th Southwest University Mathematical Modeling Competition
         result: Second Prize
@@ -94,8 +94,6 @@ competitions:
         title: Dingding Cup Big Data Challenge
         result: Second Prize
         scope: Preliminary round · Undergraduate
-        url: /projects/modeling/smartphone-analytics/
-        link: Smartphone analytics study
   - id: mathematics
     number: "02"
     title: Mathematics
@@ -104,7 +102,7 @@ competitions:
       - year: "2024"
         title: 5th National Higher Education Mathematics Ability Challenge
         result: First Prize
-        scope: Preliminary round, third session · Non-mathematics group
+        scope: Preliminary round, third session · Mathematics group
       - year: "2024"
         title: 2nd Mathematical Innovative Thinking Challenge
         result: Second Prize

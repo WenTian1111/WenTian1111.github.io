@@ -91,7 +91,32 @@ description: Selected honors, scholarships, and competition results from my unde
   </ul>
 </section>
 
+{% assign case_count = site.data.modeling_cases.size %}
+{% case case_count %}
+  {% when 1 %}{% assign case_count_text = "one" %}
+  {% when 2 %}{% assign case_count_text = "two" %}
+  {% when 3 %}{% assign case_count_text = "three" %}
+  {% when 4 %}{% assign case_count_text = "four" %}
+  {% when 5 %}{% assign case_count_text = "five" %}
+  {% when 6 %}{% assign case_count_text = "six" %}
+  {% when 7 %}{% assign case_count_text = "seven" %}
+  {% when 8 %}{% assign case_count_text = "eight" %}
+  {% when 9 %}{% assign case_count_text = "nine" %}
+  {% when 10 %}{% assign case_count_text = "ten" %}
+  {% when 11 %}{% assign case_count_text = "eleven" %}
+  {% when 12 %}{% assign case_count_text = "twelve" %}
+  {% when 13 %}{% assign case_count_text = "thirteen" %}
+  {% when 14 %}{% assign case_count_text = "fourteen" %}
+  {% when 15 %}{% assign case_count_text = "fifteen" %}
+  {% when 16 %}{% assign case_count_text = "sixteen" %}
+  {% when 17 %}{% assign case_count_text = "seventeen" %}
+  {% when 18 %}{% assign case_count_text = "eighteen" %}
+  {% when 19 %}{% assign case_count_text = "nineteen" %}
+  {% when 20 %}{% assign case_count_text = "twenty" %}
+  {% else %}{% assign case_count_text = case_count %}
+{% endcase %}
+
 <aside class="hy-awards-footer">
-  <div><h2>The research behind the awards</h2><p>Models, findings, and reflections from seven independently completed mathematical modeling projects.</p></div>
+  <div><h2>The research behind the awards</h2><p>Models, findings, and reflections from {{ case_count_text }} independently completed mathematical modeling projects.</p></div>
   <a class="hy-button hy-button-secondary" href="{{ '/projects/math_modeling_series/' | relative_url }}">Explore the portfolio <span aria-hidden="true">→</span></a>
 </aside>
