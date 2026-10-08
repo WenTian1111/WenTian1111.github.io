@@ -1,11 +1,11 @@
-- title: "Smartphone Usage & Recommendation"
+- title: "Multibeam Bathymetry & Survey Planning"
   number: "01"
   year: "2023"
-  event: "Dingding Cup"
-  discipline: "Data science"
-  summary: "From 20 app categories to clustering, prediction, and recommendation—with a closer look at why 98% accuracy can hide poor minority-class recall."
-  url: /projects/modeling/smartphone-analytics/
-  figure: /assets/img/research/smartphone-evaluation.svg
+  event: "Marine surveying"
+  discipline: "Computational geometry"
+  summary: "From three-dimensional sonar geometry to terrain-aware line spacing: a 63-line plan with numerical full coverage and 46.6% less survey length than a shallow-depth baseline."
+  url: /projects/modeling/multibeam-bathymetry/
+  figure: /assets/img/research/multibeam-overview.svg
 - title: "Wind–Solar–Storage Coordination"
   number: "02"
   year: "2024"
