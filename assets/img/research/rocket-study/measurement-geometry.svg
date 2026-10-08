@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" role="img"><title>measurement geometry</title><style>text{font-family:Arial,sans-serif;fill:#16334a;font-size:14px}.sub{font-size:12px;fill:#607184}.box{fill:#f3f7fa;stroke:#dde5ed;stroke-width:.5}.em{fill:#e6f2ef;stroke:#117b77;stroke-width:.5}.line{fill:none;stroke:#117b77;stroke-width:1.5}</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10" fill="#117b77"/></marker></defs><rect width="680" height="380" fill="white"/>
+<text x="40" y="32" font-weight="bold">From arrival time to a space–time constraint</text>
+<path d="M45 225L330 177L635 233" stroke="#dde5ed" stroke-width="2" fill="none"/>
+<path d="M310 90L100 215M310 90L255 190M310 90L470 205M310 90L600 225" class="line" stroke-dasharray="5 4"/>
+<circle cx="310" cy="90" r="9" fill="#ba7547"/>
+<text x="370" y="78">Unknown source position</text><text x="370" y="98" class="sub">and unknown emission time t₀</text>
+<text x="40" y="65" class="sub">Distance = c × (arrival − emission time)</text>
+<g fill="#117b77"><path d="M100 207l-7 14h14z"/><path d="M255 182l-7 14h14z"/><path d="M470 197l-7 14h14z"/><path d="M600 217l-7 14h14z"/></g>
+<text x="83" y="248">Station A</text><text x="230" y="220">Station B</text><text x="445" y="237">Station E</text><text x="570" y="254">Station G</text>
+<rect x="40" y="277" width="600" height="56" rx="8" class="em"/>
+<text x="56" y="299">Four unknowns: three spatial coordinates + one emission time</text>
+<text x="56" y="319" class="sub">Four observations provide a minimal equation count, not a global uniqueness guarantee.</text>
+<text x="40" y="360" class="sub">Point-source, constant-speed illustration · Ground profile is conceptual; not to scale.</text>
+</svg>
