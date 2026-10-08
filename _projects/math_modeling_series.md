@@ -2,7 +2,7 @@
 layout: han-project
 title: Applied Mathematical Modeling
 description: A collection of computational studies across marine surveying, energy systems, manufacturing, motion, sensor fusion, healthy aging, and inverse geometry.
-img: assets/img/research/dragon-geometry.svg
+img: assets/img/research/modeling-collection/cover.webp
 importance: 3
 category: research
 discipline: Applied mathematics
@@ -12,7 +12,7 @@ role: AI-assisted modeling, numerical analysis, and research communication
 methods: Statistical learning, numerical simulation, optimization, computational geometry
 outcome: Eight research notes
 card_summary: A collection of eight computational studies, each presented through its research question, modeling approach, selected figures, and discussion.
-image_alt: Spiral geometry and a linked-body modeling workflow
+image_alt: Conceptual landscape connecting mathematical surfaces, spiral curves, and a spatial network
 ---
 
 <div class="hy-collection-intro">
