@@ -1,0 +1,77 @@
+.hy-case-study .hy-equation {
+  overflow-x: auto;
+  font-size: 1.05rem;
+}
+.hy-case-study .hy-model-zoom {
+  display: block;
+  position: relative;
+  border: 1px solid var(--hy-line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+.hy-case-study .hy-model-zoom img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+.hy-case-study .hy-model-zoom-label {
+  display: block;
+  padding: 0.5rem 0.85rem;
+  text-align: right;
+  font-size: 0.8rem;
+  background: var(--hy-surface);
+  color: var(--hy-teal);
+}
+.hy-case-study .hy-model-zoom:focus-visible {
+  outline: 3px solid var(--hy-teal);
+  outline-offset: 3px;
+}
+.hy-case-study .hy-model-table {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.hy-case-study .hy-model-table table {
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+.hy-case-study .hy-model-table th,
+.hy-case-study .hy-model-table td {
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--hy-line);
+}
+.hy-case-study .hy-model-table caption {
+  text-align: left;
+  padding: 0.6rem 0;
+  color: var(--hy-muted);
+}
+.hy-case-study .hy-stage-map {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.hy-case-study .hy-stage-map li {
+  padding: 1rem;
+  border: 1px solid var(--hy-line);
+  border-radius: 12px;
+  background: var(--hy-surface);
+}
+.hy-case-study .hy-stage-map strong {
+  display: block;
+  color: var(--hy-teal);
+  margin-bottom: 0.3rem;
+}
+.hy-case-study .hy-stage-map p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .hy-case-study .hy-stage-map {
+    grid-template-columns: 1fr;
+  }
+}
