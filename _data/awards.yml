@@ -2,9 +2,8 @@ featured:
   - year: "2024"
     category: Municipal honor
     title: Recognition for innovation
-    detail: Chongqing Advanced Individual for Innovation Ability Enhancement
+    detail: Advanced Individual in Innovation, Chongqing Higher Education Institutions
     issuer: Chongqing Municipal Education Commission
-    chinese: 重庆市普通高校创新能力提升先进个人
   - year: "2024 · 2025"
     category: Mathematical modeling
     title: CUMCM · First Prize
@@ -23,34 +22,28 @@ featured:
 honors:
   - year: "2025"
     title: VTR Bio-Tech Scholarship
-    chinese: 溢多利奖学金
     issuer: Southwest University · Guangdong VTR Bio-Tech
     detail: 2024 award; certificate issued in May 2025.
   - year: "2024"
     title: Diligent Endeavor Award
-    chinese: 砥砺奋斗奖
     issuer: Southwest University
     detail: Academic year 2023–2024.
   - year: "2023"
     title: Challenge Inspirational Scholarship
-    chinese: 挑战励志奖学金
     issuer: College of Animal Science, Southwest University · Beijing Challenge Group
     detail: Academic year 2022–2023.
   - year: "2023"
     title: First-Class Scholarship
-    chinese: 一等奖学金
     issuer: Southwest University
     detail: Academic year 2022–2023.
   - year: "2023"
     title: Academic Science & Technology Award
-    chinese: 学术科技奖
     issuer: Southwest University
     detail: Academic year 2022–2023.
   - year: "2023"
     title: Outstanding Individual in Summer Social Practice
-    chinese: 暑期“三下乡”社会实践活动先进个人
     issuer: Southwest University
-    detail: Recognition for university summer social practice.
+    detail: Recognition for participation in the university's summer community outreach program.
 
 competitions:
   - id: modeling
@@ -106,7 +99,7 @@ competitions:
   - id: mathematics
     number: "02"
     title: Mathematics
-    description: Recognition in mathematical analysis, problem solving, and quantitative reasoning.
+    description: Awards in mathematical analysis, problem solving, and quantitative reasoning.
     entries:
       - year: "2024"
         title: 5th National Higher Education Mathematics Ability Challenge
@@ -137,7 +130,7 @@ competitions:
   - id: innovation
     number: "03"
     title: Innovation & enterprise
-    description: A complementary record in entrepreneurship, sustainability, and career development.
+    description: Competitions in entrepreneurship, sustainability, and career development.
     entries:
       - year: "2024"
         title: 3rd National University Technology Innovation & Entrepreneurship Competition
@@ -188,4 +181,4 @@ learning:
   - year: "2024"
     title: Low-carbon entrepreneurship
     provider: China Youth Entrepreneurship and Employment Foundation
-    type: Online course completion · 创青春
+    type: Online course completion

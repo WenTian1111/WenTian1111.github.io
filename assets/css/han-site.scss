@@ -1192,7 +1192,7 @@ footer.fixed-bottom {
 
 .hy-cv-downloads {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
   margin: 1.5rem 0 2rem;
 }
@@ -1290,7 +1290,6 @@ footer.fixed-bottom {
   margin-bottom: 0.65rem;
 }
 
-.hy-award-chinese,
 .hy-award-issuer,
 .hy-award-note,
 .hy-award-scope {
@@ -1298,7 +1297,6 @@ footer.fixed-bottom {
   color: var(--hy-muted);
 }
 
-.hy-award-chinese,
 .hy-award-note {
   font-size: 0.875rem;
 }
@@ -1313,7 +1311,6 @@ footer.fixed-bottom {
   color: #a7e0d7;
 }
 
-.hy-award-highlight-lead .hy-award-chinese,
 .hy-award-highlight-lead .hy-award-issuer {
   color: #d7e2eb;
 }

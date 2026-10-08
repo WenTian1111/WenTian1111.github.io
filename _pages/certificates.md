@@ -7,7 +7,7 @@ eyebrow: Recognition · 2022–2025
 page_class: hy-awards-page
 nav: true
 nav_order: 5
-description: Selected academic honors, scholarships, and competition results—a record of curiosity translated into sustained work.
+description: Selected honors, scholarships, and competition results from my undergraduate studies.
 ---
 
 {% assign awards = site.data.awards %}
@@ -18,7 +18,6 @@ description: Selected academic honors, scholarships, and competition results—a
       <div class="hy-award-overline"><span>{{ award.category }}</span><span>{{ award.year }}</span></div>
       <h2>{{ award.title }}</h2>
       <p class="hy-award-highlight-detail">{{ award.detail }}</p>
-      {% if award.chinese %}<p class="hy-award-chinese" lang="zh-CN">{{ award.chinese }}</p>{% endif %}
       <p class="hy-award-issuer">{{ award.issuer }}</p>
       {% if award.url %}<a class="hy-award-link" href="{{ award.url | relative_url }}">{{ award.link }} <span aria-hidden="true">↗</span></a>{% endif %}
     </article>
@@ -37,14 +36,13 @@ description: Selected academic honors, scholarships, and competition results—a
   <header class="hy-awards-section-heading">
     <p class="hy-label">Academic recognition</p>
     <h2 id="honors-title">Honors & scholarships</h2>
-    <p>University and industry-supported recognition for academic work, innovation, and engagement.</p>
+    <p>Recognition from the university and industry partners for academic work, innovation, and community engagement.</p>
   </header>
   <div class="hy-honors-grid">
     {% for award in awards.honors %}
       <article class="hy-honor-card">
         <span class="hy-award-year">{{ award.year }}</span>
         <h3>{{ award.title }}</h3>
-        <p class="hy-award-chinese" lang="zh-CN">{{ award.chinese }}</p>
         <p class="hy-award-issuer">{{ award.issuer }}</p>
         <p class="hy-award-note">{{ award.detail }}</p>
       </article>
@@ -94,6 +92,6 @@ description: Selected academic honors, scholarships, and competition results—a
 </section>
 
 <aside class="hy-awards-footer">
-  <div><h2>The work behind the recognition</h2><p>Models, findings, and reflections from seven independently completed mathematical modeling projects.</p></div>
+  <div><h2>The research behind the awards</h2><p>Models, findings, and reflections from seven independently completed mathematical modeling projects.</p></div>
   <a class="hy-button hy-button-secondary" href="{{ '/projects/math_modeling_series/' | relative_url }}">Explore the portfolio <span aria-hidden="true">→</span></a>
 </aside>

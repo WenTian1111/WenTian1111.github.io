@@ -21,17 +21,11 @@ description: Han YANG · Animal Science, Applied Mathematics, and an emerging re
   <button type="button" class="hy-button hy-button-secondary hy-print-button" onclick="window.print()">Print / save PDF</button>
 </div>
 
-<section class="hy-cv-downloads" aria-label="Downloadable curricula vitae">
+<section class="hy-cv-downloads" aria-label="Download academic CV">
   <a class="hy-cv-download" href="{{ '/assets/pdf/han-yang-academic-cv.pdf' | relative_url }}" target="_blank" rel="noopener" type="application/pdf" aria-label="Open Academic CV, English PDF, 2 pages, in a new tab">
-    <span class="hy-label">English · Academic</span>
+    <span class="hy-label">Academic profile</span>
     <span class="hy-cv-download-title">Academic CV <span aria-hidden="true">↗</span></span>
     <span class="hy-cv-download-detail">Research, education & selected achievements</span>
-    <span class="hy-cv-file">PDF · 2 pages</span>
-  </a>
-  <a class="hy-cv-download" href="{{ '/assets/pdf/han-yang-resume-zh.pdf' | relative_url }}" target="_blank" rel="noopener" type="application/pdf" aria-label="Open Chinese résumé, PDF, 2 pages, in a new tab">
-    <span class="hy-label">中文 · Professional</span>
-    <span class="hy-cv-download-title"><span lang="zh-CN">中文简历</span> <span aria-hidden="true">↗</span></span>
-    <span class="hy-cv-download-detail" lang="zh-CN">教育背景、科研经历与专业实践</span>
     <span class="hy-cv-file">PDF · 2 pages</span>
   </a>
 </section>
