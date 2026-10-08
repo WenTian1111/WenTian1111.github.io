@@ -18,9 +18,9 @@ latest_posts:
 <div class="hy-home" id="top">
   <section class="hy-hero" aria-labelledby="home-title">
     <div class="hy-hero-copy">
-      <p class="hy-kicker">Philosophy · Mathematical modeling · Data-driven inquiry</p>
+      <p class="hy-kicker">Philosophy · Mathematical modeling · SCIENCE.</p>
       <h1 id="home-title">Han YANG</h1>
-      <p class="hy-role">Admitted to the M.A. in Religious Studies at The Chinese University of Hong Kong · enrollment forthcoming</p>
+      <p class="hy-role">Admitted as a Religious Studies student at The Chinese University of Hong Kong</p>
       <h2>Studying how conceptual frameworks and quantitative models help us understand complex systems.</h2>
       <p class="hy-intro">
         My work brings together Chinese philosophy, mathematical modeling, and empirical research. I am interested in how ideas
