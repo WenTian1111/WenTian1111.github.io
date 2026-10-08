@@ -10,7 +10,7 @@ period: 2025–2026
 question: Can a still image of an egg help anticipate its rolling instability?
 role: Thesis author and innovation-project lead
 methods: Controlled experiments, machine vision, statistical analysis, machine learning
-outcome: Undergraduate thesis, risk-grading framework, and companion web application
+outcome: Undergraduate thesis, provincial-level innovation & entrepreneurship training project, risk-grading framework, and companion web application
 card_summary: A study of 90 eggs and 270 repeated rolling trials, linking visual morphology to instability and translating the analysis into an interactive application.
 image_alt: Illustration of the paired static-imaging and inclined rolling experiment platforms
 demo: https://egg-rsi-app.streamlit.app
