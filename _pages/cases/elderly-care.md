@@ -1,36 +1,43 @@
 ---
 layout: han-project
 title: Healthy Aging & Equitable Care Networks
-description:
-  From country-level healthy-aging indicators to a modeled service network, with clear boundaries between association, prediction, and policy
-  effects.
+description: Country-level healthy-life profiles, transparent service rules, and a capacity-constrained regional network with independently checked
+  feasibility and explicit evidence limits.
 permalink: /projects/modeling/elderly-care/
-discipline: Public-health data · Service-network modeling
+discipline: Population data · Service-network modeling
 period: 2024 study
-question: How can country-level aging profiles inform a transparent, equity-aware service-network scenario?
+question: How can descriptive aging indicators inform a transparent network scenario without being mistaken for causal policy evidence?
 role: AI-assisted modeling, numerical analysis, and research synthesis
-methods: Public-data harmonization, clustering, out-of-fold prediction, multiobjective facility location
-outcome: 184 country profiles · a 31-region network scenario · explicit proxy limits
+methods: Data harmonization, clustering, out-of-fold random forests, capacity-constrained location, integer-programming benchmarks
+outcome: 184 country profiles · 31 regional nodes · nine modeled centers · seven new integer-programming checks
 parent_url: /projects/math_modeling_series/
 parent_label: All modeling studies
 contents:
   - label: Abstract
     id: abstract
-  - label: "1. Background: healthy life and service access"
-    id: background
-  - label: 2. Study roadmap
-    id: roadmap
-  - label: "3. Stage A: build comparable country profiles"
+  - label: 1. Introduction
+    id: introduction
+  - label: 2. Data and comparability
     id: data
-  - label: "4. Stage B: predict a proxy without claiming causation"
+  - label: 3. Descriptive country profiles
+    id: profiles
+  - label: 4. Prediction and interpretation
     id: prediction
-  - label: "5. Stage C: state the regional network assumptions"
+  - label: 5. Service rules and regional translation
+    id: rules
+  - label: 6. Network formulation
     id: network
-  - label: "6. Stage D: compare the trade-offs"
+  - label: 7. Selected compromise and benchmarks
     id: selection
-  - label: 7. Scenario sensitivity and a future-demand test
+  - label: 8. Optimization diagnostics
+    id: diagnostics
+  - label: 9. Assumption sensitivity
     id: sensitivity
-  - label: "8. Discussion: three types of evidence"
+  - label: 10. Uniform-growth scenario
+    id: scenario
+  - label: 11. Independent verification
+    id: verification
+  - label: 12. Discussion and conclusions
     id: discussion
 ---
 
@@ -38,35 +45,31 @@ contents:
 
 <h2 id="abstract">Abstract</h2>
 
-This study links two analytical levels without treating them as the same dataset or the same causal question. First, public country-level indicators describe economic, demographic, and healthy-aging differences. Clustering summarizes those profiles, and cross-validated prediction estimates a healthy-life gap proxy. Second, a simplified regional service network compares facility arrangements using weighted coverage, normalized cost, and accessibility inequality.
+Aging populations differ in health, resources and geographic access. This study separates three tasks: describing national contexts, predicting an aggregate healthy-life proxy, and exploring a regional service network under declared planning assumptions. An archived public-data pipeline produces 184 country profiles with eight features and a life-expectancy-minus-healthy-life-expectancy outcome at age 60. Clustering selects three descriptive profiles; five-fold out-of-fold random-forest predictions achieve R² 0.790 and RMSE 0.453 years. These results characterize associations in a mixed-year cross-sectional sample, rather than individual disability or treatment effects.
 
-The country analysis retains 184 economies, with three clusters selected by the evaluated silhouette criterion. A five-fold out-of-fold random forest gives an archived $R^2$ of 0.790 and RMSE of 0.453 years for the proxy. In the regional scenario, a nine-facility compromise covers 68.3% of the modeled weighted demand at cost 7.9201 normalized units and accessibility Gini 0.206. These are exploratory associations and conditional planning outputs, not evidence that a policy intervention improves health or that facilities have been built.
+A separate 31-node regional scenario uses dependency-adjusted older-population weights, approximate travel times, normalized construction costs and whole-region capacity assignments. Its selected nine-center compromise covers 68.25% of modeled weight at cost 7.9201 and an unweighted travel-time Gini of 0.2062. New independent reconstruction reproduces all three objectives. Two fresh binary-programming benchmarks confirm the archived coverage and cost envelopes; five further solves substantiate low-count and low-capacity exclusions. Code inspection exposes an incorrectly signed hypervolume calculation and a service-tier boundary issue. The article preserves useful computational results while qualifying convergence, equity and the scale-invariant 2030 scenario.
 
-<h2 id="background">1. Background: healthy life and service access</h2>
+<h2 id="introduction">1. Introduction</h2>
 
-Longer life does not necessarily mean that additional years are spent in good health. At age 60, the difference between life expectancy and healthy life expectancy offers a broad population-level proxy for years lived outside full health. It is not an individual diagnosis, a clinical disability score, or an observed need for a specific service.
+Older-age share is an important planning descriptor, but it is not a direct measure of unmet care. Two countries with similar age structure may differ in longevity, health-service capacity, income and family support. Conversely, a population with a lower older-age share may have substantial health burdens. A useful framework must explain which quantity is estimated before proposing where resources should be located.
 
-<figure class="hy-research-figure hy-model-figure">
-<a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/cover.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 1 at full size">
-<img src="{{ '/assets/img/research/elderly-care/cover.webp' | relative_url }}" alt="Conceptual connected-care network for an aging population" width="1647" height="955" loading="lazy">
-<span class="hy-model-zoom-label">View full size ↗</span></a>
-<figcaption><span>Figure 1.</span> Conceptual connected-care network for an aging population. The illustration is thematic, not a map of implemented facilities or measured patient flows.</figcaption></figure>
+National indicators first form descriptive profiles. A predictive model then estimates the difference between remaining life expectancy and healthy life expectancy at age 60. A rule layer proposes combinations of service intensity. Finally, a separate provincial-capital network examines coverage, construction cost and inequality in modeled access time.
 
-The country-level data are assembled from World Development Indicators and World Health Organization sources in the archived project. The input tables contain indicators over different periods; the analysis selects available recent values rather than a single uniform observation year. The page retains the study's 2024 framing but does not imply that every input was measured in 2024.
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/cover.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 1 at full size"><img src="{{ '/assets/img/research/elderly-care/cover.webp' | relative_url }}" alt="Supplied conceptual cover. Devices, people and services illustrate the theme; they do not document an implemented system or measured clinical outcomes." loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 1.</span> Supplied conceptual cover. Devices, people and services illustrate the theme; they do not document an implemented system or measured clinical outcomes.</figcaption></figure>
 
-The service-location scenario is a separate regional exercise using 31 provincial-capital nodes, population structure, and an economic snapshot. Country-level clusters do not become proven provincial treatment effects. This separation prevents a descriptive global pattern from being presented as direct evidence for a local intervention.
+The connection between these stages is conceptual rather than a validated transfer model. Country-level prediction is not an identified provincial treatment effect. The regional scenario has its own population and geography inputs; its demand multiplier comes from dependency structure rather than the random forest. Keeping these links explicit makes each stage independently assessable.
 
-<h2 id="roadmap">2. Study roadmap</h2>
+<h2 id="data">2. Data and comparability</h2>
 
-<figure class="hy-research-figure hy-model-figure">
-<a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/workflow.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 2 at full size">
-<img src="{{ '/assets/img/research/elderly-care/workflow.webp' | relative_url }}" alt="Supplied overview of data preparation, profile analysis, prediction, and service-network optimization" width="1491" height="1055" loading="lazy">
-<span class="hy-model-zoom-label">View full size ↗</span></a>
-<figcaption><span>Figure 2.</span> Supplied overview of data preparation, profile analysis, prediction, and service-network optimization. Embedded maps and miniature curves are conceptual; the plots below present saved analytical records.</figcaption></figure>
+### 2.1 Sources and sample construction
 
-<h2 id="data">3. Stage A: build comparable country profiles</h2>
+The saved extraction includes 217 World Bank economies, eight indicators and 21,371 records spanning 2010–2023, after removing aggregate regions. WHO supplies remaining life expectancy and healthy life expectancy at age 60. ISO3 identifiers align the sources. For each country and feature, the pipeline selects the latest available observation within the extraction period.
 
-The raw collection includes 217 WDI economies and eight indicators, with 21,371 records across 2010–2023. Aggregates are removed and availability rules produce 184 usable country profiles. The WHO component contains life expectancy and healthy life expectancy at age 60. The outcome proxy is:
+Countries are retained when the outcome is available and at most two of eight features are missing. Remaining feature gaps are filled with sample medians, producing 184 complete modeling rows. Fresh checks confirm that both WHO measures use 2023 for all retained rows, without within-row WHO year mismatch. Feature observations can nevertheless come from different years; a common outcome year does not make the full vector contemporaneous.
+
+<div class="hy-model-table"><table><caption>Table 1. Data layers and roles.</caption><thead><tr><th scope="col">Layer</th><th scope="col">Saved scope</th><th scope="col">Interpretation</th></tr></thead><tbody><tr><td>Country features</td><td>184 rows × eight features</td><td>Latest feature snapshot; median filling allowed</td></tr><tr><td>WHO outcome</td><td>LE60 and HALE60, 2023</td><td>Aggregate healthy-life gap</td></tr><tr><td>Regional population</td><td>31 records, 2020 census basis</td><td>Separate population-structure scenario</td></tr><tr><td>Economic costs</td><td>2024 GDP-per-person snapshot</td><td>Normalized cost proxy</td></tr><tr><td>Geography</td><td>Provincial capitals and distances</td><td>Coarse spatial abstraction</td></tr></tbody></table></div>
+
+### 2.2 Define the outcome before naming it
 
 <div class="hy-equation">
 \[
@@ -75,77 +78,197 @@ Y_i=\operatorname{LE60}_i-\operatorname{HALE60}_i.
 \]
 </div>
 
-For each indicator, the latest available value is selected and numeric features are scaled before clustering. The admissible missingness rule allows up to two missing features while requiring an available outcome. This creates a workable exploratory sample, but it does not make the records contemporaneous. Differences in observation year, reporting quality, and missingness can influence the apparent profiles.
+The gap is measured in expected years. It is an aggregate proxy for years outside full health under the source definitions. It is not an observed individual disability duration, a count of patients requiring institutional care, or a nursing-workload estimate. Later service names should not imply clinical specificity absent from the country data.
 
-The selected three-cluster solution has silhouette approximately 0.3018, versus 0.2936, 0.2652, and 0.2406 for four through six clusters. The groups contain 66, 57, and 61 countries. Bootstrap resampling gives mean adjusted Rand agreement around 0.8645, with a lower fifth percentile around 0.728. These support a reasonably stable descriptive partition in this sample; they do not establish natural clinical categories.
+Provincial inputs also differ in time and provenance. The archive records extraction dates and sources, including secondary mirrors for some tables. Aggregate plausibility checks do not replace row-by-row verification against original statistical releases. This note accordingly presents a reproducible planning scenario rather than an official needs assessment.
 
-<h2 id="prediction">4. Stage B: predict a proxy without claiming causation</h2>
+<h2 id="profiles">3. Descriptive country profiles</h2>
 
-The prediction task evaluates whether the observed features can recover the healthy-life gap across held-out countries. Five-fold out-of-fold predictions ensure that each plotted country is predicted by a model that did not fit that country's outcome.
+### 3.1 Standardization and profile selection
 
-<figure class="hy-research-figure hy-model-figure">
-<a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/profiles.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 3 at full size">
-<img src="{{ '/assets/img/research/elderly-care/profiles.svg' | relative_url }}" alt="Cluster-selection silhouette scores and out-of-fold predictions of the healthy-life gap" width="720" height="418" loading="lazy">
-<span class="hy-model-zoom-label">View full size ↗</span></a>
-<figcaption><span>Figure 3.</span> Cluster-selection silhouette scores and out-of-fold predictions of the healthy-life gap. The diagonal indicates agreement; the scatter does not demonstrate the effect of any intervention.</figcaption></figure>
-
-The archived random forest achieves $R^2=0.7903$ and RMSE 0.4528 years. Relative tiers use sample cut points near 4.5293 and 5.5966 years, giving groups of 61, 61, and 62 countries. These are sample-relative classifications, not medical thresholds.
-
-Life expectancy is a prominent predictor, but it also participates in the construction of the outcome proxy. Its apparent importance must therefore be interpreted with that mathematical coupling in mind. Feature importance measures predictive contribution under a fitted model; it does not identify which policy would cause the largest health improvement.
-
-The project further constructs a 3 × 3 service-priority matrix from profile and outcome tiers. Those nine combinations are designed planning rules. They have not been evaluated as treatments or prospectively tested service packages.
-
-<h2 id="network">5. Stage C: state the regional network assumptions</h2>
-
-The regional model treats provincial capitals as candidate service nodes. Travel time is approximated from distance, a road multiplier of 1.3, and a speed of 70 km/h. The baseline uses a five-hour travel limit, a budget of 14 normalized cost units, at most twelve facilities, and a per-facility capacity of 2,269.84 modeled demand units.
-
-Demand weights are adjusted population quantities. Their sum is 20,810 in the model's ten-thousand-unit scale. Covered weighted demand is consequently not a head count of real patients served. A network meeting those aggregate weights can still miss local communities or face unmodeled capacity bottlenecks.
+The features are older-age share, old-age dependency, log GDP per person, health expenditure, urban share, life expectancy at birth, physicians and hospital beds. Standardization prevents large numerical units from dominating distance. K-means is evaluated at three through six clusters, with the highest saved silhouette at three: 0.302, compared with 0.294, 0.265 and 0.241.
 
 <div class="hy-equation">
 \[
-C(\mathbf x)=\frac{\sum_i w_i\,a_i(\mathbf x)}{\sum_i w_i},\qquad a_i(\mathbf x)\in[0,1].
+z_{ij}=\frac{x_{ij}-\bar x_j}{s_j},\qquad \min_{\{\mu_k\}}\sum_i\|z_i-\mu_{c_i}\|_2^2.
 \tag{2}
 \]
 </div>
 
-The modeled accessibility $a_i$ depends on the assignment and feasibility rules. The optimization compares weighted coverage, facility cost, and accessibility Gini. A coverage floor is essential: an empty or almost empty network can otherwise appear artificially equal because almost nobody has access.
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/country-profiles.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 2 at full size"><img src="{{ '/assets/img/research/elderly-care/country-profiles.svg' | relative_url }}" alt="Rebuilt country profiles and cluster-selection scores. PCA is a display projection; clustering uses all eight standardized features. Separation is moderate rather than sharply categorical." width="1046" height="399" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 2.</span> Rebuilt country profiles and cluster-selection scores. PCA is a display projection; clustering uses all eight standardized features. Separation is moderate rather than sharply categorical.</figcaption></figure>
 
-<h2 id="selection">6. Stage D: compare the trade-offs</h2>
+### 3.2 Read profiles through their features
 
-A multiobjective evolutionary search generates candidate compromises, with repeated random seeds used to inspect solution stability. In the archived baseline, all five runs select the same knee arrangement: Hebei, Liaoning, Heilongjiang, Zhejiang, Jiangxi, Shandong, Henan, Hunan, and Chongqing.
+The clusters contain 66, 57 and 61 countries. Mean older-age shares are approximately 3.80%, 18.65% and 7.19%; corresponding birth-life-expectancy means are 65.81, 79.62 and 74.65 years. Resource indicators also differ. Descriptive names such as younger/lower-resource, older/higher-resource and intermediate contexts summarize these particular observations.
 
-<figure class="hy-research-figure hy-model-figure">
-<a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/network.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 4 at full size">
-<img src="{{ '/assets/img/research/elderly-care/network.svg' | relative_url }}" alt="Archived feasible coverage–cost candidates, with accessibility inequality distinguished by color, and selected network comparisons" width="720" height="418" loading="lazy">
-<span class="hy-model-zoom-label">View full size ↗</span></a>
-<figcaption><span>Figure 4.</span> Archived feasible coverage–cost candidates, with accessibility inequality distinguished by color, and selected network comparisons. The knee is a compromise within the modeled objectives, not a uniquely best policy.</figcaption></figure>
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/profile-contrasts.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 3 at full size"><img src="{{ '/assets/img/research/elderly-care/profile-contrasts.svg' | relative_url }}" alt="Colors compare each feature across the three profile means. They do not convert different indicators into a common clinical severity scale." width="971" height="324" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 3.</span> Colors compare each feature across the three profile means. They do not convert different indicators into a common clinical severity scale.</figcaption></figure>
 
-<div class="hy-model-table"><table><caption>Coverage counts are model weights; the selected compromise covers 68.3% of their total.</caption><thead><tr><th scope="col">Scenario</th><th scope="col">Weighted demand covered</th><th scope="col">Cost units</th><th scope="col">Accessibility Gini</th></tr></thead><tbody><tr><td>Uniform 12-facility reference</td><td>10,874.8</td><td>13.2495</td><td>0.2648</td></tr><tr><td>Selected 9-facility compromise</td><td>14,203.5</td><td>7.9201</td><td>0.2062</td></tr></tbody></table></div>
+One hundred archived bootstrap refits give mean adjusted Rand agreement 0.864, with fifth percentile around 0.728. Each refitted model assigns the original standardized sample to its nearest centroid. This measures stability under resampling within the observed country pool. It does not test another year, alternative imputation, revised indicators or excluded countries.
 
-Exact mixed-integer reference problems bound particular objectives. A maximum-coverage formulation reaches approximately 17,539.9 weighted units. A minimum-cost formulation at the knee's coverage reaches cost 7.6721, compared with the selected 7.9201, a gap of about 3.2%. These are useful objective-specific benchmarks; neither proves that the selected point globally optimizes all three competing objectives.
+The result is a reasonably stable descriptive partition with substantial within-profile variation. National categories should not assign an individual person a care package.
 
-Against 1,000 saved random arrangements, the compromise lies around the 95.9th percentile of the evaluated reference comparison. It is not claimed to outperform every random arrangement. The reference distributions help characterize performance without turning one selected seed into a universal guarantee.
+<h2 id="prediction">4. Prediction and interpretation</h2>
 
-<h2 id="sensitivity">7. Scenario sensitivity and a future-demand test</h2>
+### 4.1 Out-of-fold prediction
 
-The sensitivity study reoptimizes across six parameter families. Travel-time assumptions are particularly influential: the saved comparison changes weighted coverage by about 34.4% across the evaluated settings. Budget has a smaller reported effect because another constraint can become binding first.
+A 500-tree random forest with minimum leaf size two predicts the healthy-life gap. Five shuffled folds ensure each saved prediction comes from a model that did not fit that country's outcome. Recalculation reproduces R² 0.790300 and RMSE 0.452824 years.
 
-<figure class="hy-research-figure hy-model-figure">
-<a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/sensitivity.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 5 at full size">
-<img src="{{ '/assets/img/research/elderly-care/sensitivity.svg' | relative_url }}" alt="Selected feasible reoptimized sensitivity records for travel-time and budget settings" width="720" height="418" loading="lazy">
-<span class="hy-model-zoom-label">View full size ↗</span></a>
-<figcaption><span>Figure 5.</span> Selected feasible reoptimized sensitivity records for travel-time and budget settings. Each point reflects a new model solution; it does not describe uncertainty around one fixed implemented network.</figcaption></figure>
+<div class="hy-equation">
+\[
+\operatorname{RMSE}=\sqrt{\frac1n\sum_i(\hat Y_i^{\mathrm{OOF}}-Y_i)^2}.
+\tag{3}
+\]
+</div>
 
-The future-demand exercise applies a logistic projection factor near 1.281. The projection parameters are weakly identified, and demand, capacity, and the coverage floor are scaled in a coordinated way. An unchanged selected layout under that construction is therefore not evidence of robustness to independently changing provincial populations or service needs.
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/prediction-checks.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 4 at full size"><img src="{{ '/assets/img/research/elderly-care/prediction-checks.svg' | relative_url }}" alt="Out-of-fold predictions and residuals. The residual panel shows over- and underestimation of the aggregate proxy, rather than service effectiveness." width="1046" height="399" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 4.</span> Out-of-fold predictions and residuals. The residual panel shows over- and underestimation of the aggregate proxy, rather than service effectiveness.</figcaption></figure>
 
-A stronger scenario design would perturb regional growth unevenly, vary capacity independently of demand, and test out-of-sample travel and utilization patterns. Reporting uniform scaling as a conditional scenario keeps the forecast from implying precision that its data cannot support.
+Validation estimates cross-country prediction under a random split of this snapshot. It does not evaluate future-year forecasts, new-region transfer or individuals. Median filling happens before the folds in the original pipeline, so preprocessing is not fully isolated within training folds. A stricter evaluation should fit imputation inside each fold and add geographic or temporal holdouts.
 
-<h2 id="discussion">8. Discussion: three types of evidence</h2>
+### 4.2 Importance is not an intervention effect
 
-The study contains descriptive evidence about country profiles, predictive evidence about a constructed healthy-life proxy, and optimization evidence about a simplified service network. None of those automatically supplies a causal estimate of a policy's health effect. Keeping the three levels separate makes the project more useful rather than less ambitious.
+The source computes impurity importance and permutation importance on a forest fitted to all rows. Birth-life expectancy ranks prominently. It is distinct from remaining life expectancy at age 60, but both are related population summaries; predictive strength may reflect shared longevity structure. This cannot establish that changing an indicator would causally reduce the outcome gap.
 
-The modeled network improves its own reference coverage and equity measures, but a provincial-capital approximation omits local geography, waiting times, workforce availability, quality of care, and actual service uptake. The normalized costs also require a real budgeting model before investment decisions.
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/predictive-importance.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 5 at full size"><img src="{{ '/assets/img/research/elderly-care/predictive-importance.svg' | relative_url }}" alt="Two saved importance definitions. Permutation importance is evaluated on full-model training data; its magnitude is neither held-out explanatory power nor causal policy leverage." width="1046" height="418" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 5.</span> Two saved importance definitions. Permutation importance is evaluated on full-model training data; its magnitude is neither held-out explanatory power nor causal policy leverage.</figcaption></figure>
 
-The next research step should align observation years, validate the proxy and prediction externally, and develop a finer service-demand model with observed travel and utilization. Policy recommendations should then be tested against those independent constraints. The current work is an exploratory analytical framework and a transparent scenario calculation.
+Relative tiers use prediction terciles near 4.529 and 5.597 years, yielding 61, 61 and 62 countries. These cut points divide this sample, not validated clinical categories. A country can change tier when the comparison population changes without its own health conditions changing.
 
-<p class="hy-source-note">Source basis: the supplied project manuscript, saved numerical outputs, and analysis scripts. This page summarizes archived calculations; it does not represent a new full model run, a peer-reviewed publication, or independent field validation. Cover and workflow illustrations are AI-generated; quantitative plots are redrawn from saved numerical records. No manuscript download is attached at this stage.</p>
+<h2 id="rules">5. Service rules and regional translation</h2>
+
+The nine-row service matrix crosses three profiles with three predicted-gap tiers. It proposes remote consultation, monitoring and household devices. These are design suggestions, not terms in the prediction loss or network objectives. No trial evaluates their benefits, adoption, staffing or cost-effectiveness.
+
+Code inspection reveals a boundary issue. Percentile ranks of three profile income means are 1/3, 2/3 and 1. The archived integer-index rule assigns one profile to the standard package and two to the enhanced package; basic is never used. The nine rows therefore do not span all three intended equipment levels. This is documented rather than silently replacing the saved matrix.
+
+<div class="hy-model-table"><table><caption>Table 2. Interpretation of service rules.</caption><thead><tr><th scope="col">Component</th><th scope="col">Saved output</th><th scope="col">Untested question</th></tr></thead><tbody><tr><td>Profile</td><td>Three national clusters</td><td>Transfer to local households</td></tr><tr><td>Priority tier</td><td>Relative prediction groups</td><td>Patient eligibility</td></tr><tr><td>Equipment package</td><td>One standard, two enhanced</td><td>Basic/standard/enhanced boundary rule</td></tr><tr><td>Frequency</td><td>Illustrative service schedule</td><td>Staffing and health effects</td></tr></tbody></table></div>
+
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/workflow.webp' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 6 at full size"><img src="{{ '/assets/img/research/elderly-care/workflow.webp' | relative_url }}" alt="Confirmed supplied workflow. Devices, maps and miniature curves are conceptual; numerical figures in this article are reconstructed from saved records." loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 6.</span> Confirmed supplied workflow. Devices, maps and miniature curves are conceptual; numerical figures in this article are reconstructed from saved records.</figcaption></figure>
+
+The regional exercise begins with separate provincial inputs. It does not transform national predictions into local patient totals. Instead, it adjusts older-population weights by relative dependency, encoding a hypothesis about support pressure that deserves separate sensitivity analysis.
+
+<h2 id="network">6. Network formulation</h2>
+
+### 6.1 Demand, distance and costs
+
+There are 31 demand nodes and possible facilities at provincial capitals. Older-population weights are adjusted by dependency relative to the provincial mean, with baseline exponent γ=1. Weighted demand totals 20,810.283 in the archive's ten-thousand-unit scale. This is not a census count of distinct patients.
+
+<div class="hy-equation">
+\[
+ w_i=P_i(d_i/\bar d)^\gamma,\qquad t_{ij}=1.3D_{ij}/70\ (i\ne j),\qquad t_{ii}=1.5\ \mathrm h.
+\tag{4}
+\]
+</div>
+
+Distance becomes travel time using an assumed road multiplier 1.3 and speed 70 km/h. Nonzero within-region time avoids treating a facility host as instantly served. Construction cost is GDP per person normalized by its regional mean. Budget 14 is thus a model scale rather than a currency estimate.
+
+### 6.2 Indivisible regional demands
+
+Binary y opens a facility and x assigns a region to at most one center. Regions are indivisible blocks. A region whose full weight exceeds remaining capacity is skipped, rather than partly served. Baseline capacity is 2,269.84 per center, at most twelve centers, a five-hour eligibility threshold and a 60% coverage floor.
+
+<div class="hy-equation">
+\[
+\begin{aligned}\sum_jx_{ij}&\le1,&x_{ij}&\le y_j,\\\sum_iw_ix_{ij}&\le Cy_j,&\sum_jc_jy_j&\le B,\\\sum_jy_j&\le N_{\max},&x_{ij}&=0\ (t_{ij}>T_{\max}).\end{aligned}
+\tag{5}
+\]
+</div>
+
+The evolutionary search chooses facility sets with a deterministic decoder: process regions in descending weight, then choose the eligible center with greatest remaining capacity, breaking ties by time and index. This restricts allocation rather than optimizing every possible assignment for each facility set.
+
+### 6.3 Distinct objectives and equity definitions
+
+<div class="hy-equation">
+\[
+f_1=\sum_iw_i\sum_jx_{ij},\quad f_2=\sum_jc_jy_j,\quad G=\frac{\sum_{i,j}|A_i-A_j|}{2n\sum_iA_i}.
+\tag{6}
+\]
+</div>
+
+A is assigned travel time or a censored six-hour value for an unassigned region. G is **unweighted across regions**: small and large populations count equally, while coverage is population-weighted. Censoring compresses differences among poorly served regions. Both choices should be compared with population-weighted inequality and alternative censoring definitions.
+
+<h2 id="selection">7. Selected compromise and benchmarks</h2>
+
+### 7.1 Placement and loads
+
+The compromise opens centers in Hebei, Liaoning, Heilongjiang, Zhejiang, Jiangxi, Shandong, Henan, Hunan and Chongqing. Independent decoding reproduces coverage 14,203.512829, cost 7.9201 and Gini 0.206163. Fifteen regions are assigned and sixteen unassigned. Maximum center load is 2,183.738, below capacity.
+
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/regional-assignments.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 7 at full size"><img src="{{ '/assets/img/research/elderly-care/regional-assignments.svg' | relative_url }}" alt="Capital-node assignment links, not road routes. Zhejiang and Chongqing host centers but their own whole-region demands remain unassigned under the saved decoder." width="1046" height="455" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 7.</span> Capital-node assignment links, not road routes. Zhejiang and Chongqing host centers but their own whole-region demands remain unassigned under the saved decoder.</figcaption></figure>
+
+Opening a center does not force self-assignment; earlier large demands can consume its capacity. Facility count alone therefore does not identify which host populations receive service. Minimum local service would need another constraint or allocation rule.
+
+<div class="hy-model-table"><table><caption>Table 3. Recomputed selected scenario.</caption><thead><tr><th scope="col">Quantity</th><th scope="col">Result</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td>Facilities</td><td>9</td><td>Capital-node locations</td></tr><tr><td>Assigned / unassigned</td><td>15 / 16</td><td>Whole-region assignments</td></tr><tr><td>Weighted coverage</td><td>68.2524%</td><td>Adjusted-demand fraction</td></tr><tr><td>Cost</td><td>7.9201 / 14</td><td>Normalized proxy units</td></tr><tr><td>Time Gini</td><td>0.206163</td><td>Unweighted censored times</td></tr><tr><td>Largest load</td><td>2,183.738 / 2,269.84</td><td>Capacity feasibility</td></tr></tbody></table></div>
+
+### 7.2 Objective-specific comparisons
+
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/network-tradeoffs.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 8 at full size"><img src="{{ '/assets/img/research/elderly-care/network-tradeoffs.svg' | relative_url }}" alt="Archived candidates retain duplicate rows. Color represents time Gini; maximum-coverage MILP is an objective-specific reference, not an equity-matched alternative." width="1046" height="408" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 8.</span> Archived candidates retain duplicate rows. Color represents time Gini; maximum-coverage MILP is an objective-specific reference, not an equity-matched alternative.</figcaption></figure>
+
+The uniform twelve-center reference covers 10,874.761 at cost 13.2495 and Gini 0.264773. The selected point improves all three saved quantities. Across 1,000 archived random configurations, mean coverage is 13,271.252 and maximum 16,150.752; selected coverage is around the 95.9th percentile, not better than every draw.
+
+Two new independently built binary programs reproduce the saved envelopes. Free assignment with maximum coverage reaches 17,539.863989. Minimum cost at the selected coverage is 7.6721, giving a 3.23% relative cost gap from 7.9201. These benchmarks allow assignments beyond the greedy decoder. They bound individual objectives in a broader feasible model, without certifying a globally optimal three-objective compromise.
+
+<h2 id="diagnostics">8. Optimization diagnostics</h2>
+
+The source uses five seeds, binary crossover, mutation, feasibility repair, nondominated sorting and crowding distance. The compromise minimizes distance to the componentwise ideal after scaling by candidate-front ranges. This equal-weight rule is interpretable, but neither a demonstrated stakeholder preference nor a unique mathematical knee.
+
+A convergence implementation issue changes the evidence. The monitoring routine divides negative coverage by total demand, while drawing comparison samples in a positive box. Every sample automatically passes the coverage-coordinate test. The quantity therefore depends on the cost–Gini projection and loses the coverage dimension.
+
+<div class="hy-equation">
+\[
+u_{\rm archived}=(-f_1/W,\ f_2/B,\ G),\qquad u_{\rm comparable}=(1-f_1/W,\ f_2/B,\ G).
+\tag{7}
+\]
+</div>
+
+The identical final values 0.640211 cannot establish stable three-dimensional hypervolume or complete convergence. This does not invalidate the independently checked selected solution, but weakens stopping claims. A corrected search should monitor a consistently translated objective box and retain generation-level nondominated sets.
+
+Five seeds selecting the same compromise is repeatability within this algorithm and decoder. It is narrower than full frontier exploration. A flawed stagnation monitor, shared repair rules and the same candidate representation can produce similar outcomes without resolving all competing objectives.
+
+<h2 id="sensitivity">9. Assumption sensitivity</h2>
+
+Archived one-at-a-time sweeps vary six parameters at eleven values each. Reduced searches use one seed, population 60 and a 120-generation cap. Their curves describe this search budget, not exact comparative statics of globally solved optima.
+
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/assumption-sensitivity.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 9 at full size"><img src="{{ '/assets/img/research/elderly-care/assumption-sensitivity.svg' | relative_url }}" alt="Lines join sampled search outputs. Crosses show coverage attained by greedy screening, not a mathematical upper bound. New exact checks substantiate the five exclusions separately." width="1039" height="568" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 9.</span> Lines join sampled search outputs. Crosses show coverage attained by greedy screening, not a mathematical upper bound. New exact checks substantiate the five exclusions separately.</figcaption></figure>
+
+The original feasibility screen constructs a greedy solution, which supplies a lower bound on maximum coverage. Falling below the floor does not prove infeasibility. Here independent maximum-coverage programs check all five exclusions, each with zero MIP gap and optimum below the 12,486.169719 floor.
+
+<div class="hy-model-table"><table><caption>Table 4. New exact exclusion checks.</caption><thead><tr><th scope="col">Setting</th><th scope="col">Maximum coverage</th><th scope="col">Required floor</th><th scope="col">Conclusion</th></tr></thead><tbody><tr><td>At most 2 centers</td><td>4,272.217</td><td>12,486.170</td><td>Below floor</td></tr><tr><td>At most 4 centers</td><td>8,087.763</td><td>12,486.170</td><td>Below floor</td></tr><tr><td>At most 6 centers</td><td>11,452.418</td><td>12,486.170</td><td>Below floor</td></tr><tr><td>Capacity × 0.5</td><td>9,387.644</td><td>12,486.170</td><td>Below floor</td></tr><tr><td>Capacity × 0.6</td><td>11,209.200</td><td>12,486.170</td><td>Below floor</td></tr></tbody></table></div>
+
+Travel threshold and speed alter eligible links; capacity determines which entire demand blocks fit. Budget variation near a solution spending only 7.92 of 14 has limited effects under the other restrictions and compromise rule. These outcomes do not predict returns to a real investment: capital distance omits local roads, transport modes and response times.
+
+Likewise, sampled saturation around ten built centers does not prove more construction is useless. It describes a selected compromise under fixed capacity, weights, decoder and search. Different assignments or equity requirements can change the outcome.
+
+<h2 id="scenario">10. Uniform-growth scenario</h2>
+
+The saved demographic extension fits a bounded logistic curve to a 1990–2023 older-age-share series. Its R² is 0.9664, but asymptote L reaches the imposed upper bound 40%. Saved standard errors are about 29.22 percentage points for L and 32.13 years for the midpoint, showing weak long-term identification. In-sample fit does not validate a future forecast.
+
+<div class="hy-equation">
+\[
+s(t)=\frac{L}{1+e^{-k(t-t_0)}},\qquad r=s(2030)/s(2020)=1.281281.
+\tag{8}
+\]
+</div>
+
+The ratio defines a uniform-growth scenario: every regional weight, center capacity and coverage floor is scaled together; costs and travel remain fixed. This preserves all assignment feasibility relations. Relative coverage and time inequality stay unchanged for a fixed assignment.
+
+<figure class="hy-research-figure hy-model-figure"><a class="hy-model-zoom" href="{{ '/assets/img/research/elderly-care/growth-scenario.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="Open Figure 10 at full size"><img src="{{ '/assets/img/research/elderly-care/growth-scenario.svg' | relative_url }}" alt="The demographic extension is assumption based. Capacity rises with demand, explicitly explaining why placement need not change." width="1046" height="408" loading="lazy"><span class="hy-model-zoom-label">View full size ↗</span></a><figcaption><span>Figure 10.</span> The demographic extension is assumption based. Capacity rises with demand, explicitly explaining why placement need not change.</figcaption></figure>
+
+The same nine centers remain selected; covered weight rises from 14,203.513 to 18,198.693, while its fraction stays 68.2524%. This is mainly scale invariance, not evidence of robustness to future spatial demographic change. Fixed capacity or unequal provincial aging would break that invariance.
+
+<div class="hy-model-table"><table><caption>Table 5. Joint scaling in the growth scenario.</caption><thead><tr><th scope="col">Component</th><th scope="col">Change</th><th scope="col">Consequence</th></tr></thead><tbody><tr><td>Weights</td><td>× 1.281281 everywhere</td><td>No regional redistribution</td></tr><tr><td>Capacity and floor</td><td>Same proportional increase</td><td>Assignments remain feasible</td></tr><tr><td>Travel and costs</td><td>Unchanged</td><td>No new geography</td></tr><tr><td>Locations</td><td>Same nine</td><td>Conditional scale invariance</td></tr><tr><td>Uneven aging / fixed capacity</td><td>Untested</td><td>Separate stress test needed</td></tr></tbody></table></div>
+
+<h2 id="verification">11. Independent verification</h2>
+
+The revision reopens saved data without running source scripts that write into the original project. Outcome identity is confirmed to floating-point precision, cluster counts recalculated and scores recomputed from saved held-out predictions. A separate decoder verifies every regional assignment and reconstructs all selected objectives.
+
+Seven new binary-programming solves use the same whole-region demands, budget, facility limits and capacity constraints. Two baseline envelopes reproduce saved values; five exclusion checks supply stronger evidence than the greedy screen. They verify the declared mathematical model, not the assumed costs, travel times or conversion from population to care.
+
+<div class="hy-model-table"><table><caption>Table 6. Evidence ledger.</caption><thead><tr><th scope="col">Claim</th><th scope="col">Evidence</th><th scope="col">Boundary</th></tr></thead><tbody><tr><td>Profiles and prediction</td><td>Saved panel, recomputed scores</td><td>Snapshot generalization</td></tr><tr><td>Selected network</td><td>Independent assignment reconstruction</td><td>Declared decoder</td></tr><tr><td>Objective envelopes</td><td>Two fresh exact solves</td><td>Broader free assignment</td></tr><tr><td>Five exclusions</td><td>Five fresh exact solves</td><td>Baseline eligibility rules</td></tr><tr><td>Repeated compromise</td><td>Archived selected sets</td><td>No full-frontier certificate</td></tr><tr><td>Convergence and packages</td><td>Code audit finds issues</td><td>Corrected rerun remains future work</td></tr></tbody></table></div>
+
+New figures reconstruct country data, predictions, allocations, trade-offs and assumptions. Manuscripts and result files are preserved. Conceptual illustrations remain distinguishable from quantitative plots so visual polish does not imply additional empirical validation.
+
+<h2 id="discussion">12. Discussion and conclusions</h2>
+
+The contribution is a clear separation of descriptive profiling, predictive evaluation, design rules and constrained network exploration. Country analysis offers a reproducible aggregate prediction task. The regional exercise shows how capacity, travel eligibility, weighted demand and an equity definition change which locations appear useful.
+
+Further work should prioritize three improvements. Prediction needs fold-specific preprocessing, held-out regions and years, and uncertainty-aware indicator harmonization. Network modeling needs finer demand points, real travel information, divisible service allocations and explicit minimum-access or self-service requirements. Optimization needs a corrected monitor and a compromise rule tied to stated priorities.
+
+The equipment-package boundary rule also needs repair before its intended three levels are interpreted. Any service package requires separate feasibility and outcome evaluation. Neither an importance bar nor a coverage percentage identifies a medical intervention's effectiveness.
+
+Within these boundaries, the selected saved solution is reproducible and feasible, and new exact checks strengthen narrow mathematical claims. The research supports transparent discussion of planning assumptions without claiming a validated national care system, individual risk predictor or optimal policy.
