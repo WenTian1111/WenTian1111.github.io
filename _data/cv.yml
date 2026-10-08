@@ -17,10 +17,6 @@ cv:
     countryCode: CN
   sections:
     Education:
-      - institution: The Chinese University of Hong Kong
-        area: Religious Studies
-        studyType: M.A.
-        status: Admitted
       - institution: Southwest University (211 & Double First-Class)
         location: Chongqing, China
         url: https://www.swu.edu.cn/
@@ -28,7 +24,7 @@ cv:
         studyType: B.Sc., with coursework in Applied Mathematics
         start_date: Sep. 2022
         end_date: Jun. 2026
-        score: "GPA: 83.6/100"
+        score: ""
         courses: ""
         highlights:
           - Fastest recipient of a Provincial Government Honor in the faculty

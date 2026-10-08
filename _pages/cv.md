@@ -60,7 +60,7 @@ description: Han YANG · Animal Science, Applied Mathematics, and an emerging re
           {% if entry.company %}<p class="hy-cv-subtitle">{{ entry.company }} · {{ entry.location }}</p>{% endif %}
           {% if entry.publisher %}<p class="hy-cv-subtitle">{{ entry.authors | join: ', ' }} · {{ entry.publisher }}</p>{% endif %}
           {% if entry.awarder %}<p class="hy-cv-subtitle">{{ entry.awarder }}</p>{% endif %}
-          {% if entry.score %}<p>{{ entry.location }} · {{ entry.score }}</p>{% endif %}
+          {% if entry.location and entry.company == nil %}<p>{{ entry.location }}{% if entry.score and entry.score != '' %} · {{ entry.score }}{% endif %}</p>{% elsif entry.score and entry.score != '' %}<p>{{ entry.score }}</p>{% endif %}
           {% if entry.summary and entry.summary != '' %}<p>{{ entry.summary }}</p>{% endif %}
           {% if entry.keywords %}<p>{{ entry.keywords }}</p>{% endif %}
           {% if entry.highlights.size > 0 %}<ul>{% for highlight in entry.highlights %}<li>{{ highlight }}</li>{% endfor %}</ul>{% endif %}
